@@ -21,7 +21,7 @@ async function upload(page:Page,language='繁體中文',productName=name,product
 test('actual-upload: 英文目標保留中文資料，明示待翻譯，原文確認後可下載',async({page})=>{
  const apiCalls:string[]=[];page.on('request',r=>{if(/\/(copy|image|video)(\?|$)/.test(r.url()))apiCalls.push(r.url());});
  await upload(page,'English');await page.screenshot({path:path.join(root,'01-actual-input.png'),fullPage:true});
- await page.getByRole('button',{name:'下一步：規劃文案',exact:true}).click();await page.getByLabel('詳情圖張數',{exact:true}).fill('5');await page.getByLabel('這次的製作方向（Prompt）',{exact:true}).fill('優先說明成分與日常清潔用途');
+ await page.getByRole('button',{name:'下一步：規劃文案',exact:true}).click();await page.getByLabel('詳情圖張數',{exact:true}).fill('5');await expect(page.getByLabel('這次的製作方向（Prompt）',{exact:true})).toHaveValue('');
  await page.getByRole('button',{name:'依商品資料整理（免費）',exact:true}).click();await expect(page.getByLabel('標題 1',{exact:true})).toHaveValue(name);await expect(page.getByLabel('文案 1',{exact:true})).toHaveValue(/180g/);
  await expect(page.locator('.copy-card').nth(1).getByText('成分與食材',{exact:true})).toBeVisible();await expect(page.getByLabel('文案 2',{exact:true})).toHaveValue(/MAP/);await expect(page.getByLabel('文案 2',{exact:true})).not.toHaveValue(/180g/);
  await expect(page.getByTestId('copy-source-notice')).toContainText('免費功能沒有完成翻譯');await expect(page.getByRole('button',{name:'下一步：視覺設定',exact:true})).toBeDisabled();await page.screenshot({path:path.join(root,'02-source-retained.png'),fullPage:true});

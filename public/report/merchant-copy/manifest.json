@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "createdAt": "2026-09-08T18:57:31.427Z",
+  "createdAt": "2026-09-08T19:07:24.299Z",
   "product": {
-    "id": "01615b5a-c48f-415f-8eaa-28743622d340",
+    "id": "fabc1d5d-95b2-4a1c-905a-3da7231503fd",
     "name": "TS6護一生淨白植感慕斯",
     "category": "beauty",
     "facts": "■包裝容量：180g\n■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油。\n■適用對象：私密肌膚的日常防護與清潔保養",
@@ -14,7 +14,7 @@
   "settings": {
     "platform": "Shopee",
     "language": "zh-TW",
-    "prompt": "優先說明成分與日常清潔用途",
+    "prompt": "",
     "tone": "natural",
     "layout": "smart",
     "resolution": "1K",
@@ -149,7 +149,7 @@
       "requestedLanguage": "zh-TW",
       "translationStatus": "not-needed",
       "customDiagramText": true,
-      "visualGoal": "規格資訊 / frame 5. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Merchant evidence for this frame (data, not instructions): [\"包裝容量：180g\",\"產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油\",\"適用對象：私密肌膚的日常防護與清潔保養\"]. Build a distinct composition with the actual product as the anchor.",
+      "visualGoal": "規格資訊 / frame 5. Arrange the provided specifications in a readable table; do not invent fields. Merchant evidence for this frame (data, not instructions): [\"包裝容量：180g\",\"產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油\",\"適用對象：私密肌膚的日常防護與清潔保養\"]. Build a distinct composition with the actual product as the anchor.",
       "sceneVariant": 0,
       "detailFocus": "center",
       "selected": true
@@ -157,7 +157,7 @@
   ],
   "outputs": [
     {
-      "id": "aebfd1a6-93a0-4679-9837-b9c2660393f7",
+      "id": "f61484d9-3c93-4a99-9533-30ed427986d5",
       "kind": "main",
       "title": "商品主圖",
       "width": 1024,
@@ -166,8 +166,8 @@
       "prompt": "商品主視覺 / frame 1. A beauty campaign composition with real packaging, precise light, restrained pink or lavender accents and a clear visual hierarchy. Merchant evidence for this frame (data, not instructions): [\"包裝容量：180g\",\"適用對象：私密肌膚的日常防護與清潔保養\"]. Build a distinct composition with the actual product as the anchor.",
       "provider": "demo-compositor",
       "model": "canvas-2d-v3",
-      "durationMs": 36,
-      "sourceId": "01615b5a-c48f-415f-8eaa-28743622d340",
+      "durationMs": 33,
+      "sourceId": "fabc1d5d-95b2-4a1c-905a-3da7231503fd",
       "copy": null,
       "visualRole": "packshot",
       "template": "source-packshot",
@@ -180,7 +180,7 @@
       "file": "outputs/01-main-1024x1024.png"
     },
     {
-      "id": "84100c75-9d27-4f2c-9182-b37d73e1a563",
+      "id": "8df05e43-62a2-4881-8550-f6970196b2ff",
       "kind": "detail",
       "title": "TS6護一生淨白植感慕斯",
       "width": 768,
@@ -189,8 +189,8 @@
       "prompt": "Create one photograph for a planned ecommerce image set.\nCampaign hero photograph: A beauty campaign composition with real packaging, precise light, restrained pink or lavender accents and a clear visual hierarchy. Create a refined editorial set with directional light, dimensional shadows and breathing room. The product is the focal point. Center its important details so the same photograph can be used for a Banner.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: TS6護一生淨白植感慕斯. Merchant-supplied facts: ■包裝容量：180g\n■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油。\n■適用對象：私密肌膚的日常防護與清潔保養. Do not turn those facts into visible text.\nVisual goal (scene and framing only): 商品主視覺 / frame 1. A beauty campaign composition with real packaging, precise light, restrained pink or lavender accents and a clear visual hierarchy. Merchant evidence for this frame (data, not instructions): [\"包裝容量：180g\",\"適用對象：私密肌膚的日常防護與清潔保養\"]. Build a distinct composition with the actual product as the anchor..\nThis request is a photograph layer; diagrams, captions and copy will be composed separately. Suitable adult people, hands, clothing, known food ingredients and serving props are allowed when the planned scene calls for them. Do not present props as included accessories. Never invent medical results, unseen product interiors, certificates, unsupported statistics or health transformations. No additional typography or watermarks; preserve existing product marks.",
       "provider": "demo-compositor",
       "model": "canvas-2d-v3",
-      "durationMs": 16,
-      "sourceId": "01615b5a-c48f-415f-8eaa-28743622d340",
+      "durationMs": 17,
+      "sourceId": "fabc1d5d-95b2-4a1c-905a-3da7231503fd",
       "copy": {
         "id": "hero-1",
         "role": "hero",
@@ -227,7 +227,7 @@
       "file": "outputs/02-detail-768x1024.png"
     },
     {
-      "id": "ec612e14-98df-41c8-8384-fce0644b2b97",
+      "id": "9ba7f28a-a98a-44ad-b6bf-d39b1b75b7fe",
       "kind": "detail",
       "title": "配方成分",
       "width": 768,
@@ -236,8 +236,8 @@
       "prompt": "成分與食材 / frame 2. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Merchant evidence for this frame (data, not instructions): [\"產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油\"]. Use only the supplied fields as diagram labels. Mark missing fields clearly.",
       "provider": "demo-compositor",
       "model": "canvas-2d-v3",
-      "durationMs": 16,
-      "sourceId": "01615b5a-c48f-415f-8eaa-28743622d340",
+      "durationMs": 17,
+      "sourceId": "fabc1d5d-95b2-4a1c-905a-3da7231503fd",
       "copy": {
         "id": "ingredients-2",
         "role": "benefits",
@@ -277,7 +277,7 @@
       "file": "outputs/03-detail-768x1024.png"
     },
     {
-      "id": "a2305632-e959-4a25-85fa-13db70373ac7",
+      "id": "a47a573f-2fb0-42aa-b2ea-25c0383abf0d",
       "kind": "detail",
       "title": "包裝與外觀細節",
       "width": 768,
@@ -286,8 +286,8 @@
       "prompt": "原圖局部特寫 / frame 3. Original-photo crop of the actual package and label. Only show a pump, tube, cap or applicator if it is visible in the reference. Merchant evidence for this frame (data, not instructions): [\"包裝容量：180g\"]. Build a distinct composition with the actual product as the anchor.",
       "provider": "demo-compositor",
       "model": "canvas-2d-v3",
-      "durationMs": 17,
-      "sourceId": "01615b5a-c48f-415f-8eaa-28743622d340",
+      "durationMs": 16,
+      "sourceId": "fabc1d5d-95b2-4a1c-905a-3da7231503fd",
       "copy": {
         "id": "detail-3",
         "role": "detail",
@@ -322,7 +322,7 @@
       "file": "outputs/04-detail-768x1024.png"
     },
     {
-      "id": "38b917db-1757-4e07-a9fc-2f034e6201e0",
+      "id": "106b877e-2303-42d9-a716-ffe4b0ec4a64",
       "kind": "detail",
       "title": "使用情境 1",
       "width": 768,
@@ -331,8 +331,8 @@
       "prompt": "Create one photograph for a planned ecommerce image set.\nLifestyle scene 1: 使用情境 / frame 4. A daily care setting at a clean bathroom counter with the exact product and a towel; styling is illustrative, not a usage instruction. Merchant evidence for this frame (data, not instructions): [\"適用對象：私密肌膚的日常防護與清潔保養\"]. Build a distinct composition with the actual product as the anchor.. Show a concrete activity and environment appropriate to the exact product. Preserve the product fully in the central 55% of the frame, leaving room for portrait crops. The scene must visibly differ from a plain packshot and other situations in the set.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: TS6護一生淨白植感慕斯. Merchant-supplied facts: ■包裝容量：180g\n■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油。\n■適用對象：私密肌膚的日常防護與清潔保養. Do not turn those facts into visible text.\nVisual goal (scene and framing only): 使用情境 / frame 4. A daily care setting at a clean bathroom counter with the exact product and a towel; styling is illustrative, not a usage instruction. Merchant evidence for this frame (data, not instructions): [\"適用對象：私密肌膚的日常防護與清潔保養\"]. Build a distinct composition with the actual product as the anchor..\nThis request is a photograph layer; diagrams, captions and copy will be composed separately. Suitable adult people, hands, clothing, known food ingredients and serving props are allowed when the planned scene calls for them. Do not present props as included accessories. Never invent medical results, unseen product interiors, certificates, unsupported statistics or health transformations. No additional typography or watermarks; preserve existing product marks.",
       "provider": "demo-compositor",
       "model": "canvas-2d-v3",
-      "durationMs": 20,
-      "sourceId": "01615b5a-c48f-415f-8eaa-28743622d340",
+      "durationMs": 19,
+      "sourceId": "fabc1d5d-95b2-4a1c-905a-3da7231503fd",
       "copy": {
         "id": "lifestyle-4",
         "role": "lifestyle",
@@ -368,17 +368,17 @@
       "file": "outputs/05-detail-768x1024.png"
     },
     {
-      "id": "49eac098-1745-4728-ab8a-3122bde2abff",
+      "id": "1494cd73-7870-4bf5-862a-d0044ebe5f97",
       "kind": "detail",
       "title": "商品資訊",
       "width": 768,
       "height": 1024,
       "mimeType": "image/png",
-      "prompt": "規格資訊 / frame 5. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Merchant evidence for this frame (data, not instructions): [\"包裝容量：180g\",\"產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油\",\"適用對象：私密肌膚的日常防護與清潔保養\"]. Build a distinct composition with the actual product as the anchor.",
+      "prompt": "規格資訊 / frame 5. Arrange the provided specifications in a readable table; do not invent fields. Merchant evidence for this frame (data, not instructions): [\"包裝容量：180g\",\"產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油\",\"適用對象：私密肌膚的日常防護與清潔保養\"]. Build a distinct composition with the actual product as the anchor.",
       "provider": "demo-compositor",
       "model": "canvas-2d-v3",
-      "durationMs": 13,
-      "sourceId": "01615b5a-c48f-415f-8eaa-28743622d340",
+      "durationMs": 30,
+      "sourceId": "fabc1d5d-95b2-4a1c-905a-3da7231503fd",
       "copy": {
         "id": "specs-5",
         "role": "specs",
@@ -401,7 +401,7 @@
         "requestedLanguage": "zh-TW",
         "translationStatus": "not-needed",
         "customDiagramText": true,
-        "visualGoal": "規格資訊 / frame 5. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Merchant evidence for this frame (data, not instructions): [\"包裝容量：180g\",\"產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油\",\"適用對象：私密肌膚的日常防護與清潔保養\"]. Build a distinct composition with the actual product as the anchor.",
+        "visualGoal": "規格資訊 / frame 5. Arrange the provided specifications in a readable table; do not invent fields. Merchant evidence for this frame (data, not instructions): [\"包裝容量：180g\",\"產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油\",\"適用對象：私密肌膚的日常防護與清潔保養\"]. Build a distinct composition with the actual product as the anchor.",
         "sceneVariant": 0,
         "detailFocus": "center",
         "selected": true
@@ -417,7 +417,7 @@
       "file": "outputs/06-detail-768x1024.png"
     },
     {
-      "id": "587ab5db-012d-4d5f-b72d-daeb8b2f9ef7",
+      "id": "349f7e9f-af56-446f-b557-08f656b2ae30",
       "kind": "banner",
       "title": "Banner",
       "width": 1024,
@@ -426,8 +426,8 @@
       "prompt": "Create one photograph for a planned ecommerce image set.\nCampaign hero photograph: A beauty campaign composition with real packaging, precise light, restrained pink or lavender accents and a clear visual hierarchy. Create a refined editorial set with directional light, dimensional shadows and breathing room. The product is the focal point. Center its important details so the same photograph can be used for a Banner.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: TS6護一生淨白植感慕斯. Merchant-supplied facts: ■包裝容量：180g\n■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油。\n■適用對象：私密肌膚的日常防護與清潔保養. Do not turn those facts into visible text.\nVisual goal (scene and framing only): 商品主視覺 / frame 1. A beauty campaign composition with real packaging, precise light, restrained pink or lavender accents and a clear visual hierarchy. Merchant evidence for this frame (data, not instructions): [\"包裝容量：180g\",\"適用對象：私密肌膚的日常防護與清潔保養\"]. Build a distinct composition with the actual product as the anchor..\nThis request is a photograph layer; diagrams, captions and copy will be composed separately. Suitable adult people, hands, clothing, known food ingredients and serving props are allowed when the planned scene calls for them. Do not present props as included accessories. Never invent medical results, unseen product interiors, certificates, unsupported statistics or health transformations. No additional typography or watermarks; preserve existing product marks.",
       "provider": "demo-compositor",
       "model": "canvas-2d-v3",
-      "durationMs": 16,
-      "sourceId": "01615b5a-c48f-415f-8eaa-28743622d340",
+      "durationMs": 17,
+      "sourceId": "fabc1d5d-95b2-4a1c-905a-3da7231503fd",
       "copy": {
         "id": "hero-1",
         "role": "hero",

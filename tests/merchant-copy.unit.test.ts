@@ -10,6 +10,7 @@ describe('ordinary merchant input, without a fixture match',()=>{
  it('uses the merchant product name and a real fact in a five-frame hero',()=>{
   const plan=planVisualStory(product,'zh-TW',5);
   expect(plan[0].title).toBe(product.name);expect(plan[0].body).toContain('180g');
+  expect(plan[1].moduleType).toBe('ingredients');expect(plan[1].body).toContain('MAP');
   expect(copy(plan)).not.toMatch(/今天，留一點好|用你喜歡的方式|日常的剛剛好/);
  });
  it.each(['en','ja','ko'])('preserves source facts and marks unavailable %s translation',language=>{
