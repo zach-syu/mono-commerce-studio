@@ -3,6 +3,7 @@ import type { Env, Payload, Store, StoredRecord } from './types.ts';
 import { ASPECT_RATIOS, LANGUAGES, choice, exactKeys, object, parseImage, readJson, safeJson, str, uuid } from './validation.ts';
 import { demoCopy } from './demo.ts';
 import type { ProductBrief } from './demo.ts';
+import {planVisualStory} from '../../../shared/visual-planning.ts';
 import { generateCopy, generateImage, googleProvider, pollVideo, providerConfig, startVideo } from './providers.ts';
 
 export type HandlerOptions = { env: Env; store: Store; fetcher?: typeof fetch; now?: () => number };
@@ -66,7 +67,9 @@ export function createHandler({ env, store, fetcher = fetch, now = Date.now }: H
       const owner = await ownerFromToken(token); rate(owner);
       if(request.method==='POST'||request.method==='DELETE')await budget('requests',1,dailyRequestLimit);
       if (route === '/copy' && request.method === 'POST') {
-        const input = await readJson(request); exactKeys(input, ['product','language','platform','prompt','mode','sourceDataUrl','allowPaid']);
+        const input = await readJson(request); exactKeys(input, ['product','language','platform','prompt','mode','sourceDataUrl','allowPaid','detailCount']);
+        const detailCount=input.detailCount;
+        if(detailCount!==undefined&&(typeof detailCount!=='number'||!Number.isInteger(detailCount)||detailCount<1||detailCount>16))throw new ApiError(400,'INVALID_INPUT','詳情圖張數須為 1 到 16 的整數。');
         const sourceImage = input.sourceDataUrl === undefined ? undefined : parseImage(input.sourceDataUrl);
         const source = typeof input.product === 'string' ? {name:input.product} : object(input.product,'product');
         exactKeys(source,['name','category','description','facts']);
@@ -79,10 +82,10 @@ export function createHandler({ env, store, fetcher = fetch, now = Date.now }: H
         const mode = choice(input.mode,['demo','live'],'mode','demo');
         const started = now();
         if (mode === 'live') live(request,input.allowPaid===true);
-        const provider=mode==='live'?selectedGoogleProvider:'demo';const model=mode==='live'?MODELS.copy:'local-storyboard-v2';
-        const row=record(owner,{type:'copy',status:'pending',provider,model,product,language,platform,prompt});await store.put('jobs',row);
+        const provider=mode==='live'?selectedGoogleProvider:'demo';const model=mode==='live'?MODELS.copy:detailCount===undefined?'local-storyboard-v2':'category-storyboard-v3';
+        const row=record(owner,{type:'copy',status:'pending',provider,model,product,language,platform,prompt,...(detailCount!==undefined?{detailCount}:{})});await store.put('jobs',row);
         try{
-          const sections = mode === 'live' ? await generateCopy(env,product,language,platform,prompt,fetcher,sourceImage) : demoCopy(product,language);
+          const sections = mode === 'live' ? await generateCopy(env,product,language,platform,prompt,fetcher,sourceImage,detailCount as number|undefined) : detailCount===undefined?demoCopy(product,language):planVisualStory(product,language,detailCount as number);
           const response = { sections, provider, model, durationMs: now()-started, language, warnings: mode === 'demo' ? ['此為可編輯的模擬文案，未呼叫 AI 模型。僅內建示範商品提供已撰寫的多語事實；其他原始事實保留於工作紀錄。'] : [] };
           row.payload={...row.payload,status:'completed',...response};row.updatedAt=iso();await store.put('jobs',row);
           return json({...response,jobId:row.id});
