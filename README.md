@@ -2,9 +2,9 @@
 
 從一張商品照片，完成可編輯文案、商品主圖、詳情頁、Banner 與短片。
 
-[開啟個人部署](https://mono-commerce-studio-ashy.vercel.app) · [七類商品對標報告](https://mono-commerce-studio-ashy.vercel.app/report/benchmark-v3/index.html) · [前版對照](https://mono-commerce-studio-ashy.vercel.app/report/layout-v2/index.html)
+[一般上傳文案修正報告](https://mono-commerce-studio-ashy.vercel.app/report/merchant-copy/index.html) · [開啟個人部署](https://mono-commerce-studio-ashy.vercel.app) · [七類商品對標報告](https://mono-commerce-studio-ashy.vercel.app/report/benchmark-v3/index.html) · [前版對照](https://mono-commerce-studio-ashy.vercel.app/report/layout-v2/index.html)
 
-預設提供免費規劃與瀏覽器組版。v3 支援 1–16 張詳情圖、13 種圖種與六大品類，並以美妝、食品、衣服、背包、家電、保健食品和鞋類做七組對標。14 張情境樣張由對話內建 image_gen 工具製作；App 驗收沒有呼叫使用者的 Google API。Google 圖像品質本輪未實測。
+預設提供免費資料整理與瀏覽器組版。免費功能不會讀圖、使用通用 AI 改寫或自動翻譯；它會分類商家填寫的資料並保留來源。外語目標沒有預寫翻譯時會保留原文，須明確改用原文或補上目標語言資料後才可製作。v3 支援 1–16 張詳情圖、13 種圖種與六大品類，並以美妝、食品、衣服、背包、家電、保健食品和鞋類做七組對標。14 張情境樣張由對話內建 image_gen 工具製作；App 驗收沒有呼叫使用者的 Google API。Google 圖像品質本輪未實測。
 
 介面採用 [CYBERBIZ Pitaya UI](https://www.npmjs.com/package/@cyberbiz-corp/pitaya-ui)。前端可部署到 Vercel，後端提供 Supabase Edge Functions、Postgres 與私有 Storage。本機與 Supabase 使用同一份 API handler。
 
@@ -160,3 +160,5 @@ docs/                       影片研究、API 合約與來源紀錄
 重要模型金鑰與 Supabase service-role 金鑰只在後端使用。前端 PostHog project token 是公開事件寫入憑證，不是管理 token。已修正共用額度與上傳失敗清理問題，並以測試驗證。這不是正式資安認證。依賴稽核仍有 5 筆中度 package entries，主要来自 Pitaya 的相依套件；目前沒有證明其弱點能經本 App 的元件路徑利用，正式上線前需進一步處理。
 
 原始檢查見 [修正前掃描報告](docs/SECURITY-SCAN-BEFORE-FIX.md)，目前修正狀態見 E2E 報告。
+
+免費資料整理 v4：`npm run test:merchant` 以一般上傳路徑測試實際 TS6 慕斯原圖、改容量、未收錄英文資料及日文／手機提示；`npm run test:merchant-report` 建立含實際下載文案與圖片的修正報告。

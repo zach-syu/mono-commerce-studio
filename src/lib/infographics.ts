@@ -58,7 +58,8 @@ export function drawInfographic(v:Input):boolean{
   if(product.category==='bag'){names=[l.bag1,l.bag2,l.bag3];icons=['ruler','bag','label'];}
   if(product.category==='fashion'){names=[l.fashion1,l.fashion2,l.fashion3];icons=['ruler','shirt','label'];}
   if(product.category==='supplement')icons=['label','water','bag'];
-  if(section.customDiagramText&&items.length>=2)names=items.slice(0,3);
+  if(section.copyOrigin==='merchant-facts')names=(section.evidencePoints?.length?section.evidencePoints:[l.missing]).slice(0,3);
+  else if(section.customDiagramText&&items.length>=2)names=items.slice(0,3);
   contain(c,original,70,h*.29,345,h*.47);put(l.source,72,h*.78,340,55,19,p.muted);
   names.forEach((name,i)=>{const y=h*.245+i*h*.215;box(c,464,y,492,h*.183,p.bg,18);put('0'+(i+1),482,y+24,60,50,27,p.accent,true);icon(c,icons[i],548,y+34,100,p.accent);put(name,678,y+38,246,h*.10,30,p.ink,true);if(i<2)arrow(c,709,y+h*.186,709,y+h*.207,p.accent);});
   put(section.customDiagramText?l.fit:section.body||l.fit,m,h*.91,w*.86,h*.065,20,p.muted);

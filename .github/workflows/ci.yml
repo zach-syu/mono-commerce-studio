@@ -33,6 +33,15 @@ jobs:
         env:
           CI: 'true'
           VITE_ANALYTICS_DISABLED: '1'
+      - run: npm run test:merchant
+        id: merchant
+        if: always()
+        env:
+          CI: 'true'
+          VITE_ANALYTICS_DISABLED: '1'
+      - name: Build ordinary upload review
+        if: always() && steps.merchant.outcome == 'success'
+        run: npm run test:merchant-report
       - name: Build brand benchmark review
         if: always() && steps.benchmark.outcome == 'success'
         run: npm run test:benchmark-report
@@ -55,5 +64,6 @@ jobs:
             artifacts/benchmark-v3/test-results.json
             artifacts/benchmark-v3/unit-results.json
             artifacts/benchmark-v3/runner/
+            artifacts/merchant-copy/
             public/report/
           retention-days: 7

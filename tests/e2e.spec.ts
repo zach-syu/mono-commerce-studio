@@ -89,7 +89,7 @@ async function product(page: Page, e: Evidence, category: Category, language: La
 async function plan(page: Page, e: Evidence) {
   // Keep the original regression matrix at five frames; v3 tests exercise the new default and count range.
   await page.getByLabel('詳情圖張數',{exact:true}).fill('5');
-  await page.getByRole('button', { name: '免費規劃套圖', exact: true }).click();
+  await page.getByRole('button', { name: '依商品資料整理（免費）', exact: true }).click();
   await expect(page.getByLabel('標題 1', { exact: true })).not.toHaveValue('');
   await expect(page.getByLabel('標題 5', { exact: true })).toBeVisible();
   e.checks.push('本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。');
@@ -273,7 +273,7 @@ for (const entry of uploadErrors) {
     await e.capture('01-rejected');
     await page.getByRole('button', { name: `使用 ${names.food} 範例`, exact: true }).click();
     await page.getByRole('button', { name: '下一步：規劃文案', exact: true }).click();
-    await expect(page.getByRole('button', { name: '免費規劃套圖', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: '依商品資料整理（免費）', exact: true })).toBeVisible();
     e.checks.push(`已阻擋${entry.title}且顯示具體原因；換用有效商品圖可繼續。`);
     await e.capture('02-recovered');
   });

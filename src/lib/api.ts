@@ -16,7 +16,7 @@ export async function request<T>(path:string, body?:unknown, signal?:AbortSignal
 }
 export async function planCopy(product:Product,settings:Settings,signal?:AbortSignal,allowPaid=false){
  const count=assertImageCount(settings.detailCount??5);
- if(settings.mode==='demo'){const start=performance.now();return {sections:planVisualStory({name:product.name,category:product.category,description:product.facts,facts:product.facts.trim()?[product.facts]:[]},settings.language,count),provider:'demo',model:'category-storyboard-v3',durationMs:Math.round(performance.now()-start)};}
+ if(settings.mode==='demo'){const start=performance.now();return {sections:planVisualStory({name:product.name,category:product.category,description:product.facts,facts:product.facts.trim()?[product.facts]:[]},settings.language,count,{prompt:settings.prompt}),provider:'demo',model:'merchant-facts-v4',durationMs:Math.round(performance.now()-start)};}
  if(!allowPaid)throw new Error('請先確認本次付費文案規劃，或使用免費規劃。');
  return request<{sections:CopySection[];provider:string;model:string;durationMs:number}>('/copy',{product:{name:product.name,category:product.category,description:product.facts,facts:product.facts.trim()?[product.facts]:[]},language:settings.language,platform:settings.platform,prompt:settings.prompt,mode:settings.mode,detailCount:count,allowPaid:true,...(settings.mode==='live'?{sourceDataUrl:product.sourceDataUrl}:{})},signal);
 }

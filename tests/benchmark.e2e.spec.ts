@@ -24,8 +24,8 @@ for(const item of benchmarkProducts){
  const language=item.id==='ts6'||item.id==='philips'?'English':item.id==='jsmix'||item.id==='supplement'?'日本語':'繁體中文';
  test(`${item.id} 白底輸入到豐富詳情頁、Banner 與完整下載`,async({page})=>{
   const calls:string[]=[];const errors:string[]=[];page.on('request',r=>{if(/\/(copy|image|video)(\?|$)/.test(r.url()))calls.push(r.url());});page.on('pageerror',e=>errors.push(e.message));const directory=path.join(root,item.id);
-  await upload(page,item.id,language);await expect(page.getByLabel('詳情圖張數',{exact:true})).toHaveValue('8');await page.getByRole('button',{name:'免費規劃套圖',exact:true}).click();await expect(page.getByLabel('標題 8',{exact:true})).toBeVisible();
-  await page.getByRole('button',{name:'查看規劃 Agent 的 Prompt',exact:true}).click();await expect(page.locator('.metadata:visible')).toContainText('exactly 8');const plannerPrompt=await page.locator('.metadata:visible').innerText();
+  await upload(page,item.id,language);await expect(page.getByLabel('詳情圖張數',{exact:true})).toHaveValue('8');await page.getByRole('button',{name:'依商品資料整理（免費）',exact:true}).click();await expect(page.getByLabel('標題 8',{exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'查看這次的整理依據',exact:true}).click();await expect(page.locator('.metadata:visible')).toContainText('詳情圖張數：8');const plannerPrompt=await page.locator('.metadata:visible').innerText();
   await page.getByRole('button',{name:'下一步：視覺設定',exact:true}).click();await page.getByRole('checkbox',{name:'Banner',exact:true}).check();
   await expect(page.locator('.storyboard-frames figure')).toHaveCount(10);await expect.poll(()=>page.locator('.storyboard-frames img').evaluateAll(xs=>xs.every(x=>(x as HTMLImageElement).complete&&(x as HTMLImageElement).naturalWidth>0))).toBe(true);
   await fs.mkdir(directory,{recursive:true});await page.locator('.storyboard-preview').screenshot({path:path.join(directory,'storyboard.png')});await page.getByRole('button',{name:'開始生成',exact:true}).click();await expect(page.getByRole('heading',{name:'素材已完成',exact:true})).toBeVisible();
@@ -40,17 +40,17 @@ for(const item of benchmarkProducts){
  });
 }
 test('count-controls 張數可調、縮減不刪文案、手機可操作',async({page})=>{
- await upload(page,'philips');await page.getByRole('button',{name:'免費規劃套圖',exact:true}).click();await page.getByLabel('標題 1',{exact:true}).fill('保留使用者寫的標題');
+ await upload(page,'philips');await page.getByRole('button',{name:'依商品資料整理（免費）',exact:true}).click();await page.getByLabel('標題 1',{exact:true}).fill('保留使用者寫的標題');
  await page.getByLabel('詳情圖張數',{exact:true}).fill('3');await page.getByRole('button',{name:'套用張數',exact:true}).click();await expect(page.getByRole('checkbox',{name:/^選取文案/}).filter({visible:true})).toHaveCount(8);expect(await page.getByRole('checkbox',{name:/^選取文案/}).evaluateAll(xs=>xs.filter(x=>(x as HTMLInputElement).checked).length)).toBe(3);await expect(page.getByLabel('標題 1',{exact:true})).toHaveValue('保留使用者寫的標題');
  await page.getByLabel('詳情圖張數',{exact:true}).fill('12');await page.getByRole('button',{name:'套用張數',exact:true}).click();await expect(page.getByLabel('標題 12',{exact:true})).toBeVisible();expect(await page.getByRole('checkbox',{name:/^選取文案/}).evaluateAll(xs=>xs.filter(x=>(x as HTMLInputElement).checked).length)).toBe(12);
  await page.setViewportSize({width:390,height:844});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await fs.mkdir(root,{recursive:true});await page.screenshot({path:path.join(root,'mobile-count.png')});
 });
 test('count-boundaries 1 與 16 張可規劃，無效數值不能送出',async({page})=>{
- await upload(page,'philips');for(const count of [1,16]){await page.getByLabel('詳情圖張數',{exact:true}).fill(String(count));await page.getByRole('button',{name:'免費規劃套圖',exact:true}).click();await expect(page.getByLabel('標題 '+count,{exact:true})).toBeVisible();await expect(page.getByRole('checkbox',{name:/^選取文案/})).toHaveCount(count);}
- for(const invalid of ['0','17','1.5']){await page.getByLabel('詳情圖張數',{exact:true}).fill(invalid);await expect(page.getByRole('button',{name:'免費規劃套圖',exact:true})).toBeDisabled();await expect(page.getByRole('button',{name:'下一步：視覺設定',exact:true})).toBeDisabled();}
+ await upload(page,'philips');for(const count of [1,16]){await page.getByLabel('詳情圖張數',{exact:true}).fill(String(count));await page.getByRole('button',{name:'依商品資料整理（免費）',exact:true}).click();await expect(page.getByLabel('標題 '+count,{exact:true})).toBeVisible();await expect(page.getByRole('checkbox',{name:/^選取文案/})).toHaveCount(count);}
+ for(const invalid of ['0','17','1.5']){await page.getByLabel('詳情圖張數',{exact:true}).fill(invalid);await expect(page.getByRole('button',{name:'依商品資料整理（免費）',exact:true})).toBeDisabled();await expect(page.getByRole('button',{name:'下一步：視覺設定',exact:true})).toBeDisabled();}
 });
 test('diagram-copy-edit 修改文案會進入圖解與下載內容',async({page})=>{
- await upload(page,'philips');await page.getByLabel('詳情圖張數',{exact:true}).fill('1');await page.getByRole('button',{name:'免費規劃套圖',exact:true}).click();await choose(page,'用途 1','功能示意');
+ await upload(page,'philips');await page.getByLabel('詳情圖張數',{exact:true}).fill('1');await page.getByRole('button',{name:'依商品資料整理（免費）',exact:true}).click();await choose(page,'用途 1','功能示意');
  const changed='測試用編輯：第一階段\n測試用編輯：第二階段\n測試用編輯：第三階段';await page.getByLabel('文案 1',{exact:true}).fill(changed);
  await page.getByRole('button',{name:'下一步：視覺設定',exact:true}).click();await page.getByRole('checkbox',{name:'商品主圖',exact:true}).uncheck();await page.getByRole('button',{name:'開始生成',exact:true}).click();await expect(page.getByRole('heading',{name:'素材已完成',exact:true})).toBeVisible();
  const {manifest}=await download(page,path.join(root,'diagram-edit'));expect(manifest.outputs).toHaveLength(1);expect(manifest.outputs[0].copy.body).toBe(changed);expect(manifest.outputs[0].copy.evidencePoints).toEqual(changed.split('\n'));

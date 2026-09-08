@@ -1,7 +1,6 @@
 import { ApiError, MODELS, dataUrl, ownerFromToken } from './types.ts';
 import type { Env, Payload, Store, StoredRecord } from './types.ts';
 import { ASPECT_RATIOS, LANGUAGES, choice, exactKeys, object, parseImage, readJson, safeJson, str, uuid } from './validation.ts';
-import { demoCopy } from './demo.ts';
 import type { ProductBrief } from './demo.ts';
 import {planVisualStory} from '../../../shared/visual-planning.ts';
 import { generateCopy, generateImage, googleProvider, pollVideo, providerConfig, startVideo } from './providers.ts';
@@ -82,11 +81,11 @@ export function createHandler({ env, store, fetcher = fetch, now = Date.now }: H
         const mode = choice(input.mode,['demo','live'],'mode','demo');
         const started = now();
         if (mode === 'live') live(request,input.allowPaid===true);
-        const provider=mode==='live'?selectedGoogleProvider:'demo';const model=mode==='live'?MODELS.copy:detailCount===undefined?'local-storyboard-v2':'category-storyboard-v3';
+        const provider=mode==='live'?selectedGoogleProvider:'demo';const model=mode==='live'?MODELS.copy:'merchant-facts-v4';
         const row=record(owner,{type:'copy',status:'pending',provider,model,product,language,platform,prompt,...(detailCount!==undefined?{detailCount}:{})});await store.put('jobs',row);
         try{
-          const sections = mode === 'live' ? await generateCopy(env,product,language,platform,prompt,fetcher,sourceImage,detailCount as number|undefined) : detailCount===undefined?demoCopy(product,language):planVisualStory(product,language,detailCount as number);
-          const response = { sections, provider, model, durationMs: now()-started, language, warnings: mode === 'demo' ? ['此為可編輯的模擬文案，未呼叫 AI 模型。僅內建示範商品提供已撰寫的多語事實；其他原始事實保留於工作紀錄。'] : [] };
+          const sections = mode === 'live' ? await generateCopy(env,product,language,platform,prompt,fetcher,sourceImage,detailCount as number|undefined) : planVisualStory(product,language,(detailCount as number|undefined)??5,{prompt});
+          const response = { sections, provider, model, durationMs: now()-started, language, warnings: mode === 'demo' ? ['此為依商品資料整理的免費草稿，未呼叫 AI。沒有預寫翻譯時保留原文並標示待翻譯。'] : [] };
           row.payload={...row.payload,status:'completed',...response};row.updatedAt=iso();await store.put('jobs',row);
           return json({...response,jobId:row.id});
         }catch(error){row.payload={...row.payload,status:'failed',error:{code:error instanceof ApiError?error.code:'UNKNOWN',message:error instanceof ApiError?error.message:'文案生成失敗。'}};row.updatedAt=iso();await store.put('jobs',row);throw error;}
