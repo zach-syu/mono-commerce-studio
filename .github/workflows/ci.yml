@@ -22,11 +22,13 @@ jobs:
           CI: 'true'
           VITE_ANALYTICS_DISABLED: '1'
       - run: npm run test:preview
+        id: free_preview
+        if: always()
         env:
           CI: 'true'
           VITE_ANALYTICS_DISABLED: '1'
       - name: Build free layout review
-        if: always()
+        if: always() && steps.free_preview.outcome == 'success'
         run: npm run test:layout-report
       - name: Build evidence report
         if: always()
