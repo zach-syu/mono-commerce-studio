@@ -87,6 +87,8 @@ async function product(page: Page, e: Evidence, category: Category, language: La
 }
 
 async function plan(page: Page, e: Evidence) {
+  // Keep the original regression matrix at five frames; v3 tests exercise the new default and count range.
+  await page.getByLabel('詳情圖張數',{exact:true}).fill('5');
   await page.getByRole('button', { name: '免費規劃套圖', exact: true }).click();
   await expect(page.getByLabel('標題 1', { exact: true })).not.toHaveValue('');
   await expect(page.getByLabel('標題 5', { exact: true })).toBeVisible();

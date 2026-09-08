@@ -60,3 +60,7 @@ One main decision per step. Keep technical provider configuration in Settings. D
 - Canonical native dialog preserves Escape, modal background blocking and focus restoration. PitayaRoundBox supplies the primary editor surface.
 - The four-step workflow and live contact-sheet composition remain the independent MONO layout. The product is an independent prototype using CYBERBIZ components, not a claim of official CYBERBIZ production ownership.
 - Intentional migration: pine/rounded custom controls changed to the user's requested Pitaya blue/5px controls; body/help sizes increased for readability. Product-scene colors did not change.
+
+## v3 品類視覺企劃
+
+介面沿用 Pitaya UI；詳情素材依商品採色。規劃支援 13 種圖種與 1–16 張內容，參照使用者指定的品牌頁。場景照片保留可見環境，圖解以原生圖形與已提供資料組成，真實細節用原圖裁切。不可把同一張原圖反覆加字當成已達對標品質。

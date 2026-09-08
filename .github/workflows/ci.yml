@@ -15,7 +15,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - run: npm test
+      - run: npx vitest run --reporter=json --outputFile=artifacts/benchmark-v3/unit-results.json
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
         env:
@@ -27,6 +27,15 @@ jobs:
         env:
           CI: 'true'
           VITE_ANALYTICS_DISABLED: '1'
+      - run: npm run test:benchmark
+        id: benchmark
+        if: always()
+        env:
+          CI: 'true'
+          VITE_ANALYTICS_DISABLED: '1'
+      - name: Build brand benchmark review
+        if: always() && steps.benchmark.outcome == 'success'
+        run: npm run test:benchmark-report
       - name: Build free layout review
         if: always() && steps.free_preview.outcome == 'success'
         run: npm run test:layout-report
@@ -43,5 +52,8 @@ jobs:
             artifacts/playwright-results.json
             artifacts/playwright-html/
             artifacts/layout-v2/
+            artifacts/benchmark-v3/test-results.json
+            artifacts/benchmark-v3/unit-results.json
+            artifacts/benchmark-v3/runner/
             public/report/
           retention-days: 7

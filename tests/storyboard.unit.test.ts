@@ -39,7 +39,7 @@ describe('purpose-driven storyboards',()=>{
  it('creates a complete editable free plan without an HTTP call',async()=>{
   const fetcher=vi.fn();vi.stubGlobal('fetch',fetcher);
   const result=await planCopy(product,initialSettings);
-  expect(result.provider).toBe('demo');expect(result.sections).toHaveLength(5);
+  expect(result.provider).toBe('demo');expect(result.sections).toHaveLength(8);
   expect(new Set(result.sections.map(s=>s.role)).size).toBe(5);expect(fetcher).not.toHaveBeenCalled();
  });
 });

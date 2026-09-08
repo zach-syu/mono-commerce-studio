@@ -11,6 +11,8 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:preview": "playwright test --config playwright.preview.config.ts",
+    "test:benchmark": "playwright test --config playwright.benchmark.config.ts",
+    "test:benchmark-report": "node scripts/build-benchmark-review.mjs",
     "test:layout-report": "node scripts/build-layout-review.mjs",
     "test:report": "node scripts/build-report.mjs",
     "check": "tsc -b"

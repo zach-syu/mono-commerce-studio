@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "googleApiCalls": 0,
+  "generator": "Codex conversation built-in image_gen",
+  "usableImages": 14,
+  "requestedToolCalls": 18,
+  "outputs": [
+    {
+      "id": "philips-day",
+      "output": "philips/scene-day.png",
+      "reference": "philips/source.jpg",
+      "prompt": "Use case: product-mockup. Create one high-end editorial product lifestyle photograph, landscape 4:3. The attached white-background photograph is the ONLY product identity reference: the exact Philips AC4221 black cylindrical air purifier, closely spaced vertical dark grilles, black rounded top, thin blue light ring, small silver PHILIPS logo in its real position. Preserve product geometry, grille spacing, colors, scale proportions and existing marks. Scene: a lived-in contemporary Taiwanese family living room in morning light, light oak floor, pale linen sofa, small indoor plant, open curtains. Place the purifier on the FLOOR near the sofa with unobstructed intake; believable appliance scale about knee height, substantial environment around it. In the distant background an adult reading a book provides context, secondary and softly out of focus. Camera at low furniture height, three-quarter front view based on the visible front. Warm daylight, tactile real materials, premium retail photography, strong depth, not a white studio catalogue shot. Product occupies about 35-45% of frame height, readable and crisp. No airborne particle graphics, no certificates, no invented performance numbers, no captions, no new text. Do not make a collage. No product redesign, no multiple products. Leave a calm upper-left area for separately rendered copy.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "philips-night",
+      "output": "philips/scene-night.png",
+      "reference": "philips/source.jpg",
+      "prompt": "Create one premium photorealistic ecommerce lifestyle photograph, landscape 4:3. Reference image is the exact Philips AC4221 air purifier identity: cylindrical black body, very dense vertical grilles, rounded black top, thin blue light ring, silver PHILIPS badge. Preserve its visible shape and all packaging-free details. Scene is a spacious calm bedroom at blue hour, navy and soft warm amber bedside lighting, linen bed, blackout curtain, the purifier standing on the FLOOR at a sensible distance from the bed with open space around its intake. No people, no medical story, no invented measurement displays or smartphone screen. Camera is low and front three-quarter so the product occupies 45% of image height; include recognizable bedroom environment and atmospheric light. Different from a daytime living room. Rich real wood, fabric and shadow detail. No text, no graphic overlay, no additional product, no product redesign. Leave a calm upper-right area for layout text.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "ts6-bathroom",
+      "output": "ts6/scene-day.png",
+      "reference": "ts6/source.jpg",
+      "prompt": "Create one photorealistic premium beauty ecommerce lifestyle photograph, landscape 4:3. Use ONLY the attached white packshot as product identity reference. Preserve both TS6 cream tubes and the white applicator: larger white tube pink lower panel HAIR BYE CREAM 80g; smaller white tube lavender lower panel SKIN CHILL CREAM 40g. Keep the exact labels and proportions and no invented packaging. Arrange the two closed tubes with applicator on a pale pink stone bathroom vanity, a rolled white towel, unfussy water glass and softly blurred frosted window in background. Warm morning side lighting, clean luxury skin-care photography, elegant but believable bathroom routine, realistic soft shadows. Products occupy around 55% frame height, with room to understand the bathroom environment. No person, no body transformation, no claim of medical effect, no ingredient props. No additional text, logos or watermarks. No collage; this is one real-looking scene. Keep the composition image-led with a calm upper-left copy area.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "ts6-travel",
+      "output": "ts6/scene-travel.png",
+      "reference": "ts6/source.jpg",
+      "prompt": "Create one premium photorealistic beauty ecommerce lifestyle photograph, landscape 4:3. The reference shows the exact TS6 set: white pink HAIR BYE CREAM tube, smaller lavender SKIN CHILL CREAM tube and white applicator. Preserve the two products, printed labels, sizes, colors, tube proportions and applicator shape exactly. Show an adult woman's hands arranging the CLOSED two cream tubes and applicator beside an open neutral travel toiletry pouch on a modern hotel dressing table; a blurred mirror, textured stone and soft evening light establish a travel-care routine. Product set central and completely visible, hands not covering logos. No application to intimate areas, no nudity, no invented efficacy result or before/after body. No extra text, no collage, no added medical symbols. Warm sophisticated editorial photography, clearly different from a morning bathroom vanity product arrangement.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "jsmix-city",
+      "output": "jsmix/scene-city.png",
+      "reference": "jsmix/source.jpg",
+      "prompt": "Create one photorealistic fashion ecommerce lifestyle photograph, landscape 4:3. The provided flat-lay reference is the ONLY clothing identity source. Dress a fictional adult East Asian plus-size male model in this exact loose black short-sleeve T-shirt. Preserve the blue rose REBORN small left-chest print, black neck shape, dropped shoulder, wide sleeves and tiny hem label. Do not redesign or enlarge the print. Show a three-quarter front view while he walks across a contemporary Taipei pedestrian street, concrete architecture and muted greenery, natural overcast daylight. Casual charcoal trousers, no other visible brand marks, realistic cotton folds. T-shirt and its roomy fit must be clear; crop model from upper face to upper thigh with some urban context, friendly relaxed pose. Modern editorial campaign quality with dimensional lighting, not a white studio packshot. No advertising copy, no collage, no added labels. Do not use the real person from any reference page; invent a new adult model.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "jsmix-cafe",
+      "output": "jsmix/scene-cafe.png",
+      "reference": "jsmix/source.jpg",
+      "prompt": "Create one photorealistic fashion ecommerce campaign photograph, landscape 4:3. The ONLY product identity reference is this exact black oversized T-shirt flat lay, small blue rose REBORN left-chest print and small black hem label. Preserve garment shape, black color, short wide sleeves, neckline, print size and placement exactly. A fictional adult East Asian plus-size man wears the shirt while sitting casually at an outdoor cafe courtyard, one hand resting near a ceramic cup. Waist-up to upper-thigh framing, front of the shirt visible without folds hiding the print, neutral trousers, soft tree shade and real stone textures. Relaxed weekend styling, distinct from walking on a city street. Keep shirt and important details in central 55% for a portrait crop. Use a new fictional adult face, no resemblance to reference-page model. No other brand marks, no overlays, no collage, no product redesign.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "magforce-commute",
+      "output": "magforce/scene-commute.png",
+      "reference": "magforce/source.jpg",
+      "prompt": "One photorealistic premium backpack ecommerce lifestyle photograph, landscape 4:3. ONLY product reference is the attached black MAGFORCE #0562 backpack. Preserve its two front zip pockets, exact black webbing, Y strap, buckles, mesh side pockets, carry handle, texture and small brand patch. A fictional adult commuter is carrying the pack by its top handle at his side near a modern Taipei transit entrance; adult body is secondary, cropped shoulder to knee, the full front three-quarter backpack is large and unobstructed in the central 55% of the frame. Realistic scale and gravity, casual neutral jacket and trousers, no other branding, real concrete, morning light and everyday commuter atmosphere. Product-led editorial photography showing a meaningful use context, not a bag on a plain background. Preserve exact product geometry, no extra pockets or decorative straps, no advertising text or diagrams.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "magforce-outdoor",
+      "output": "magforce/scene-outdoor.png",
+      "reference": "magforce/source.jpg",
+      "prompt": "One premium photorealistic outdoor backpack ecommerce photograph, landscape 4:3. Use the reference image as the exact identity of the black MAGFORCE #0562 bag: preserve its two front zip pockets, Y strap and buckle, existing webbing rows, mesh side pockets, black material, handle, shape and brand patch. Place the complete backpack resting upright on a low dry stone beside a wooded walking trail. An adult hiker in neutral clothing is softly visible in the distant background. Natural late-afternoon tree light, realistic terrain and scale, calm weekend outdoor carry context. The bag is large, sharp and completely visible in the central 55% of the frame. No fabricated pockets, camouflage, product colors or attached accessories. Do not place watermarks, labels, promotional text or a collage. This is a new setting distinct from a commuter station.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "supplement-breakfast",
+      "output": "supplement/scene-breakfast.png",
+      "reference": "supplement/source.jpg",
+      "prompt": "One photorealistic ecommerce wellness lifestyle photograph, landscape 4:3. Preserve the exact TS6 PLUS+ PROBIOTIC box and blue-white sachet in the provided product photograph, including blue curves, all visible branding, packaging dimensions and printed 30-pack identity. Arrange this box and one closed sachet at a normal adult breakfast table beside a clear glass of water and simple ceramic plate, calm morning natural light, linen napkin and tactile oak tabletop. An adult hand reaching toward the closed sachet gives everyday routine context; do not depict ingestion, a doctor, medical symbols, treatment effects, organs or transformation. Product is sharp and occupies the central 55% of the frame. Styling objects are not included products. Premium credible editorial photography; do not create new claims, overlays or logos. No collage.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "supplement-desk",
+      "output": "supplement/scene-desk.png",
+      "reference": "supplement/source.jpg",
+      "prompt": "One premium photorealistic wellness product lifestyle photograph, landscape 4:3. The attached photo is the exact TS6 PLUS+ probiotic box and closed blue-white sachet; preserve the same packaging, printed marks, shapes and 30-sachet box identity. Show the box and one unopened sachet on a tidy light-grey work desk beside a clear water bottle, closed notebook and a neutral travel organizer. Soft cool afternoon window light, relaxed work or travel-packing routine. A laptop may appear blurred in background without any visible screen information. Product is central, fully visible and about half the image height. Different from a breakfast table. No doctors, medical icons, organs, treatment or body transformation. No extra advertising text, no collage, no invented packaging or dosage instructions.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "zhuji-dining-focused",
+      "output": "zhuji/scene-dining.png",
+      "reference": "zhuji/model-focus.jpg",
+      "prompt": "Create one realistic food advertising photograph, landscape 4:3. Use the provided red ZHUJI cabbage-pork dumpling bag as the packaging reference. Keep its red color, brand mark and bag design. A simple warm dining-table scene: one unopened reference bag behind a white ceramic plate of cooked dumplings, a small dipping bowl and wooden chopsticks. Soft daylight, subtle steam, inviting home meal, professional product photography. The dumplings are an illustrative serving suggestion. No people, no added advertisement text, no collage. Keep the plate and bag completely visible near the center of the image.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "zhuji-kitchen",
+      "output": "zhuji/scene-kitchen.png",
+      "reference": "zhuji/model-focus.jpg",
+      "prompt": "Create one realistic food ecommerce photograph, landscape 4:3. Use the reference red ZHUJI cabbage-pork dumpling package identity. A home kitchen cooking scene: a steaming stainless steel pot, a mesh strainer with cooked dumplings held above it by one adult hand, a ceramic bowl on the dry counter, and one original red dumpling package standing nearby. Preserve its recognizable original package colors and design. Warm indoor light with cool tile background, authentic kitchen context, appetizing steam, no extra advertisement text or collage. The cooked dumplings are a serving illustration. Keep the pot, bowl and package grouped centrally and fully visible. Different composition from a plated dining-table photograph.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "shoes-walk",
+      "output": "shoes/scene-walk.png",
+      "reference": "shoes/source.png",
+      "prompt": "One photorealistic footwear ecommerce lifestyle photograph, landscape 4:3. The only shoe identity reference is the supplied off-white and sage-green PLAIN sneaker product photo. Preserve shoe colors, panel shapes, sole profile, lace layout and any visible marks exactly. Show a fictional adult wearing the pair during a relaxed urban walk, low camera around ankle height, naturally cuffed neutral trousers, afternoon sidewalk with muted greenery in the distance. Both shoes clearly visible in central 60%, one planted and the other making a natural step. Real material lighting, believable sole-ground contact, premium editorial footwear campaign quality. This must demonstrate shoes being worn rather than a repeated packshot. No invented heel markings, no additional text, no collage, no anatomy errors.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    },
+    {
+      "id": "shoes-park",
+      "output": "shoes/scene-park.png",
+      "reference": "shoes/source.png",
+      "prompt": "One photorealistic footwear ecommerce lifestyle photograph, landscape 4:3. Preserve exactly the PLAIN off-white and sage-green sneaker pair in the reference: its canvas-like upper appearance, panel edges, green toe and heel panels, ivory laces and sole geometry. An adult is sitting on a park bench wearing the pair, lower legs only in view, neutral trouser cuffs, both shoes grounded naturally on a stone path. Weekend greenery and soft sunlight, low camera near ankle height, shoes centered and crisp, relaxed natural foot position. No other brands, no advertising text, no extra shoes, no collage. This is a different use context from walking on an urban sidewalk; avoid inventing product markings or new tread details.",
+      "generator": "built-in image_gen",
+      "status": "generated",
+      "apiKeyUsed": false
+    }
+  ],
+  "executionNotes": [
+    "One four-request batch returned one image then a service error; three requests did not yield usable results to this run. Their individual completion state was unavailable.",
+    "A later food retry returned a service error. Focusing on one package region subsequently produced the two serving-context images.",
+    "App E2E reuses these saved images; its timing is composition and interface timing, not live model latency.",
+    "Food model reference is a region of the same three-package input, not an extra product or scene reference."
+  ],
+  "fidelityReview": "Generated contexts preserve the main product concept; packaging text, dimensions and construction details require final human verification."
+}

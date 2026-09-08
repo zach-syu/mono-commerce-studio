@@ -8,6 +8,7 @@ import { MODELS, ownerFromToken } from '../supabase/functions/_shared/types.ts';
 import { parseImage } from '../supabase/functions/_shared/validation.ts';
 import { createFileStore } from '../server/file-store.ts';
 import { createSupabaseStore } from '../supabase/functions/_shared/supabase-store.ts';
+import {planVisualStory} from '../shared/visual-planning.ts';
 
 const token='a'.repeat(64),other='b'.repeat(64),code='test-access-code-at-least-16';
 const png='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+j9GQAAAAASUVORK5CYII=';
@@ -20,6 +21,26 @@ function req(path:string,body?:unknown, options:{token?:string;code?:string;meth
 function setup(fetcher?:typeof fetch,config=env){const store=new MemoryStore();return{store,handler:createHandler({env:config,store,fetcher})};}
 async function json(response:Response){return {status:response.status,...await response.json()};}
 describe('portable backend contracts',()=>{
+  it.each([1,8,16])('plans exactly %i requested images without a provider request in demo mode',async detailCount=>{
+    const fetcher=vi.fn();const {handler}=setup(fetcher as typeof fetch);
+    const result=await json(await handler(req('/copy',{product:{name:'Device',category:'electronics'},mode:'demo',detailCount})));
+    expect(result.status).toBe(200);expect(result.sections).toHaveLength(detailCount);expect(fetcher).not.toHaveBeenCalled();
+  });
+  it.each([0,17,2.5,'8'])('rejects invalid image count %s before the provider',async detailCount=>{
+    const fetcher=vi.fn();const {handler}=setup(fetcher as typeof fetch);
+    const result=await json(await handler(req('/copy',{product:'Device',mode:'live',detailCount},{code})));
+    expect(result.status).toBe(400);expect(fetcher).not.toHaveBeenCalled();
+  });
+  it('aligns the live planning schema with count and rejects repeated packshots',async()=>{
+    const sections=planVisualStory({name:'Device',category:'electronics',description:'',facts:[]},'en',8).map(s=>({...s,role:'hero',moduleType:'hero',visualGoal:'Same packshot'}));
+    const fetcher=vi.fn(async(_url:unknown,init?:RequestInit)=>{
+      const body=JSON.parse(String(init?.body));expect(body.generationConfig.responseSchema.properties.sections.minItems).toBe(8);expect(body.generationConfig.responseSchema.properties.sections.maxItems).toBe(8);
+      return new Response(JSON.stringify({candidates:[{content:{parts:[{text:JSON.stringify({sections})}]}}]}));
+    });
+    const {handler}=setup(fetcher as typeof fetch);
+    const result=await json(await handler(req('/copy',{product:{name:'Device',category:'electronics'},mode:'live',detailCount:8},{code})));
+    expect(result.status).toBe(502);expect(result.error.code).toBe('COPY_PLAN_INCOMPLETE');expect(fetcher).toHaveBeenCalledTimes(1);
+  });
   it('blocks paid requests in a no-cost environment even when keys and consent exist',async()=>{
     const fetcher=vi.fn();const {handler}=setup(fetcher as typeof fetch,{...env,MONO_DISABLE_LIVE:'1'} as typeof env);
     const result=await json(await handler(req('/copy',{product:'Tea',mode:'live',allowPaid:true},{code})));
