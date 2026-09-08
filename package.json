@@ -11,9 +11,13 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:preview": "playwright test --config playwright.preview.config.ts",
+    "test:benchmark": "playwright test --config playwright.benchmark.config.ts",
+    "test:benchmark-report": "node scripts/build-benchmark-review.mjs",
     "test:layout-report": "node scripts/build-layout-review.mjs",
     "test:report": "node scripts/build-report.mjs",
-    "check": "tsc -b"
+    "check": "tsc -b",
+    "test:merchant": "playwright test --config playwright.merchant.config.ts",
+    "test:merchant-report": "node scripts/build-merchant-review.mjs"
   },
   "dependencies": {
     "@cyberbiz-corp/pitaya-ui": "0.45.1",

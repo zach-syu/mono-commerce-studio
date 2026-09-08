@@ -1,0 +1,5 @@
+import {Button,Field,Input} from './ui';
+export default function PlanCount({count,onChange,onApply,hasPlan,selected}:{count:number;onChange:(count:number)=>void;onApply:()=>void;hasPlan:boolean;selected:number}){
+ const valid=Number.isInteger(count)&&count>=1&&count<=16;
+ return <div className="plan-count"><div className="plan-count-input"><Field label="詳情圖張數" hint="1–16 張。商品主圖與 Banner 另計。"><Input type="number" min={1} max={16} step={1} value={Number.isFinite(count)?count:''} onChange={e=>onChange(Number(e.target.value))}/></Field><div className="count-presets">{[4,8,12,16].map(n=><button key={n} type="button" aria-label={`規劃 ${n} 張詳情圖`} aria-pressed={count===n} onClick={()=>onChange(n)}>{n} 張{n===8&&<small>建議</small>}</button>)}</div></div><p>{valid?'8 張建議包含兩種情境、局部特寫、圖解與規格。':'請輸入 1–16 的整數。'}</p>{hasPlan&&<div className="plan-count-apply"><span>目前勾選 {selected} 張。套用較少張數時，會取消勾選多出的內容，保留已修改文字。</span><Button variant="secondary" disabled={!valid} onClick={onApply}>套用張數</Button></div>}</div>;
+}

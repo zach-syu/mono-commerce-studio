@@ -1,0 +1,438 @@
+{
+  "brief": {
+    "name": "TS6護一生淨白植感慕斯",
+    "category": "beauty",
+    "description": "",
+    "facts": [
+      "■包裝容量：180g\n■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油。\n■適用對象：私密肌膚的日常防護與清潔保養"
+    ]
+  },
+  "results": [
+    {
+      "language": "en",
+      "count": 5,
+      "sections": [
+        {
+          "id": "hero-1",
+          "role": "hero",
+          "moduleType": "hero",
+          "title": "A little more for your everyday",
+          "body": "Make room for the things that fit your routine.",
+          "visualGoal": "商品主視覺 / frame 1. A beauty campaign composition with real packaging, precise light, restrained pink or lavender accents and a clear visual hierarchy. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        },
+        {
+          "id": "benefits-2",
+          "role": "benefits",
+          "moduleType": "benefits",
+          "title": "Discover the details",
+          "body": "Explore the look and find the right fit for your day.",
+          "visualGoal": "特色與賣點 / frame 2. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "center",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        },
+        {
+          "id": "detail-3",
+          "role": "detail",
+          "moduleType": "detail",
+          "title": "A closer look",
+          "body": "Take a closer look at the product and its packaging.",
+          "visualGoal": "原圖局部特寫 / frame 3. Original-photo close-up of the tube, cap, label and applicator actually visible in the reference. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        },
+        {
+          "id": "lifestyle-4",
+          "role": "lifestyle",
+          "moduleType": "lifestyle",
+          "title": "Made part of your routine",
+          "body": "Start with one thing you enjoy and make it your own.",
+          "visualGoal": "使用情境 / frame 4. A soft daylight bathroom vanity routine, product with clean towel and mirror; believable product scale and tactile stone. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        },
+        {
+          "id": "specs-5",
+          "role": "specs",
+          "moduleType": "specs",
+          "title": "Know your product",
+          "body": "Check the actual product label for specifications and directions.",
+          "visualGoal": "規格資訊 / frame 5. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "center",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        }
+      ],
+      "retainsCapacity": false,
+      "retainsIngredient": false,
+      "genericSlogan": true
+    },
+    {
+      "language": "en",
+      "count": 8,
+      "sections": [
+        {
+          "id": "hero-1",
+          "role": "hero",
+          "moduleType": "hero",
+          "title": "TS6護一生淨白植感慕斯",
+          "body": "Make room for the things that fit your routine.",
+          "visualGoal": "商品主視覺 / frame 1. A beauty campaign composition with real packaging, precise light, restrained pink or lavender accents and a clear visual hierarchy. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        },
+        {
+          "id": "lifestyle-2",
+          "role": "lifestyle",
+          "moduleType": "lifestyle",
+          "title": "An everyday setting",
+          "body": "Start with one thing you enjoy and make it your own.",
+          "visualGoal": "使用情境 / frame 2. A soft daylight bathroom vanity routine, product with clean towel and mirror; believable product scale and tactile stone. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "center",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        },
+        {
+          "id": "ingredients-3",
+          "role": "benefits",
+          "moduleType": "ingredients",
+          "title": "Inside the formulation",
+          "body": "Check the actual product label for specifications and directions.",
+          "visualGoal": "成分與食材 / frame 3. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. The explanatory graphic should be a principal visual, with concise labels and a small product anchor.",
+          "sceneVariant": 0,
+          "detailFocus": "lower",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        },
+        {
+          "id": "detail-4",
+          "role": "detail",
+          "moduleType": "detail",
+          "title": "A closer look",
+          "body": "Take a closer look at the product and its packaging.",
+          "visualGoal": "原圖局部特寫 / frame 4. Original-photo close-up of the tube, cap, label and applicator actually visible in the reference. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        },
+        {
+          "id": "benefits-5",
+          "role": "benefits",
+          "moduleType": "benefits",
+          "title": "The details that matter",
+          "body": "Check the actual product label for specifications and directions.",
+          "visualGoal": "特色與賣點 / frame 5. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "center",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        },
+        {
+          "id": "steps-6",
+          "role": "benefits",
+          "moduleType": "steps",
+          "title": "Your routine, step by step",
+          "body": "Explore the look and find the right fit for your day.",
+          "visualGoal": "使用步驟 / frame 6. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. The explanatory graphic should be a principal visual, with concise labels and a small product anchor.",
+          "sceneVariant": 0,
+          "detailFocus": "lower",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        },
+        {
+          "id": "lifestyle-7",
+          "role": "lifestyle",
+          "moduleType": "lifestyle",
+          "title": "Another way to use it",
+          "body": "Start with one thing you enjoy and make it your own.",
+          "visualGoal": "使用情境 / frame 7. A close everyday care routine with an adult hand near the closed cream tubes on a dressing table; no treatment result or before-and-after skin. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 1,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        },
+        {
+          "id": "specs-8",
+          "role": "specs",
+          "moduleType": "specs",
+          "title": "Know before you choose",
+          "body": "Check the actual product label for specifications and directions.",
+          "visualGoal": "規格資訊 / frame 8. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "center",
+          "evidencePoints": [
+            "Check the actual product label for specifications and directions."
+          ],
+          "selected": true
+        }
+      ],
+      "retainsCapacity": false,
+      "retainsIngredient": false,
+      "genericSlogan": false
+    },
+    {
+      "language": "zh-TW",
+      "count": 5,
+      "sections": [
+        {
+          "id": "hero-1",
+          "role": "hero",
+          "moduleType": "hero",
+          "title": "今天，留一點好給自己",
+          "body": "用你喜歡的方式，讓日常多一點選擇。",
+          "visualGoal": "商品主視覺 / frame 1. A beauty campaign composition with real packaging, precise light, restrained pink or lavender accents and a clear visual hierarchy. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        },
+        {
+          "id": "benefits-2",
+          "role": "benefits",
+          "moduleType": "benefits",
+          "title": "看見商品的細節",
+          "body": "從外觀到使用情境，找到適合自己的選擇。",
+          "visualGoal": "特色與賣點 / frame 2. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "center",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        },
+        {
+          "id": "detail-3",
+          "role": "detail",
+          "moduleType": "detail",
+          "title": "靠近一點，看見細節",
+          "body": "從外觀到包裝，細節值得好好看。",
+          "visualGoal": "原圖局部特寫 / frame 3. Original-photo close-up of the tube, cap, label and applicator actually visible in the reference. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        },
+        {
+          "id": "lifestyle-4",
+          "role": "lifestyle",
+          "moduleType": "lifestyle",
+          "title": "日常的剛剛好",
+          "body": "從一件喜歡的商品，開始安排自己的日常。",
+          "visualGoal": "使用情境 / frame 4. A soft daylight bathroom vanity routine, product with clean towel and mirror; believable product scale and tactile stone. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        },
+        {
+          "id": "specs-5",
+          "role": "specs",
+          "moduleType": "specs",
+          "title": "認識這件商品",
+          "body": "■包裝容量：180g\n■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油。\n■適用對象：私密肌膚的日常防護與清潔保養",
+          "visualGoal": "規格資訊 / frame 5. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "center",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        }
+      ],
+      "retainsCapacity": true,
+      "retainsIngredient": true,
+      "genericSlogan": false
+    },
+    {
+      "language": "zh-TW",
+      "count": 8,
+      "sections": [
+        {
+          "id": "hero-1",
+          "role": "hero",
+          "moduleType": "hero",
+          "title": "TS6護一生淨白植感慕斯",
+          "body": "用你喜歡的方式，讓日常多一點選擇。",
+          "visualGoal": "商品主視覺 / frame 1. A beauty campaign composition with real packaging, precise light, restrained pink or lavender accents and a clear visual hierarchy. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        },
+        {
+          "id": "lifestyle-2",
+          "role": "lifestyle",
+          "moduleType": "lifestyle",
+          "title": "讓商品，融入日常場景",
+          "body": "從一件喜歡的商品，開始安排自己的日常。",
+          "visualGoal": "使用情境 / frame 2. A soft daylight bathroom vanity routine, product with clean towel and mirror; believable product scale and tactile stone. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "center",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        },
+        {
+          "id": "ingredients-3",
+          "role": "benefits",
+          "moduleType": "ingredients",
+          "title": "看懂成分與搭配",
+          "body": "■包裝容量：180g\n■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油。\n■適用對象：私密肌膚的日常防護與清潔保養",
+          "visualGoal": "成分與食材 / frame 3. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. The explanatory graphic should be a principal visual, with concise labels and a small product anchor.",
+          "sceneVariant": 0,
+          "detailFocus": "lower",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        },
+        {
+          "id": "detail-4",
+          "role": "detail",
+          "moduleType": "detail",
+          "title": "細節值得，靠近看",
+          "body": "從外觀到包裝，細節值得好好看。",
+          "visualGoal": "原圖局部特寫 / frame 4. Original-photo close-up of the tube, cap, label and applicator actually visible in the reference. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        },
+        {
+          "id": "benefits-5",
+          "role": "benefits",
+          "moduleType": "benefits",
+          "title": "這些重點，一眼看懂",
+          "body": "■包裝容量：180g\n■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油\n■適用對象：私密肌膚的日常防護與清潔保養",
+          "visualGoal": "特色與賣點 / frame 5. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "center",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        },
+        {
+          "id": "steps-6",
+          "role": "benefits",
+          "moduleType": "steps",
+          "title": "使用方式，分步看清楚",
+          "body": "從外觀到使用情境，找到適合自己的選擇。",
+          "visualGoal": "使用步驟 / frame 6. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. The explanatory graphic should be a principal visual, with concise labels and a small product anchor.",
+          "sceneVariant": 0,
+          "detailFocus": "lower",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        },
+        {
+          "id": "lifestyle-7",
+          "role": "lifestyle",
+          "moduleType": "lifestyle",
+          "title": "換個情境，看見不同用途",
+          "body": "從一件喜歡的商品，開始安排自己的日常。",
+          "visualGoal": "使用情境 / frame 7. A close everyday care routine with an adult hand near the closed cream tubes on a dressing table; no treatment result or before-and-after skin. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 1,
+          "detailFocus": "upper",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        },
+        {
+          "id": "specs-8",
+          "role": "specs",
+          "moduleType": "specs",
+          "title": "選購前，確認這些資訊",
+          "body": "■包裝容量：180g\n■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油。\n■適用對象：私密肌膚的日常防護與清潔保養",
+          "visualGoal": "規格資訊 / frame 8. Ingredient or formula groups as editorial illustrations based on supplied ingredients. Do not manufacture efficacy diagrams, skin before/after images or medical claims. Build a visually distinct composition; keep photography dominant and avoid a packshot with a long paragraph.",
+          "sceneVariant": 0,
+          "detailFocus": "center",
+          "evidencePoints": [
+            "■包裝容量：180g",
+            "■產品成份：TS-2L®益菌精華、維生素C磷酸鎂鹽(MAP)、山花精(Gigawhite)、蘆薈萃取、茶樹精油、玫瑰草精油",
+            "■適用對象：私密肌膚的日常防護與清潔保養"
+          ],
+          "selected": true
+        }
+      ],
+      "retainsCapacity": true,
+      "retainsIngredient": true,
+      "genericSlogan": false
+    }
+  ]
+}

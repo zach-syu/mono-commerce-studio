@@ -1,0 +1,14 @@
+{
+  "origin": "https://mono-commerce-studio-ashy.vercel.app",
+  "reportHttpStatus": 200,
+  "reportImagesLoaded": 92,
+  "filterAndViewer": true,
+  "mobileOverflow": false,
+  "appOutputCount": 10,
+  "distinctScenes": 2,
+  "downloadVerified": true,
+  "blockedModelRequests": [],
+  "pageErrors": [],
+  "googleApiCalls": 0,
+  "checkedAt": "2026-09-08T18:20:21.203Z"
+}

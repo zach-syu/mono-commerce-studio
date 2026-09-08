@@ -87,7 +87,9 @@ async function product(page: Page, e: Evidence, category: Category, language: La
 }
 
 async function plan(page: Page, e: Evidence) {
-  await page.getByRole('button', { name: '免費規劃套圖', exact: true }).click();
+  // Keep the original regression matrix at five frames; v3 tests exercise the new default and count range.
+  await page.getByLabel('詳情圖張數',{exact:true}).fill('5');
+  await page.getByRole('button', { name: '依商品資料整理（免費）', exact: true }).click();
   await expect(page.getByLabel('標題 1', { exact: true })).not.toHaveValue('');
   await expect(page.getByLabel('標題 5', { exact: true })).toBeVisible();
   e.checks.push('本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。');
@@ -271,7 +273,7 @@ for (const entry of uploadErrors) {
     await e.capture('01-rejected');
     await page.getByRole('button', { name: `使用 ${names.food} 範例`, exact: true }).click();
     await page.getByRole('button', { name: '下一步：規劃文案', exact: true }).click();
-    await expect(page.getByRole('button', { name: '免費規劃套圖', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: '依商品資料整理（免費）', exact: true })).toBeVisible();
     e.checks.push(`已阻擋${entry.title}且顯示具體原因；換用有效商品圖可繼續。`);
     await e.capture('02-recovered');
   });
@@ -296,12 +298,17 @@ test('zero-copy 不勾選文案時阻擋出圖', async ({ page, evidence: e }) =
 test('selection-one 只輸出勾選的文案且保留修改', async ({ page, evidence: e }) => {
   e.kind = 'detail'; await product(page, e, 'beauty'); await plan(page, e);
   await page.getByLabel('標題 1', { exact: true }).fill('A carefully edited title');
+  const selectedBody='Selected copy can contain the word Ingredients.';
+  await page.getByLabel('文案 1', { exact: true }).fill(selectedBody);
+  await page.getByLabel('標題 2', { exact: true }).fill('Ingredients');
+  await page.getByLabel('文案 2', { exact: true }).fill('UNSELECTED_PARAGRAPH_MUST_NOT_BE_EXPORTED');
   const selections = await page.getByRole('checkbox', { name: /^選取文案 / }).all();
   for (const checkbox of selections.slice(1)) await checkbox.uncheck();
   await visual(page, ['detail']); await generate(page, e); const m = await bundle(page, e, ['detail']);
   expect(m.outputs).toHaveLength(1); expect(m.outputs[0].copy.title).toBe('A carefully edited title');
   const copy = await fs.readFile(path.join(e.directory, 'copy.txt'), 'utf8');
-  expect(copy).toContain('A carefully edited title'); expect(copy).not.toContain(m.sections[1].title);
+  expect(copy).toBe('A carefully edited title\n'+selectedBody);
+  expect(copy).not.toContain('UNSELECTED_PARAGRAPH_MUST_NOT_BE_EXPORTED');
   e.checks.push('只勾選第 1 段時只輸出 1 張詳情圖；完整文案檔不混入未勾選段落。');
 });
 

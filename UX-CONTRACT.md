@@ -25,3 +25,7 @@ Provider labeling: the header says 真實模型, not a fixed Vertex claim. The S
 Storyboard v2: copy sections include an editable role and visual goal; selected roles drive different artwork templates and photo strategies. Changing provider mode preserves edited copy. Free planning and previews run locally with no model requests. Every paid action requires a fresh explicit consent; the backend also requires `allowPaid: true`. Tests set `MONO_DISABLE_LIVE=1` and refuse a backend without that guard. Generation caches the hero scene for Banner reuse; packshots, crops, benefits and specs retain original photography.
 
 Analytics: only the eight allowlisted workflow event names are emitted by the shared analytics module. No product names, facts, prompts, photos, access codes, or error text enter analytics properties. Failure to record an event never blocks the user workflow.
+
+## v3 張數與真實來源
+
+預設規劃 8 張詳情圖，可調 1–16 張；主圖與 Banner 另計。縮減不刪文字，只取消勾選。每張可改圖種、文字、畫面方向；圖解會使用編輯後內容。指定品牌的已保存 AI 場景與即時生成分開標示；普通上傳沒有新場景時必須標示缺項。規劃 Prompt 可在畫面查看。
