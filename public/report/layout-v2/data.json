@@ -1,0 +1,914 @@
+{
+  "createdAt": "2026-09-08T07:58:37.987Z",
+  "generationMode": "free local composition only",
+  "paidModelCalls": 0,
+  "freeVisualCases": 3,
+  "freeImageOutputs": 21,
+  "baselineCases": 24,
+  "baselinePassed": 24,
+  "safety": {
+    "status": "passed",
+    "browserModelRequests": 0,
+    "testServerLiveDisabled": true,
+    "serverResponse": "PAID_CALLS_DISABLED"
+  },
+  "reuse": {
+    "status": "passed",
+    "mockedImageRequests": 2,
+    "realModelRequests": 0,
+    "finalCompositions": 7,
+    "bannerReusesHero": true
+  },
+  "cases": [
+    {
+      "category": "food",
+      "language": "繁體中文",
+      "status": "passed",
+      "modelCalls": 0,
+      "outputs": [
+        {
+          "id": "8cd458c9-e9c9-4ee4-b09c-1d83556a1b77",
+          "kind": "main",
+          "title": "商品主圖",
+          "width": 1024,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "以大幅商品與立體光影建立第一印象。",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 56,
+          "sourceId": "ade1a278-cc71-497a-b659-a538db8896de",
+          "copy": null,
+          "visualRole": "packshot",
+          "template": "source-packshot",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 1404799,
+          "file": "outputs/01-main-1024x1024.png"
+        },
+        {
+          "id": "10967531-deb8-41f4-b250-fb2c7d32339f",
+          "kind": "detail",
+          "title": "今天，留一點好給自己",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "Create one photograph for a planned ecommerce image set.\nCampaign hero photograph: create a refined editorial set with one large geometric plinth, directional light, dimensional shadows and breathing room. The product is the focal point; this should look like a campaign photograph rather than a catalogue copy.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: MORI 焙茶. Merchant-supplied facts: 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。. Do not turn those facts into visible text.\nVisual goal (scene and framing only): 以大幅商品與立體光影建立第一印象。.\nPhotography only. No new typography, captions, charts, panels, marketing claims, ingredient props, certificates or watermarks. Existing package text must remain as shown. All copy will be placed separately after the photograph is generated.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 19,
+          "sourceId": "ade1a278-cc71-497a-b659-a538db8896de",
+          "copy": {
+            "id": "hero",
+            "role": "hero",
+            "title": "今天，留一點好給自己",
+            "body": "用你喜歡的方式，讓日常多一點選擇。",
+            "visualGoal": "以大幅商品與立體光影建立第一印象。",
+            "selected": true
+          },
+          "visualRole": "hero",
+          "template": "hero-stage",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 526005,
+          "file": "outputs/02-detail-768x1024.png"
+        },
+        {
+          "id": "f7d8d290-7d59-4be3-a47a-f564134f57ba",
+          "kind": "detail",
+          "title": "看見商品的細節",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "用少量重點和圖文模組整理賣點。",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 17,
+          "sourceId": "ade1a278-cc71-497a-b659-a538db8896de",
+          "copy": {
+            "id": "benefits",
+            "role": "benefits",
+            "title": "看見商品的細節",
+            "body": "從外觀到使用情境，找到適合自己的選擇。",
+            "visualGoal": "用少量重點和圖文模組整理賣點。",
+            "selected": true
+          },
+          "visualRole": "benefits",
+          "template": "benefit-grid",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 250076,
+          "file": "outputs/03-detail-768x1024.png"
+        },
+        {
+          "id": "1479385c-6b78-4a14-a3bb-7a72fa989859",
+          "kind": "detail",
+          "title": "靠近一點，看見細節",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "從原圖放大局部，不生成不存在的細節。",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 30,
+          "sourceId": "ade1a278-cc71-497a-b659-a538db8896de",
+          "copy": {
+            "id": "detail",
+            "role": "detail",
+            "title": "靠近一點，看見細節",
+            "body": "從外觀到包裝，細節值得好好看。",
+            "visualGoal": "從原圖放大局部，不生成不存在的細節。",
+            "selected": true
+          },
+          "visualRole": "detail",
+          "template": "detail-collage",
+          "photoOrigin": "original-crop",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 619899,
+          "file": "outputs/04-detail-768x1024.png"
+        },
+        {
+          "id": "5a8e3a27-88e5-437c-ad98-734b99ec8ba8",
+          "kind": "detail",
+          "title": "日常的剛剛好",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "Create one photograph for a planned ecommerce image set.\nLifestyle scene: a quiet kitchen or tea table with a neutral ceramic cup in the distant background, natural daylight; no ingredients or food added beside the product. Place the full product naturally within a wide enough environment to show its use context. The scene must visibly differ from a plain packshot.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: MORI 焙茶. Merchant-supplied facts: 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。. Do not turn those facts into visible text.\nVisual goal (scene and framing only): 讓商品出現在適合的日常場景。.\nPhotography only. No new typography, captions, charts, panels, marketing claims, ingredient props, certificates or watermarks. Existing package text must remain as shown. All copy will be placed separately after the photograph is generated.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 43,
+          "sourceId": "ade1a278-cc71-497a-b659-a538db8896de",
+          "copy": {
+            "id": "lifestyle",
+            "role": "lifestyle",
+            "title": "日常的剛剛好",
+            "body": "從一件喜歡的商品，開始安排自己的日常。",
+            "visualGoal": "讓商品出現在適合的日常場景。",
+            "selected": true
+          },
+          "visualRole": "lifestyle",
+          "template": "context-scene",
+          "photoOrigin": "prepared-scene",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "sourceNote": "使用既有的範例場景素材，本次沒有呼叫模型。",
+          "bytes": 1112892,
+          "file": "outputs/05-detail-768x1024.png"
+        },
+        {
+          "id": "4ed07789-37e2-4374-b0b7-aa2c4ac8c376",
+          "kind": "detail",
+          "title": "認識這件商品",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "用資訊表整理已提供規格，缺項標示未提供。",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 20,
+          "sourceId": "ade1a278-cc71-497a-b659-a538db8896de",
+          "copy": {
+            "id": "specs",
+            "role": "specs",
+            "title": "認識這件商品",
+            "body": "示範包裝。茶葉商品。實際成分、重量與產地待商家補充。",
+            "visualGoal": "用資訊表整理已提供規格，缺項標示未提供。",
+            "selected": true
+          },
+          "visualRole": "specs",
+          "template": "spec-table",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 166030,
+          "file": "outputs/06-detail-768x1024.png"
+        },
+        {
+          "id": "df691834-7d3a-4092-a95a-324e19da10eb",
+          "kind": "banner",
+          "title": "Banner",
+          "width": 1024,
+          "height": 576,
+          "mimeType": "image/png",
+          "prompt": "Create one photograph for a planned ecommerce image set.\nCampaign hero photograph: create a refined editorial set with one large geometric plinth, directional light, dimensional shadows and breathing room. The product is the focal point; this should look like a campaign photograph rather than a catalogue copy.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: MORI 焙茶. Merchant-supplied facts: 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。. Do not turn those facts into visible text.\nVisual goal (scene and framing only): 以大幅商品與立體光影建立第一印象。.\nPhotography only. No new typography, captions, charts, panels, marketing claims, ingredient props, certificates or watermarks. Existing package text must remain as shown. All copy will be placed separately after the photograph is generated.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 20,
+          "sourceId": "ade1a278-cc71-497a-b659-a538db8896de",
+          "copy": {
+            "id": "hero",
+            "role": "hero",
+            "title": "今天，留一點好給自己",
+            "body": "用你喜歡的方式，讓日常多一點選擇。",
+            "visualGoal": "以大幅商品與立體光影建立第一印象。",
+            "selected": true
+          },
+          "visualRole": "banner",
+          "template": "campaign-banner",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 557777,
+          "file": "outputs/07-banner-1024x576.png"
+        }
+      ],
+      "source": {
+        "id": "ade1a278-cc71-497a-b659-a538db8896de",
+        "name": "MORI 焙茶",
+        "category": "food",
+        "facts": "示範包裝。茶葉商品。實際成分、重量與產地待商家補充。",
+        "sourceName": "food.png",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "sourceOrigin": "ai-sample"
+      },
+      "errors": [],
+      "checks": [
+        "Five distinct roles and templates",
+        "Original crops preserve source evidence",
+        "Prepared scene is explicitly labelled",
+        "Every PNG dimension validated",
+        "Zero copy/image/video requests"
+      ]
+    },
+    {
+      "category": "beauty",
+      "language": "English",
+      "status": "passed",
+      "modelCalls": 0,
+      "outputs": [
+        {
+          "id": "9346f39c-e245-411e-aa15-d684dab0a973",
+          "kind": "main",
+          "title": "商品主圖",
+          "width": 1024,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "Create a strong campaign hero with generous product scale.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 52,
+          "sourceId": "c6f0293a-7a1e-446b-bb24-a0454637de1a",
+          "copy": null,
+          "visualRole": "packshot",
+          "template": "source-packshot",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 1329749,
+          "file": "outputs/01-main-1024x1024.png"
+        },
+        {
+          "id": "321d0ac8-9c41-479c-b0cf-e2c074ab0a98",
+          "kind": "detail",
+          "title": "A little more for your everyday",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "Create one photograph for a planned ecommerce image set.\nCampaign hero photograph: create a refined editorial set with one large geometric plinth, directional light, dimensional shadows and breathing room. The product is the focal point; this should look like a campaign photograph rather than a catalogue copy.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: SORA 日常精華. Merchant-supplied facts: 示範精華液包裝。實際成分、容量與使用方式待商家補充。. Do not turn those facts into visible text.\nVisual goal (scene and framing only): Create a strong campaign hero with generous product scale..\nPhotography only. No new typography, captions, charts, panels, marketing claims, ingredient props, certificates or watermarks. Existing package text must remain as shown. All copy will be placed separately after the photograph is generated.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 21,
+          "sourceId": "c6f0293a-7a1e-446b-bb24-a0454637de1a",
+          "copy": {
+            "id": "hero",
+            "role": "hero",
+            "title": "A little more for your everyday",
+            "body": "Make room for the things that fit your routine.",
+            "visualGoal": "Create a strong campaign hero with generous product scale.",
+            "selected": true
+          },
+          "visualRole": "hero",
+          "template": "hero-stage",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 500659,
+          "file": "outputs/02-detail-768x1024.png"
+        },
+        {
+          "id": "24fdbdd1-f372-40c7-9e8a-76f45868adbd",
+          "kind": "detail",
+          "title": "Discover the details",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "Arrange the supplied points in concise visual modules.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 14,
+          "sourceId": "c6f0293a-7a1e-446b-bb24-a0454637de1a",
+          "copy": {
+            "id": "benefits",
+            "role": "benefits",
+            "title": "Discover the details",
+            "body": "Explore the look and find the right fit for your day.",
+            "visualGoal": "Arrange the supplied points in concise visual modules.",
+            "selected": true
+          },
+          "visualRole": "benefits",
+          "template": "benefit-grid",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 238880,
+          "file": "outputs/03-detail-768x1024.png"
+        },
+        {
+          "id": "35e1d8b6-e7f7-4f20-86ad-1d48d37c2343",
+          "kind": "detail",
+          "title": "A closer look",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "Enlarge actual reference details without inventing new ones.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 20,
+          "sourceId": "c6f0293a-7a1e-446b-bb24-a0454637de1a",
+          "copy": {
+            "id": "detail",
+            "role": "detail",
+            "title": "A closer look",
+            "body": "Take a closer look at the product and its packaging.",
+            "visualGoal": "Enlarge actual reference details without inventing new ones.",
+            "selected": true
+          },
+          "visualRole": "detail",
+          "template": "detail-collage",
+          "photoOrigin": "original-crop",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 588579,
+          "file": "outputs/04-detail-768x1024.png"
+        },
+        {
+          "id": "f5b81793-27a4-4a79-9b09-8f3cb8940803",
+          "kind": "detail",
+          "title": "Made part of your routine",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "Create one photograph for a planned ecommerce image set.\nLifestyle scene: a clean contemporary bathroom vanity, tactile stone counter, folded plain towel and softly blurred tile background; no skin, body or before-and-after effect. Place the full product naturally within a wide enough environment to show its use context. The scene must visibly differ from a plain packshot.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: SORA 日常精華. Merchant-supplied facts: 示範精華液包裝。實際成分、容量與使用方式待商家補充。. Do not turn those facts into visible text.\nVisual goal (scene and framing only): Show the product in an appropriate everyday setting..\nPhotography only. No new typography, captions, charts, panels, marketing claims, ingredient props, certificates or watermarks. Existing package text must remain as shown. All copy will be placed separately after the photograph is generated.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 34,
+          "sourceId": "c6f0293a-7a1e-446b-bb24-a0454637de1a",
+          "copy": {
+            "id": "lifestyle",
+            "role": "lifestyle",
+            "title": "Made part of your routine",
+            "body": "Start with one thing you enjoy and make it your own.",
+            "visualGoal": "Show the product in an appropriate everyday setting.",
+            "selected": true
+          },
+          "visualRole": "lifestyle",
+          "template": "context-scene",
+          "photoOrigin": "prepared-scene",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "sourceNote": "使用既有的範例場景素材，本次沒有呼叫模型。",
+          "bytes": 1054800,
+          "file": "outputs/05-detail-768x1024.png"
+        },
+        {
+          "id": "32e30ee0-121a-4928-ba84-2a0c1002fe35",
+          "kind": "detail",
+          "title": "Know your product",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "Present supplied facts in a legible specification table.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 11,
+          "sourceId": "c6f0293a-7a1e-446b-bb24-a0454637de1a",
+          "copy": {
+            "id": "specs",
+            "role": "specs",
+            "title": "Know your product",
+            "body": "Sample serum packaging. Ingredients, volume, and directions must be supplied by the merchant.",
+            "visualGoal": "Present supplied facts in a legible specification table.",
+            "selected": true
+          },
+          "visualRole": "specs",
+          "template": "spec-table",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 166655,
+          "file": "outputs/06-detail-768x1024.png"
+        },
+        {
+          "id": "722ee595-9cae-4d34-84c3-0f7d60bfd565",
+          "kind": "banner",
+          "title": "Banner",
+          "width": 1024,
+          "height": 576,
+          "mimeType": "image/png",
+          "prompt": "Create one photograph for a planned ecommerce image set.\nCampaign hero photograph: create a refined editorial set with one large geometric plinth, directional light, dimensional shadows and breathing room. The product is the focal point; this should look like a campaign photograph rather than a catalogue copy.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: SORA 日常精華. Merchant-supplied facts: 示範精華液包裝。實際成分、容量與使用方式待商家補充。. Do not turn those facts into visible text.\nVisual goal (scene and framing only): Create a strong campaign hero with generous product scale..\nPhotography only. No new typography, captions, charts, panels, marketing claims, ingredient props, certificates or watermarks. Existing package text must remain as shown. All copy will be placed separately after the photograph is generated.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 20,
+          "sourceId": "c6f0293a-7a1e-446b-bb24-a0454637de1a",
+          "copy": {
+            "id": "hero",
+            "role": "hero",
+            "title": "A little more for your everyday",
+            "body": "Make room for the things that fit your routine.",
+            "visualGoal": "Create a strong campaign hero with generous product scale.",
+            "selected": true
+          },
+          "visualRole": "banner",
+          "template": "campaign-banner",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 529522,
+          "file": "outputs/07-banner-1024x576.png"
+        }
+      ],
+      "source": {
+        "id": "c6f0293a-7a1e-446b-bb24-a0454637de1a",
+        "name": "SORA 日常精華",
+        "category": "beauty",
+        "facts": "示範精華液包裝。實際成分、容量與使用方式待商家補充。",
+        "sourceName": "beauty.png",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "sourceOrigin": "ai-sample"
+      },
+      "errors": [],
+      "checks": [
+        "Five distinct roles and templates",
+        "Original crops preserve source evidence",
+        "Prepared scene is explicitly labelled",
+        "Every PNG dimension validated",
+        "Zero copy/image/video requests"
+      ]
+    },
+    {
+      "category": "fashion",
+      "language": "日本語",
+      "status": "passed",
+      "modelCalls": 0,
+      "outputs": [
+        {
+          "id": "7de4ca9d-ac9c-4819-96d9-60a4b7531644",
+          "kind": "main",
+          "title": "商品主圖",
+          "width": 1024,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "大きな商品写真で、第一印象を伝える。",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 52,
+          "sourceId": "c1100085-3aa9-4ddf-9fcf-345f8bf09d64",
+          "copy": null,
+          "visualRole": "packshot",
+          "template": "source-packshot",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 1578452,
+          "file": "outputs/01-main-1024x1024.png"
+        },
+        {
+          "id": "851e7d9a-294f-4b36-8d78-3add34ec7884",
+          "kind": "detail",
+          "title": "毎日に、小さなお気に入りを",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "Create one photograph for a planned ecommerce image set.\nCampaign hero photograph: create a refined editorial set with one large geometric plinth, directional light, dimensional shadows and breathing room. The product is the focal point; this should look like a campaign photograph rather than a catalogue copy.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: PLAIN 日常休閒鞋. Merchant-supplied facts: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。. Do not turn those facts into visible text.\nVisual goal (scene and framing only): 大きな商品写真で、第一印象を伝える。.\nPhotography only. No new typography, captions, charts, panels, marketing claims, ingredient props, certificates or watermarks. Existing package text must remain as shown. All copy will be placed separately after the photograph is generated.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 21,
+          "sourceId": "c1100085-3aa9-4ddf-9fcf-345f8bf09d64",
+          "copy": {
+            "id": "hero",
+            "role": "hero",
+            "title": "毎日に、小さなお気に入りを",
+            "body": "自分らしい選び方で、毎日を少し心地よく。",
+            "visualGoal": "大きな商品写真で、第一印象を伝える。",
+            "selected": true
+          },
+          "visualRole": "hero",
+          "template": "hero-stage",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 584387,
+          "file": "outputs/02-detail-768x1024.png"
+        },
+        {
+          "id": "f54fd001-1112-4315-9c36-a909f37c7ca5",
+          "kind": "detail",
+          "title": "細部まで、じっくりと",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "提供された情報を、見やすい要点に整理する。",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 13,
+          "sourceId": "c1100085-3aa9-4ddf-9fcf-345f8bf09d64",
+          "copy": {
+            "id": "benefits",
+            "role": "benefits",
+            "title": "細部まで、じっくりと",
+            "body": "見た目や使う場面から、自分に合う一品を。",
+            "visualGoal": "提供された情報を、見やすい要点に整理する。",
+            "selected": true
+          },
+          "visualRole": "benefits",
+          "template": "benefit-grid",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 274127,
+          "file": "outputs/03-detail-768x1024.png"
+        },
+        {
+          "id": "d047c357-7db8-4872-a8ce-302a018684c4",
+          "kind": "detail",
+          "title": "細部を、もっと近くで",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "元の写真の細部を拡大し、未確認の形状は作らない。",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 20,
+          "sourceId": "c1100085-3aa9-4ddf-9fcf-345f8bf09d64",
+          "copy": {
+            "id": "detail",
+            "role": "detail",
+            "title": "細部を、もっと近くで",
+            "body": "商品の見た目やパッケージを、じっくりご覧ください。",
+            "visualGoal": "元の写真の細部を拡大し、未確認の形状は作らない。",
+            "selected": true
+          },
+          "visualRole": "detail",
+          "template": "detail-collage",
+          "photoOrigin": "original-crop",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 746097,
+          "file": "outputs/04-detail-768x1024.png"
+        },
+        {
+          "id": "f5390c3d-11fc-4cb4-a79c-3422dedc6dbc",
+          "kind": "detail",
+          "title": "いつもの暮らしに",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "Create one photograph for a planned ecommerce image set.\nLifestyle scene: an everyday outdoor architectural setting, low stone step and soft directional daylight; no person or invented extra accessories. Place the full product naturally within a wide enough environment to show its use context. The scene must visibly differ from a plain packshot.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: PLAIN 日常休閒鞋. Merchant-supplied facts: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。. Do not turn those facts into visible text.\nVisual goal (scene and framing only): 日常の使用場面が伝わる構図にする。.\nPhotography only. No new typography, captions, charts, panels, marketing claims, ingredient props, certificates or watermarks. Existing package text must remain as shown. All copy will be placed separately after the photograph is generated.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 36,
+          "sourceId": "c1100085-3aa9-4ddf-9fcf-345f8bf09d64",
+          "copy": {
+            "id": "lifestyle",
+            "role": "lifestyle",
+            "title": "いつもの暮らしに",
+            "body": "お気に入りの一品から、毎日を整えてみませんか。",
+            "visualGoal": "日常の使用場面が伝わる構図にする。",
+            "selected": true
+          },
+          "visualRole": "lifestyle",
+          "template": "context-scene",
+          "photoOrigin": "prepared-scene",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "sourceNote": "使用既有的範例場景素材，本次沒有呼叫模型。",
+          "bytes": 1215757,
+          "file": "outputs/05-detail-768x1024.png"
+        },
+        {
+          "id": "d2d1313c-e9bd-42ba-8728-3830735d7647",
+          "kind": "detail",
+          "title": "商品について",
+          "width": 768,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "確認できる商品情報を表でまとめる。",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 14,
+          "sourceId": "c1100085-3aa9-4ddf-9fcf-345f8bf09d64",
+          "copy": {
+            "id": "specs",
+            "role": "specs",
+            "title": "商品について",
+            "body": "オフホワイトとセージグリーンのカジュアルシューズのサンプルです。素材、サイズ、原産地は販売者による確認が必要です。",
+            "visualGoal": "確認できる商品情報を表でまとめる。",
+            "selected": true
+          },
+          "visualRole": "specs",
+          "template": "spec-table",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 190812,
+          "file": "outputs/06-detail-768x1024.png"
+        },
+        {
+          "id": "e26a8f33-7224-48ca-881a-1ee4d30d2210",
+          "kind": "banner",
+          "title": "Banner",
+          "width": 1024,
+          "height": 576,
+          "mimeType": "image/png",
+          "prompt": "Create one photograph for a planned ecommerce image set.\nCampaign hero photograph: create a refined editorial set with one large geometric plinth, directional light, dimensional shadows and breathing room. The product is the focal point; this should look like a campaign photograph rather than a catalogue copy.\nShared art direction: soft natural neutrals with restrained sage accents.\nPreserve the exact source product shape, color, logo, packaging, number of pieces, and label text. Product identity stays consistent; the framing, scale, lighting and surrounding environment should serve this shot's purpose. Do not invent a back view or details that the reference does not establish.\nProduct identity: PLAIN 日常休閒鞋. Merchant-supplied facts: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。. Do not turn those facts into visible text.\nVisual goal (scene and framing only): 大きな商品写真で、第一印象を伝える。.\nPhotography only. No new typography, captions, charts, panels, marketing claims, ingredient props, certificates or watermarks. Existing package text must remain as shown. All copy will be placed separately after the photograph is generated.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d-v2",
+          "durationMs": 16,
+          "sourceId": "c1100085-3aa9-4ddf-9fcf-345f8bf09d64",
+          "copy": {
+            "id": "hero",
+            "role": "hero",
+            "title": "毎日に、小さなお気に入りを",
+            "body": "自分らしい選び方で、毎日を少し心地よく。",
+            "visualGoal": "大きな商品写真で、第一印象を伝える。",
+            "selected": true
+          },
+          "visualRole": "banner",
+          "template": "campaign-banner",
+          "photoOrigin": "original",
+          "reusedPhoto": false,
+          "compositionVersion": "storyboard-v2",
+          "bytes": 621493,
+          "file": "outputs/07-banner-1024x576.png"
+        }
+      ],
+      "source": {
+        "id": "c1100085-3aa9-4ddf-9fcf-345f8bf09d64",
+        "name": "PLAIN 日常休閒鞋",
+        "category": "fashion",
+        "facts": "示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。",
+        "sourceName": "fashion.png",
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "sourceOrigin": "ai-sample"
+      },
+      "errors": [],
+      "checks": [
+        "Five distinct roles and templates",
+        "Original crops preserve source evidence",
+        "Prepared scene is explicitly labelled",
+        "Every PNG dimension validated",
+        "Zero copy/image/video requests"
+      ]
+    }
+  ],
+  "baseline": [
+    {
+      "id": "beauty-banner-4k",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "從 PNG 標頭獨立讀到 4096 × 2304 px；這證明輸出尺寸，不代表模型原生 4K 細節。"
+      ]
+    },
+    {
+      "id": "beauty-en-detail",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 6 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "已編輯文案出現在下載檔；每個已勾選段落各有一張 768 × 1024 詳情圖；輸出語言符合設定。"
+      ]
+    },
+    {
+      "id": "beauty-ja-detail",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 6 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "已編輯文案出現在下載檔；每個已勾選段落各有一張 768 × 1024 詳情圖；輸出語言符合設定。"
+      ]
+    },
+    {
+      "id": "cancel-and-retry",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "在實際 MediaRecorder 工作進行時取消，再次產出有效短片。",
+        "短片包含 1200 字長文案時顯示省略提醒，完整文字仍保留在下載包。"
+      ]
+    },
+    {
+      "id": "cross-product-isolation",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "商品 B 事先在同一瀏覽器的商品列表可開啟；商品 A 的短片工作進行中，列表與新建入口均停用。",
+        "完成後下載 manifest、原圖雜湊及全部素材 sourceId 仍屬於商品 A，沒有混入商品 B。"
+      ]
+    },
+    {
+      "id": "fashion-en-detail",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 6 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "已編輯文案出現在下載檔；每個已勾選段落各有一張 768 × 1024 詳情圖；輸出語言符合設定。"
+      ]
+    },
+    {
+      "id": "fashion-ja-detail",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 6 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "已編輯文案出現在下載檔；每個已勾選段落各有一張 768 × 1024 詳情圖；輸出語言符合設定。"
+      ]
+    },
+    {
+      "id": "fashion-ko-main",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 2 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "示範短片可載入為 1280 × 720 影片；明確標示原圖動畫、無配音、不是 Veo。"
+      ]
+    },
+    {
+      "id": "food-banner-21-9",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "寬幅 Banner 實際 2048 × 878 px，設定、色調與構圖可追溯。"
+      ]
+    },
+    {
+      "id": "food-en-detail",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 6 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "已編輯文案出現在下載檔；每個已勾選段落各有一張 768 × 1024 詳情圖；輸出語言符合設定。"
+      ]
+    },
+    {
+      "id": "food-ja-detail",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 6 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "已編輯文案出現在下載檔；每個已勾選段落各有一張 768 × 1024 詳情圖；輸出語言符合設定。"
+      ]
+    },
+    {
+      "id": "injected-copy-failure",
+      "status": "passed",
+      "checks": [
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "503 完全由測試攔截回應；沒有送到 Google。使用者明確改用免費規劃後完成下載。"
+      ]
+    },
+    {
+      "id": "long-copy",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "超長文字未靜默遺失：畫面說明省略，下載 JSON 與文字檔保留全部內容。"
+      ]
+    },
+    {
+      "id": "mobile-flow",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "390 px 手機寬度完成整段操作與下載，頁面沒有水平溢出。"
+      ]
+    },
+    {
+      "id": "product-library",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "商品專案可保存、頁面重載後可搜尋並重新開啟，素材 Blob 仍可下載。此項是本機 IndexedDB，非遠端 Supabase 持久化。"
+      ]
+    },
+    {
+      "id": "selection-one",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+        "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "只勾選第 1 段時只輸出 1 張詳情圖；完整文案檔不混入未勾選段落。"
+      ]
+    },
+    {
+      "id": "source-required",
+      "status": "passed",
+      "checks": [
+        "缺少商品圖片時流程停留在資料步驟並說明原因。"
+      ]
+    },
+    {
+      "id": "upload-corrupt",
+      "status": "passed",
+      "checks": [
+        "已阻擋損壞 PNG且顯示具體原因；換用有效商品圖可繼續。"
+      ]
+    },
+    {
+      "id": "upload-empty",
+      "status": "passed",
+      "checks": [
+        "已阻擋空檔案且顯示具體原因；換用有效商品圖可繼續。"
+      ]
+    },
+    {
+      "id": "upload-oversize",
+      "status": "passed",
+      "checks": [
+        "已阻擋超過 7 MB且顯示具體原因；換用有效商品圖可繼續。"
+      ]
+    },
+    {
+      "id": "upload-spoofed",
+      "status": "passed",
+      "checks": [
+        "已阻擋偽裝副檔名且顯示具體原因；換用有效商品圖可繼續。"
+      ]
+    },
+    {
+      "id": "upload-unsupported",
+      "status": "passed",
+      "checks": [
+        "已阻擋不支援的 SVG且顯示具體原因；換用有效商品圖可繼續。"
+      ]
+    },
+    {
+      "id": "upload-valid",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+        "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+        "使用真實檔案選擇器路徑；下載保留上傳原檔，不只測範例按鈕。"
+      ]
+    },
+    {
+      "id": "zero-copy",
+      "status": "passed",
+      "checks": [
+        "本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。",
+        "全部取消勾選後無法進入生成設定，不會產生空素材包。"
+      ]
+    }
+  ],
+  "limitations": [
+    "Prepared scenario images predate this change. No new AI images were generated.",
+    "Updated paid-model photo directions have not been validated with a paid provider.",
+    "A single photo cannot establish unseen product angles or material properties."
+  ]
+}

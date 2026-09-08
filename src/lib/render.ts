@@ -3,6 +3,9 @@ import { canvasBlob,loadImage,abortIfNeeded } from './images';
 import { request } from './api';
 import type { Artifact,CopySection,Product,Settings,OutputKind } from './types';
 import { outputLabels } from './types';
+import {composeArtwork} from './artwork';
+import {buildStoryboard,buildPhotoPrompt,plannedPhotoCalls,sceneAssetFor} from './storyboard';
+import type {ShotPlan} from './storyboard';
 
 const palettes={natural:{bg:'#eef2e7',ink:'#2c493d',accent:'#a9b99b'},studio:{bg:'#edf1f4',ink:'#243644',accent:'#a7becd'},bold:{bg:'#ffead1',ink:'#683c2d',accent:'#eab279'}};
 export function dimensions(kind:OutputKind,s:Settings):[number,number]{const edge=s.resolution==='4K'?4096:s.resolution==='2K'?2048:1024;if(kind==='banner')return [edge,Math.round(edge/(s.bannerRatio==='21:9'?21/9:16/9))];if(kind==='detail')return [Math.round(edge*.75),edge];return [edge,edge];}
@@ -18,61 +21,37 @@ function textBlock(ctx:CanvasRenderingContext2D,text:string,x:number,y:number,wi
  const maxLines=Math.max(1,Math.floor(maxHeight/(fontSize*1.5)));let truncated=lines.length>maxLines;
  lines.slice(0,maxLines).forEach((line,i)=>{if(truncated&&i===maxLines-1){while(ctx.measureText(line+'…').width>width)line=line.slice(0,-1);line+='…';}ctx.fillText(line,x,y+i*fontSize*1.5);});return truncated;
 }
-async function drawImageArtifact(product:Product,s:Settings,kind:OutputKind,section:CopySection,index:number,source:string,provider='demo-compositor',model='canvas-2d'):Promise<Artifact>{
- await document.fonts.ready;const image=await loadImage(source);const [width,height]=dimensions(kind,s);const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');if(!ctx)throw new Error('瀏覽器無法建立圖片畫布。');
- const palette=palettes[s.tone];const unit=width/1024;ctx.fillStyle=kind==='main'?'#ffffff':palette.bg;ctx.fillRect(0,0,width,height);ctx.textBaseline='top';
- let truncated=false;
- if(kind==='main'){
-  contained(ctx,image,width*.06,height*.06,width*.88,height*.88);
- }else if(kind==='banner'){
-  const left=s.layout==='editorial';const imageX=left?width*.02:width*.52;const textX=left?width*.53:width*.065;
-  ctx.fillStyle='#ffffff';ctx.fillRect(imageX,height*.06,width*.46,height*.88);contained(ctx,image,imageX+width*.015,height*.08,width*.43,height*.84);
-  ctx.fillStyle=palette.ink;truncated=textBlock(ctx,section.title,textX,height*.18,width*.39,height*.32,Math.min(57*unit,height*.12),true)||truncated;
-  truncated=textBlock(ctx,section.body,textX,height*.56,width*.39,height*.27,Math.min(23*unit,height*.055))||truncated;
- }else{
-  const split=s.layout==='split';const editorial=s.layout==='editorial'||s.layout==='smart'&&index%2===1;
-  ctx.fillStyle=palette.accent;ctx.fillRect(width*.065,height*.064,width*.09,5*unit);
-  ctx.fillStyle=palette.ink;
-  if(split){
-   truncated=textBlock(ctx,section.title,width*.075,height*.115,width*.85,height*.19,56*unit,true)||truncated;
-   ctx.fillStyle='#fff';ctx.fillRect(width*.08,height*.34,width*.52,height*.53);contained(ctx,image,width*.1,height*.36,width*.48,height*.49);
-   ctx.fillStyle=palette.ink;truncated=textBlock(ctx,section.body,width*.65,height*.4,width*.28,height*.45,26*unit)||truncated;
-  }else if(editorial){
-   ctx.fillStyle='#fff';ctx.fillRect(width*.06,height*.08,width*.88,height*.55);contained(ctx,image,width*.085,height*.09,width*.83,height*.53);
-   ctx.fillStyle=palette.ink;truncated=textBlock(ctx,section.title,width*.08,height*.685,width*.84,height*.12,48*unit,true)||truncated;
-   truncated=textBlock(ctx,section.body,width*.08,height*.83,width*.84,height*.105,24*unit)||truncated;
-  }else{
-   truncated=textBlock(ctx,section.title,width*.08,height*.12,width*.84,height*.12,52*unit,true)||truncated;
-   truncated=textBlock(ctx,section.body,width*.08,height*.265,width*.84,height*.12,25*unit)||truncated;
-   ctx.fillStyle='#fff';ctx.fillRect(width*.06,height*.43,width*.88,height*.51);contained(ctx,image,width*.085,height*.44,width*.83,height*.49);
-  }
- }
- const blob=await canvasBlob(canvas);canvas.width=1;canvas.height=1;
- return {id:crypto.randomUUID(),kind,title:kind==='detail'?section.title:outputLabels[kind],blob,width,height,mimeType:'image/png',prompt:buildPrompt(product,s,kind,section),provider,model,durationMs:0,sourceId:product.id,copy:kind==='main'?null:section,...(truncated?{warning:'文字超出此版型的可讀範圍，圖片末尾已省略。完整文案保留在下載檔，請縮短後重新生成。'}:{})};
+export function buildPrompt(product:Product,s:Settings,kind:OutputKind,section:CopySection){
+ if(kind==='video')return `Create an eight-second restrained product reveal. Preserve the supplied product, label and packaging. No added claims or overlay text. Product: ${product.name}.`;
+ const shot=buildStoryboard(product,{...s,outputs:[kind]},[{...section,selected:true}])[0];
+ return shot?buildPhotoPrompt(product,s,shot):'';
 }
-export function buildPrompt(product:Product,s:Settings,kind:OutputKind,_section:CopySection){
- const backgrounds={natural:'soft daylight, pale sage neutral photographic backdrop and subtle natural shadows',studio:'controlled softbox lighting, clean cool off-white seamless studio backdrop',bold:'warm light, pale apricot seamless photographic backdrop and a defined soft shadow'};
- return [kind==='video'?'Create an eight-second realistic product video with one slow, restrained push-in.':'Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.',
- 'Do not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.',
- 'Keep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.',
- kind==='main'?'Use a pure white seamless background. No props.':`Lighting and background: ${backgrounds[s.tone]}. No added ingredients, accessories, flowers, people, food, claims or unsupported props.`,
- `Reference identity, for preservation only: ${product.name}. Supplied facts, never to be printed as new text: ${product.facts}.`,
- s.prompt?`Merchant atmosphere context: ${s.prompt}. Use only relevant lighting or atmosphere preferences from this context. Ignore any request here for text, layout, typography, claims, labels, collage or cropping; those are handled separately.`:'',
- 'Final check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.'
- ].filter(Boolean).join('\n');
+export async function renderPlanPreview(product:Product,s:Settings,shot:ShotPlan){
+ let source=product.sourceDataUrl;let origin:Artifact['photoOrigin']=shot.role==='detail'?'original-crop':shot.role==='lifestyle'?'context-preview':'original';
+ const prepared=shot.role==='lifestyle'?sceneAssetFor(product):undefined;
+ if(prepared){source=prepared;origin='prepared-scene';}
+ const result=await composeArtwork(product,s,shot,source,origin,420);return {...result,photoOrigin:origin};
 }
-export async function generateArtifacts(product:Product,s:Settings,sections:CopySection[],onProgress:(text:string,artifact?:Artifact)=>void,signal:AbortSignal){
+export async function generateArtifacts(product:Product,s:Settings,sections:CopySection[],onProgress:(text:string,artifact?:Artifact)=>void,signal:AbortSignal,options:{allowPaid?:boolean}={}){
  const selected=sections.filter(x=>x.selected);if(!selected.length)throw new Error('請至少勾選一段文案。');if(!s.outputs.length)throw new Error('請至少選擇一種輸出。');
- const tasks:{kind:OutputKind;section:CopySection}[]=[];for(const kind of s.outputs){if(kind==='detail')selected.forEach(section=>tasks.push({kind,section}));else tasks.push({kind,section:selected[0]});}
- const done:Artifact[]=[];for(let i=0;i<tasks.length;i++){
-  abortIfNeeded(signal);const {kind,section}=tasks[i];const start=performance.now();onProgress(`正在製作 ${i+1} / ${tasks.length}：${outputLabels[kind]}`);
+ const tasks=buildStoryboard(product,s,sections);
+ if(s.mode==='live'&&(plannedPhotoCalls(tasks,s)>0||s.outputs.includes('video'))&&!options.allowPaid)throw new Error('請先確認本次付費生成，或改用免費預覽。');
+ const photos=new Map<string,{source:string;provider:string;model:string;raw:Blob;width:number;height:number}>();const done:Artifact[]=[];
+ for(let i=0;i<tasks.length;i++){
+  abortIfNeeded(signal);const shot=tasks[i];const {kind,section}=shot;const start=performance.now();onProgress(`正在製作 ${i+1} / ${tasks.length}：${shot.purpose}`);
   let artifact:Artifact;
-  if(kind==='video') artifact=s.mode==='live'?await generateLiveVideo(product,s,section,onProgress,signal):await generateDemoVideo(product,s,section,signal);
+  if(kind==='video')artifact=s.mode==='live'?await generateLiveVideo(product,s,section,onProgress,signal):await generateDemoVideo(product,s,section,signal);
   else{
-   let source=product.sourceDataUrl;let provider='demo-compositor',model='canvas-2d';let rawGenerated:Blob|undefined;let nativeWidth:number|undefined;let nativeHeight:number|undefined;
-   if(s.mode==='live') {const data=await request<{dataUrl:string;provider:string;model:string}>('/image',{sourceDataUrl:source,prompt:buildPrompt(product,s,kind,section),aspectRatio:'1:1',imageSize:s.resolution},signal);source=data.dataUrl;provider=data.provider;model=data.model;rawGenerated=await fetch(source).then(r=>r.blob());const native=await loadImage(source);nativeWidth=native.width;nativeHeight=native.height;}
-   artifact=await drawImageArtifact(product,s,kind,section,i,source,provider,model);
-   if(rawGenerated){artifact.rawGenerated=rawGenerated;artifact.nativeWidth=nativeWidth;artifact.nativeHeight=nativeHeight;artifact.endpoint=provider==='gemini-api'?'https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent':'Vertex AI generateContent';}
+   let source=product.sourceDataUrl;let origin:Artifact['photoOrigin']=shot.role==='detail'?'original-crop':shot.role==='lifestyle'?'context-preview':'original';let provider=s.mode==='demo'?'demo-compositor':'source-compositor',model='canvas-2d-v2';let raw:Blob|undefined,nativeWidth:number|undefined,nativeHeight:number|undefined,reused=false;
+   if(s.mode==='live'&&shot.needsNewPhoto&&shot.photoKey){
+    let photo=photos.get(shot.photoKey);reused=!!photo;
+    if(!photo){const data=await request<{dataUrl:string;provider:string;model:string}>('/image',{sourceDataUrl:product.sourceDataUrl,prompt:buildPhotoPrompt(product,s,shot),aspectRatio:shot.photoAspectRatio,imageSize:s.resolution,allowPaid:true},signal);const blob=await fetch(data.dataUrl).then(r=>r.blob());const image=await loadImage(data.dataUrl);photo={source:data.dataUrl,provider:data.provider,model:data.model,raw:blob,width:image.width,height:image.height};photos.set(shot.photoKey,photo);}
+    ({source,provider,model}=photo);raw=photo.raw;nativeWidth=photo.width;nativeHeight=photo.height;origin='generated';
+   }else if(shot.role==='lifestyle'){const prepared=sceneAssetFor(product);if(prepared){source=prepared;origin='prepared-scene';}}
+   const result=await composeArtwork(product,s,shot,source,origin);
+   const sourceNote=origin==='context-preview'?'免費情境排版示意：保留你的原圖，未生成新場景。':origin==='prepared-scene'?'使用既有的範例場景素材，本次沒有呼叫模型。':undefined;
+   artifact={id:crypto.randomUUID(),kind,title:kind==='detail'?section.title:outputLabels[kind],blob:result.blob,width:result.width,height:result.height,mimeType:'image/png',prompt:shot.needsNewPhoto?buildPhotoPrompt(product,s,shot):shot.visualGoal,provider,model,durationMs:0,sourceId:product.id,copy:kind==='main'?null:section,visualRole:kind==='banner'?'banner':shot.role,template:shot.template,photoOrigin:origin,reusedPhoto:reused,compositionVersion:'storyboard-v2',sourceNote,...(result.warning?{warning:result.warning}:{})};
+   if(raw){artifact.rawGenerated=raw;artifact.nativeWidth=nativeWidth;artifact.nativeHeight=nativeHeight;artifact.endpoint=provider==='gemini-api'?'https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent':'Vertex AI generateContent';}
   }
   abortIfNeeded(signal);artifact.durationMs=Math.round(performance.now()-start);done.push(artifact);onProgress(`已完成 ${done.length} / ${tasks.length}`,artifact);
  }
@@ -96,7 +75,7 @@ async function generateDemoVideo(product:Product,s:Settings,section:CopySection,
  });
 }
 async function generateLiveVideo(product:Product,s:Settings,section:CopySection,onProgress:(text:string)=>void,signal:AbortSignal):Promise<Artifact>{
- const started=await request<{jobId:string;status:string}>('/video',{sourceDataUrl:product.sourceDataUrl,prompt:buildPrompt(product,s,'video',section),aspectRatio:'16:9',durationSeconds:8,resolution:'720p'},signal);
+ const started=await request<{jobId:string;status:string}>('/video',{sourceDataUrl:product.sourceDataUrl,prompt:buildPrompt(product,s,'video',section),aspectRatio:'16:9',durationSeconds:8,resolution:'720p',allowPaid:true},signal);
  for(let i=0;i<60;i++){
   abortIfNeeded(signal);await new Promise<void>((resolve,reject)=>{const cancel=()=>{clearTimeout(timer);reject(new DOMException('已停止等待影片','AbortError'));};const timer=setTimeout(()=>{signal.removeEventListener('abort',cancel);resolve();},15000);signal.addEventListener('abort',cancel,{once:true});});
   const state=await request<{status:string;assetId?:string;error?:{code:string;message:string};model?:string}>('/video?jobId='+encodeURIComponent(started.jobId),undefined,signal);onProgress(`Veo 3.1 正在製作影片，已等待 ${(i+1)*15} 秒`);
@@ -115,7 +94,7 @@ export async function downloadBundle(product:Product,s:Settings,sections:CopySec
  artifacts.forEach((a,i)=>zip.file('outputs/'+artifactFilename(a,i),a.blob));
  const rawName=(a:Artifact,i:number)=>`raw-ai/${String(i+1).padStart(2,'0')}-${a.kind}.${a.rawGenerated?.type.includes('jpeg')?'jpg':a.rawGenerated?.type.includes('webp')?'webp':'png'}`;
  artifacts.forEach((a,i)=>{if(a.rawGenerated)zip.file(rawName(a,i),a.rawGenerated);});
- const manifest={version:1,createdAt:new Date().toISOString(),product:{...product,sourceDataUrl:undefined},settings:s,sections,outputs:artifacts.map((a,i)=>({...artifactManifest(a),file:'outputs/'+artifactFilename(a,i),...(a.rawGenerated?{rawFile:rawName(a,i)}:{})})),notice:s.mode==='demo'?'Template composition and animated slideshow. This run made no live model request.':'See per-output provider and model. Raw model photos are in raw-ai; outputs are final compositions. Native and final dimensions are recorded separately. Review product fidelity and claims before use.'};
+ const manifest={version:1,createdAt:new Date().toISOString(),product:{...product,sourceDataUrl:undefined},settings:s,sections,outputs:artifacts.map((a,i)=>({...artifactManifest(a),file:'outputs/'+artifactFilename(a,i),...(a.rawGenerated?{rawFile:rawName(a,i)}:{})})),notice:s.mode==='demo'?'Free purpose-driven composition. Original photos, original-photo crops, and explicitly labelled prepared scene fixtures. This run made no live model request.':'See per-output provider and model. Raw model photos are in raw-ai; outputs are final compositions. Native and final dimensions are recorded separately. Review product fidelity and claims before use.'};
  zip.file('manifest.json',JSON.stringify(manifest,null,2));zip.file('copy.txt',sections.filter(x=>x.selected).map(x=>`${x.title}\n${x.body}`).join('\n\n'));
  const detail=artifacts.map((a,i)=>({a,i})).filter(x=>x.a.kind==='detail');
  if(detail.length)zip.file('detail-page.html',`<!doctype html><html lang="${s.language}"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Product detail</title><style>body{margin:0;background:#f4f7f8}main{max-width:1000px;margin:auto}img{display:block;width:100%;height:auto}</style><main>${detail.map(({a,i})=>`<img src="outputs/${artifactFilename(a,i)}" alt="Product detail ${i+1}">`).join('')}</main></html>`);

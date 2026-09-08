@@ -38,14 +38,16 @@ const test = base.extend<{ evidence: Evidence }>({
     await fs.mkdir(directory, { recursive: true });
     const e: Evidence = {
       id: slug(testInfo.title), title: testInfo.title, directory,
-      kind: 'edge', mode: 'demo / local HTTP backend', checks: [], screenshots: [], warnings: [],
+      kind: 'edge', mode: 'free local composition; paid providers disabled', checks: [], screenshots: [], warnings: [],
       api: [], downloads: [], consoleErrors: [], startedAt: new Date().toISOString(),
       capture: async (name) => {
         const file = `${name}.png`;
+        await page.evaluate(()=>window.scrollTo(0,0));
         await page.screenshot({ path: path.join(directory, file), fullPage: true });
         e.screenshots.push(file);
       },
     };
+    await page.route(/https:\/\/(?:generativelanguage\.googleapis\.com|[^/]*aiplatform\.googleapis\.com)/,route=>route.abort('blockedbyclient'));
     page.on('pageerror', (error) => e.consoleErrors.push(error.message));
     page.on('response', async (response) => {
       const url = new URL(response.url());
@@ -54,6 +56,8 @@ const test = base.extend<{ evidence: Evidence }>({
       e.api.push(entry);
       try { const body = await response.json(); entry.provider = body.provider; entry.model = body.model; } catch { /* Non-JSON failures remain recorded by status. */ }
     });
+    const safety=await page.request.get('http://127.0.0.1:8787/api/health');
+    expect((await safety.json()).paidCallsDisabled).toBe(true);
     await use(e);
     e.elapsedMs = Date.now() - started;
     e.status = testInfo.status;
@@ -83,13 +87,10 @@ async function product(page: Page, e: Evidence, category: Category, language: La
 }
 
 async function plan(page: Page, e: Evidence) {
-  const responsePromise = page.waitForResponse((r) => r.url().endsWith('/api/copy') && r.request().method() === 'POST');
-  await page.getByRole('button', { name: '一鍵規劃文案', exact: true }).click();
-  const response = await responsePromise;
-  expect(response.status()).toBe(200);
+  await page.getByRole('button', { name: '免費規劃套圖', exact: true }).click();
   await expect(page.getByLabel('標題 1', { exact: true })).not.toHaveValue('');
-  expect((await response.json()).sections.length).toBeGreaterThanOrEqual(3);
-  e.checks.push('瀏覽器實際 POST /api/copy，後端回傳 200 與至少 3 段文案。');
+  await expect(page.getByLabel('標題 5', { exact: true })).toBeVisible();
+  e.checks.push('本機建立 5 種套圖用途與可編輯文案，不呼叫模型 API。');
   await e.capture('02-copy');
 }
 
@@ -270,7 +271,7 @@ for (const entry of uploadErrors) {
     await e.capture('01-rejected');
     await page.getByRole('button', { name: `使用 ${names.food} 範例`, exact: true }).click();
     await page.getByRole('button', { name: '下一步：規劃文案', exact: true }).click();
-    await expect(page.getByRole('button', { name: '一鍵規劃文案', exact: true })).toBeVisible();
+    await expect(page.getByRole('button', { name: '免費規劃套圖', exact: true })).toBeVisible();
     e.checks.push(`已阻擋${entry.title}且顯示具體原因；換用有效商品圖可繼續。`);
     await e.capture('02-recovered');
   });
@@ -312,7 +313,7 @@ test('long-copy 長文案可見截斷提醒且下載保留全文', async ({ page
   for (const checkbox of selections.slice(1)) await checkbox.uncheck();
   await visual(page, ['detail'], { layout: '圖文分欄' }); await generate(page, e);
   const m = await bundle(page, e, ['detail']);
-  await expect(page.getByText('文字超出此版型', { exact: false }).first()).toBeVisible();
+  await expect(page.getByText('文字超出此模組', { exact: false }).first()).toBeVisible();
   expect(m.outputs[0].warning).toContain('文字超出');
   expect(m.outputs[0].copy.body).toBe(longText); expect(await fs.readFile(path.join(e.directory, 'copy.txt'), 'utf8')).toContain(longText);
   e.checks.push('超長文字未靜默遺失：畫面說明省略，下載 JSON 與文字檔保留全部內容。');
@@ -336,14 +337,20 @@ test('cancel-and-retry 取消短片生成後可重新生成', async ({ page, evi
   e.checks.push('短片包含 1200 字長文案時顯示省略提醒，完整文字仍保留在下載包。');
 });
 
-test('injected-copy-failure 注入 API 錯誤後保留資料並可重試', async ({ page, evidence: e }) => {
-  e.kind = 'recovery'; e.mode = 'explicit injected failure, followed by real local HTTP retry';
+test('injected-copy-failure 明確注入錯誤後可改用免費規劃', async ({ page, evidence: e }) => {
+  e.kind = 'recovery'; e.mode = 'mocked API failure, explicit free local recovery; no paid provider request';
   await product(page, e, 'food');
+  await page.getByRole('button',{name:'模型與連線',exact:true}).click();
+  await choose(page,'生成模式','live','Google 模型 · 真實生成');
+  await page.getByRole('button',{name:'完成設定',exact:true}).click();
   await page.route('**/api/copy', (route) => route.fulfill({ status: 503, contentType: 'application/json', body: JSON.stringify({ error: { message: 'E2E 注入：模型服務暫時無法使用，請重試。' } }) }), { times: 1 });
-  await page.getByRole('button', { name: '一鍵規劃文案', exact: true }).click();
+  await page.getByRole('checkbox',{name:'同意本次付費文案',exact:true}).check();
+  await page.getByRole('button',{name:'AI 規劃文案（付費）',exact:true}).click();
   await expect(page.getByRole('alert')).toContainText('E2E 注入'); await e.capture('02-injected-error');
-  await plan(page, e); await visual(page, ['main']); await generate(page, e); await bundle(page, e, ['main']);
-  e.checks.push('第一次 /api/copy 的 503 是測試明確注入；第二次重試走真實本機 HTTP 後端並成功下載。此項不是實際雲端故障證明。');
+  await page.getByRole('button',{name:'改用免費規劃',exact:true}).click();
+  await expect(page.getByLabel('標題 5',{exact:true})).toBeVisible();
+  await visual(page, ['main']); await generate(page, e); await bundle(page, e, ['main']);
+  e.checks.push('503 完全由測試攔截回應；沒有送到 Google。使用者明確改用免費規劃後完成下載。');
 });
 
 test('mobile-flow 手機尺寸可完成商品圖生成與下載', async ({ page, evidence: e }) => {

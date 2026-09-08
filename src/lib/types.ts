@@ -5,10 +5,12 @@ export type OutputKind = 'main' | 'detail' | 'banner' | 'video';
 export type Tone = 'natural' | 'studio' | 'bold';
 export type Layout = 'smart' | 'center' | 'split' | 'editorial';
 export type Resolution = '1K' | '2K' | '4K';
-export interface CopySection { id: string; title: string; body: string; selected: boolean }
+export type VisualRole = 'hero' | 'benefits' | 'detail' | 'lifestyle' | 'specs';
+export type DetailFocus = 'upper' | 'center' | 'lower';
+export interface CopySection { id: string; title: string; body: string; selected: boolean; role?:VisualRole; visualGoal?:string; detailFocus?:DetailFocus; }
 export interface Product { id: string; name: string; category: Category; facts: string; sourceDataUrl: string; sourceName: string; sourceWidth: number; sourceHeight: number; sourceOrigin: 'uploaded' | 'ai-sample'; }
 export interface Settings { platform: string; language: Language; prompt: string; tone: Tone; layout: Layout; resolution: Resolution; outputs: OutputKind[]; bannerRatio: '16:9' | '21:9'; mode: Mode; }
-export interface Artifact { id: string; kind: OutputKind; title: string; blob: Blob; previewUrl?: string; width: number; height: number; mimeType: string; prompt: string; provider: string; model: string; durationMs: number; sourceId: string; copy: CopySection | null; warning?: string; rawGenerated?: Blob; nativeWidth?:number; nativeHeight?:number; endpoint?:string; }
+export interface Artifact { id: string; kind: OutputKind; title: string; blob: Blob; previewUrl?: string; width: number; height: number; mimeType: string; prompt: string; provider: string; model: string; durationMs: number; sourceId: string; copy: CopySection | null; warning?: string; rawGenerated?: Blob; nativeWidth?:number; nativeHeight?:number; endpoint?:string; visualRole?:VisualRole|'packshot'|'banner'|'video'; template?:string; photoOrigin?:'original'|'original-crop'|'prepared-scene'|'context-preview'|'generated'; sourceNote?:string; reusedPhoto?:boolean; compositionVersion?:string; }
 export interface SavedProject { id: string; product: Product; settings: Settings; sections: CopySection[]; artifacts: Artifact[]; savedAt: string; }
 export interface Draft { product: Product | null; settings: Settings; sections: CopySection[]; step: number; }
 export const initialSettings: Settings = { platform:'Shopee',language:'zh-TW',prompt:'',tone:'natural',layout:'smart',resolution:'1K',outputs:['main','detail'],bannerRatio:'16:9',mode:'demo' };

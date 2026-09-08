@@ -124,15 +124,16 @@ async function startProduct(page: Page, e: LiveEvidence, category: Category, lan
   await choose(page, /^分發平台/, 'Amazon', 'Amazon');
   await e.capture('01-source');
   await page.getByRole('button', { name: '下一步：規劃文案', exact: true }).click();
-  const promised = page.waitForResponse((response) => endpoint(response, 'copy'), { timeout: 180_000 });
-  await page.getByRole('button', { name: '一鍵規劃文案', exact: true }).click();
-  const response = await promised; expect(response.status()).toBe(200);
-  const result = await response.json();
-  expect(result.provider).toBe(live ? 'gemini-api' : 'demo');
-  if (live) expect(result.model).toBe('gemini-3.7-flash');
-  await expect(page.getByLabel('標題 1', { exact: true })).not.toHaveValue('');
-  await e.capture('02-copy');
-  e.checks.push(live ? '從 App 實際操作 Gemini 3.7 Flash 文案規劃，HTTP 200，非 Mock 或預設文案。' : '從部署的 App 實際呼叫 Supabase 文案端點，HTTP 200，使用明確標示的示範文案。');
+  let result:any;
+  if(live){
+    await page.getByRole('checkbox',{name:'同意本次付費文案',exact:true}).check();
+    const promised=page.waitForResponse(response=>endpoint(response,'copy'),{timeout:180_000});
+    await page.getByRole('button',{name:'AI 規劃文案（付費）',exact:true}).click();
+    const response=await promised;expect(response.status()).toBe(200);result=await response.json();expect(result.provider).toBe('gemini-api');expect(result.model).toBe('gemini-3.7-flash');
+  }else{await page.getByRole('button',{name:'免費規劃套圖',exact:true}).click();result={provider:'demo'};}
+  await expect(page.getByLabel('標題 1',{exact:true})).not.toHaveValue('');
+  await e.capture('02-copy');e.checks.push(live?'明確確認付費後，從 App 操作 Gemini 文案規劃並核對 HTTP 回應。':'從 App 本機建立免費套圖規劃，不呼叫模型 API。');
+
   return result;
 }
 
@@ -184,25 +185,27 @@ async function downloadAll(page: Page, e: LiveEvidence, expectedCount: number | 
   e.checks.push(`下載與解壓 ${manifest.outputs.length} 張最終 PNG，核對像素、檔案大小與原圖雜湊。${live ? '每張另保存模型原始回傳圖與實際模型 ID。' : ''}`);
 }
 
+const paidTest = process.env.E2E_ALLOW_PAID === '1' ? test : test.skip;
 for (const spec of [
   { id: 'live-food-en-banner', category: 'food', language: 'en', kind: 'banner', count: 1 },
   { id: 'live-beauty-en-detail', category: 'beauty', language: 'en', kind: 'detail', count: 2 },
   { id: 'live-fashion-ja-detail', category: 'fashion', language: 'ja', kind: 'detail', count: 2 },
 ] as const) {
-  test(`${spec.id} 真實 Gemini UI：${names[spec.category]} ${spec.language} ${spec.kind}`, async ({ page, evidence: e }) => {
+  paidTest(`${spec.id} 真實 Gemini UI：${names[spec.category]} ${spec.language} ${spec.kind}`, async ({ page, evidence: e }) => {
     e.kind = spec.kind;
     try {
       const result = await startProduct(page, e, spec.category, spec.language);
       expect(result.sections.length).toBeGreaterThanOrEqual(spec.count);
       const boxes = await page.getByRole('checkbox', { name: /^選取文案 / }).all();
-      for (let i = 0; i < boxes.length; i++) await boxes[i].setChecked(i < spec.count);
+      for (let i = 0; i < boxes.length; i++) await boxes[i].setChecked(spec.kind==='banner'?i===0:['hero','lifestyle'].includes(result.sections[i].role));
       await page.getByRole('button', { name: '下一步：視覺設定', exact: true }).click();
       const labels = { main: '商品主圖', detail: '商品詳情圖', banner: 'Banner', video: '帶貨短片' };
       for (const [kind, label] of Object.entries(labels)) await page.getByRole('checkbox', { name: new RegExp('^' + label) }).setChecked(kind === spec.kind);
       await page.getByRole('button', { name: spec.category === 'beauty' ? '清透棚拍' : '自然留白', exact: true }).click();
       await page.getByRole('button', { name: '1K', exact: true }).click();
       await e.capture('03-settings');
-      await page.getByRole('button', { name: '開始生成', exact: true }).click();
+      await page.getByRole('checkbox',{name:'同意本次付費生成',exact:true}).check();
+      await page.getByRole('button', { name: '開始 AI 生成（付費）', exact: true }).click();
       await expect(page.getByRole('heading', { name: '素材已完成', exact: true })).toBeVisible({ timeout: 240_000 });
       await e.capture('04-results');
       await downloadAll(page, e, spec.count);

@@ -22,4 +22,6 @@ Busy-work invariant: a pending copy/generation/sync operation cannot replace pro
 
 Provider labeling: the header says 真實模型, not a fixed Vertex claim. The Settings panel reports `googleProvider` and individual readiness from backend health. Readiness means configured, not a proven successful call. Actual artifact and copy provenance retain provider/model from the response. An offline health result clears stale readiness.
 
+Storyboard v2: copy sections include an editable role and visual goal; selected roles drive different artwork templates and photo strategies. Changing provider mode preserves edited copy. Free planning and previews run locally with no model requests. Every paid action requires a fresh explicit consent; the backend also requires `allowPaid: true`. Tests set `MONO_DISABLE_LIVE=1` and refuse a backend without that guard. Generation caches the hero scene for Banner reuse; packshots, crops, benefits and specs retain original photography.
+
 Analytics: only the eight allowlisted workflow event names are emitted by the shared analytics module. No product names, facts, prompts, photos, access codes, or error text enter analytics properties. Failure to record an event never blocks the user workflow.

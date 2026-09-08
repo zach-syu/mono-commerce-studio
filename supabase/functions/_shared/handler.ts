@@ -20,7 +20,9 @@ export function createHandler({ env, store, fetcher = fetch, now = Date.now }: H
   const dailyAssetBytes=positiveLimit(env.MONO_DAILY_ASSET_BYTES,100*1024*1024);
   async function budget(kind:'requests'|'asset-bytes',amount:number,limit:number){if(!await store.consumeBudget(`${kind}:${iso().slice(0,10)}`,amount,limit))throw new ApiError(429,'DAILY_BUDGET_EXCEEDED',kind==='requests'?'今日示範工作室的寫入額度已用完。請明天再試，或請管理者調整額度。':'今日工作室的圖片儲存額度已用完。請明天再試，或請管理者調整額度。');}
   const record = (owner: string, payload: Payload): StoredRecord => ({ id: crypto.randomUUID(), owner, payload, createdAt: iso(), updatedAt: iso() });
-  function live(request: Request) {
+  function live(request: Request,allowPaid:unknown=true) {
+    if(env.MONO_DISABLE_LIVE==='1')throw new ApiError(403,'PAID_CALLS_DISABLED','這個測試環境已停用所有付費模型。');
+    if(allowPaid!==true)throw new ApiError(400,'PAID_CONFIRMATION_REQUIRED','請先在 App 確認本次付費生成，或使用免費預覽。');
     const expected = env.MONO_LIVE_ACCESS_CODE;
     if (!expected || expected.length < 16) throw new ApiError(503, 'LIVE_DISABLED', '管理者尚未啟用真實模型呼叫。');
     const actual = request.headers.get('x-mono-access-code') || '';
@@ -58,13 +60,13 @@ export function createHandler({ env, store, fetcher = fetch, now = Date.now }: H
       if (request.method === 'OPTIONS') return new Response(null, {status: 204, headers});
       const url = new URL(request.url);
       const route = url.pathname.replace(/^\/functions\/v1\/mono-api/, '').replace(/^\/mono-api/, '').replace(/^\/api/, '').replace(/\/$/, '') || '/';
-      if (route === '/health' && request.method === 'GET') return json({ ok: true, mode: configured.copy && env.MONO_LIVE_ACCESS_CODE ? 'hybrid' : 'demo', persistence: store.kind, googleProvider:selectedGoogleProvider, providers: { copy: configured.copy ? `${selectedGoogleProvider}-ready` : 'demo', image: configured.image ? `${selectedGoogleProvider}-ready` : 'not-configured', video: configured.video ? 'vertex-ready' : 'not-configured' }, models: MODELS, liveAccessRequired: true, videoNote: 'Veo 3.0 已退役，本專案明確使用 Veo 3.1。' });
+      if (route === '/health' && request.method === 'GET') return json({ ok: true, mode: configured.copy && env.MONO_LIVE_ACCESS_CODE ? 'hybrid' : 'demo', persistence: store.kind, googleProvider:selectedGoogleProvider, providers: { copy: configured.copy ? `${selectedGoogleProvider}-ready` : 'demo', image: configured.image ? `${selectedGoogleProvider}-ready` : 'not-configured', video: configured.video ? 'vertex-ready' : 'not-configured' }, models: MODELS, liveAccessRequired: true, paidCallsDisabled:env.MONO_DISABLE_LIVE==='1', videoNote: 'Veo 3.0 已退役，本專案明確使用 Veo 3.1。' });
       const token = request.headers.get('x-workspace-token') || '';
       if (!/^[0-9a-f]{64}$/.test(token)) throw new ApiError(401, 'WORKSPACE_REQUIRED', '缺少有效的私人工作區識別碼。');
       const owner = await ownerFromToken(token); rate(owner);
       if(request.method==='POST'||request.method==='DELETE')await budget('requests',1,dailyRequestLimit);
       if (route === '/copy' && request.method === 'POST') {
-        const input = await readJson(request); exactKeys(input, ['product','language','platform','prompt','mode','sourceDataUrl']);
+        const input = await readJson(request); exactKeys(input, ['product','language','platform','prompt','mode','sourceDataUrl','allowPaid']);
         const sourceImage = input.sourceDataUrl === undefined ? undefined : parseImage(input.sourceDataUrl);
         const source = typeof input.product === 'string' ? {name:input.product} : object(input.product,'product');
         exactKeys(source,['name','category','description','facts']);
@@ -76,8 +78,8 @@ export function createHandler({ env, store, fetcher = fetch, now = Date.now }: H
         const prompt = str(input.prompt,'prompt',4000,'');
         const mode = choice(input.mode,['demo','live'],'mode','demo');
         const started = now();
-        if (mode === 'live') live(request);
-        const provider=mode==='live'?selectedGoogleProvider:'demo';const model=mode==='live'?MODELS.copy:'localized-template-v1';
+        if (mode === 'live') live(request,input.allowPaid===true);
+        const provider=mode==='live'?selectedGoogleProvider:'demo';const model=mode==='live'?MODELS.copy:'local-storyboard-v2';
         const row=record(owner,{type:'copy',status:'pending',provider,model,product,language,platform,prompt});await store.put('jobs',row);
         try{
           const sections = mode === 'live' ? await generateCopy(env,product,language,platform,prompt,fetcher,sourceImage) : demoCopy(product,language);
@@ -87,11 +89,11 @@ export function createHandler({ env, store, fetcher = fetch, now = Date.now }: H
         }catch(error){row.payload={...row.payload,status:'failed',error:{code:error instanceof ApiError?error.code:'UNKNOWN',message:error instanceof ApiError?error.message:'文案生成失敗。'}};row.updatedAt=iso();await store.put('jobs',row);throw error;}
       }
       if (route === '/image' && request.method === 'POST') {
-        const input = await readJson(request); exactKeys(input,['sourceDataUrl','prompt','aspectRatio','imageSize']);
+        const input = await readJson(request); exactKeys(input,['sourceDataUrl','prompt','aspectRatio','imageSize','allowPaid']);
         const source = parseImage(input.sourceDataUrl);
         const prompt = str(input.prompt,'prompt',8000);
         const aspectRatio = choice(input.aspectRatio,ASPECT_RATIOS,'aspectRatio','1:1');
-        const imageSize = choice(input.imageSize,['1K','2K','4K'],'imageSize','1K'); live(request);
+        const imageSize = choice(input.imageSize,['1K','2K','4K'],'imageSize','1K'); live(request,input.allowPaid===true);
         const row = record(owner,{type:'image',status:'pending',provider:selectedGoogleProvider,model:MODELS.image,prompt,aspectRatio,imageSize}); await store.put('jobs',row);
         const started = now();
         try {
@@ -102,13 +104,13 @@ export function createHandler({ env, store, fetcher = fetch, now = Date.now }: H
         } catch (error) { row.payload={...row.payload,status:'failed',error:{code:error instanceof ApiError?error.code:'UNKNOWN',message:error instanceof ApiError?error.message:'生成未完成。'}};row.updatedAt=iso();await store.put('jobs',row);throw error; }
       }
       if (route === '/video' && request.method === 'POST') {
-        const input = await readJson(request); exactKeys(input,['sourceDataUrl','prompt','aspectRatio','resolution','durationSeconds']);
+        const input = await readJson(request); exactKeys(input,['sourceDataUrl','prompt','aspectRatio','resolution','durationSeconds','allowPaid']);
         const source = parseImage(input.sourceDataUrl,true); const prompt = str(input.prompt,'prompt',8000);
         const aspectRatio = choice(input.aspectRatio,['16:9','9:16'],'aspectRatio','16:9');
         const resolution = choice(input.resolution,['720p','1080p'],'resolution','720p');
         const durationSeconds = input.durationSeconds === undefined ? 8 : Number(input.durationSeconds);
         if (![4,6,8].includes(durationSeconds)) throw new ApiError(400,'INVALID_INPUT','影片長度僅支援 4、6、8 秒。');
-        live(request);
+        live(request,input.allowPaid===true);
         const row = record(owner,{type:'video',status:'starting',provider:'vertex',model:MODELS.video,prompt,aspectRatio,resolution,durationSeconds}); await store.put('jobs',row);
         try {
           const operationName = await startVideo(env,{...source,prompt,aspectRatio,resolution,durationSeconds},fetcher);

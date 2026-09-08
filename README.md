@@ -2,9 +2,9 @@
 
 從一張商品照片，完成可編輯文案、商品主圖、詳情頁、Banner 與短片。
 
-[開啟個人部署](https://mono-commerce-studio-ashy.vercel.app) · [查看 E2E 報告](https://mono-commerce-studio-ashy.vercel.app/report/index.html)
+[開啟個人部署](https://mono-commerce-studio-ashy.vercel.app) · [新版套圖與前後對照](https://mono-commerce-studio-ashy.vercel.app/report/layout-v2/index.html) · [先前 E2E 報告](https://mono-commerce-studio-ashy.vercel.app/report/index.html)
 
-目前雲端依使用者選擇維持示範模式；本機已實測 Gemini 3.7 Flash 與 Nano Banana 2。報告分開列出兩種結果。
+預設提供免費規劃與瀏覽器組版。套圖 v2 拆分主視覺、賣點、細節、情境與規格，這輪驗證沒有呼叫付費模型。先前的真實模型證據保留在舊報告；不代表新版場景指令已通過真實模型驗收。
 
 介面採用 [CYBERBIZ Pitaya UI](https://www.npmjs.com/package/@cyberbiz-corp/pitaya-ui)。前端可部署到 Vercel，後端提供 Supabase Edge Functions、Postgres 與私有 Storage。本機與 Supabase 使用同一份 API handler。
 
@@ -32,11 +32,13 @@ npm run dev
 
 1. 上傳不超過 7 MB 的 PNG／JPEG／WebP，或選食品、美妝、休閒鞋範例。
 2. 設定 Shopee、Amazon、Momo、PChome 或其他渠道，以及繁中、英文、日文或韓文。
-3. 產生文案建議。修改每段標題與內文，勾選需要的段落。
-4. 選擇調性、版型、輸出類型、1K／2K／4K。Banner 可選 16:9 或 21:9。
+3. 按「免費規劃套圖」。修改五種用途、標題、內文與畫面方向；舊文案可按「補齊 5 種用途」，保留已編輯內容。
+4. 選擇調性、版型、輸出類型、1K／2K／4K，查看免費套圖預覽。Banner 可選 16:9 或 21:9。
 5. 逐張預覽。下載 ZIP，或保存在商品列表。來源照片與商品資料也可同步至 Supabase。
 
 ZIP 內有 `source/` 原圖、`outputs/` 最終素材、`copy.txt` 完整文案、`manifest.json` 生成紀錄，以及可直接開啟的 `detail-page.html`。真實生圖另外保留 `raw-ai/` 模型原始圖片，不只保留最終排版。
+
+免費模式使用原圖、局部裁切與本機繪圖。只有內建範例會使用其既有情境照片；上傳圖片不會被換成其他商品。免費輸出預設留在瀏覽器，需同步時可手動按「同步商品到 Supabase」。詳見 [套圖 v2 說明](docs/STORYBOARD-V2.md)。
 
 ## 真實模型
 
@@ -66,7 +68,7 @@ MONO_GEMINI_API_KEY=your_gemini_developer_key
 MONO_LIVE_ACCESS_CODE=your_random_access_code_at_least_16_characters
 ```
 
-重啟後端，在 App「模型與連線」選真實模型，填入工作室連線代碼。此代碼不是 Google API Key。Google 金鑰只存在後端。供應商失敗時會顯示錯誤，**不會偷偷改用示範結果**。
+重啟後端，在 App「模型與連線」選真實模型，填入工作室連線代碼。此代碼不是 Google API Key。Google 金鑰只存在後端。每次付費文案／生成前都需勾選同意；不想付費時可選「免費規劃」或「免費預覽並下載」。供應商失敗時會顯示錯誤，**不會偷偷改用示範結果**。
 
 完整 request／response、支援比例與官方來源見 [MODEL-CONTRACTS.md](docs/MODEL-CONTRACTS.md)。
 
@@ -74,14 +76,18 @@ MONO_LIVE_ACCESS_CODE=your_random_access_code_at_least_16_characters
 
 ```sh
 npm run build
-npm test -- tests/backend.test.ts
+npm test
 npm run test:e2e
-npm run test:report
+npm run test:preview
+npm run test:layout-report
 ```
 
 E2E 使用真實瀏覽器與本機 HTTP API。已安裝 Chrome 時可直接使用；其他環境執行 `npx playwright install chromium`。自動化測試使用獨立瀏覽器資料，不讀取日常 Chrome profile。
 
+預設 E2E 後端強制 `MONO_DISABLE_LIVE=1`，即使本機設定了金鑰也會在呼叫前拒絕。新版套圖測試另封鎖所有外部請求。`tests/live.e2e.spec.ts` 的付費案例預設跳過，只有明確授權並設定 `E2E_ALLOW_PAID=1` 才能執行；本輪未啟用。
+
 - [HTML 測試報告](public/report/index.html)：逐案截圖、原圖與成品對照、尺寸、下載檔、失敗發現與建議。
+- [套圖 v2 修正對照](public/report/layout-v2/index.html)：三類商品、21 張免費圖片、五種用途、來源標示與防止誤付費測試。
 - `artifacts/e2e/`：當次測試的完整證據與 ZIP；由測試重建。
 - `public/report/`：可部署、可離線查看的報告副本與全部附件。
 - [AI 範例來源紀錄](docs/sample-provenance.json)：7 次開發期圖片生成的完整 prompts、參考關係、尺寸與檔案雜湊。
@@ -125,6 +131,7 @@ VITE_POSTHOG_HOST=https://us.i.posthog.com
 
 ```text
 src/                         前端、Pitaya 元件、瀏覽器組版與下載
+shared/                      前後端共用的免費文案規劃
 server/                      本機 API 與檔案持久化
 supabase/functions/_shared/  兩個環境共用的 schema、provider 與處理邏輯
 supabase/functions/mono-api/ Supabase 部署入口

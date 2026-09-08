@@ -21,6 +21,13 @@ jobs:
         env:
           CI: 'true'
           VITE_ANALYTICS_DISABLED: '1'
+      - run: npm run test:preview
+        env:
+          CI: 'true'
+          VITE_ANALYTICS_DISABLED: '1'
+      - name: Build free layout review
+        if: always()
+        run: npm run test:layout-report
       - name: Build evidence report
         if: always()
         run: npm run test:report
@@ -33,5 +40,6 @@ jobs:
             artifacts/e2e/
             artifacts/playwright-results.json
             artifacts/playwright-html/
+            artifacts/layout-v2/
             public/report/
           retention-days: 7

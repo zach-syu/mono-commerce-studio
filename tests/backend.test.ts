@@ -14,11 +14,22 @@ const png='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAA
 const env={MONO_LIVE_ACCESS_CODE:code,VERTEX_API_KEY:'must-never-leak',VERTEX_ACCESS_TOKEN:'server-token',GOOGLE_CLOUD_PROJECT:'test-project'};
 const operation=`projects/test-project/locations/us-central1/publishers/google/models/${MODELS.video}/operations/abc`;
 function req(path:string,body?:unknown, options:{token?:string;code?:string;method?:string;origin?:string}={}) {
+  if(body&&typeof body==='object'&&!Array.isArray(body)&&(path==='/image'||path==='/video'||(body as Record<string,unknown>).mode==='live'))body={allowPaid:true,...body};
   return new Request(`http://localhost/api${path}`,{method:options.method || (body===undefined?'GET':'POST'),headers:{'content-type':'application/json','x-workspace-token':options.token??token,...(options.code?{'x-mono-access-code':options.code}:{}),...(options.origin?{origin:options.origin}:{})},...(body===undefined?{}:{body:JSON.stringify(body)})});
 }
 function setup(fetcher?:typeof fetch,config=env){const store=new MemoryStore();return{store,handler:createHandler({env:config,store,fetcher})};}
 async function json(response:Response){return {status:response.status,...await response.json()};}
 describe('portable backend contracts',()=>{
+  it('blocks paid requests in a no-cost environment even when keys and consent exist',async()=>{
+    const fetcher=vi.fn();const {handler}=setup(fetcher as typeof fetch,{...env,MONO_DISABLE_LIVE:'1'} as typeof env);
+    const result=await json(await handler(req('/copy',{product:'Tea',mode:'live',allowPaid:true},{code})));
+    expect(result.status).toBe(403);expect(result.error.code).toBe('PAID_CALLS_DISABLED');expect(fetcher).not.toHaveBeenCalled();
+  });
+  it('requires explicit billing confirmation before using a valid model access code',async()=>{
+    const fetcher=vi.fn();const {handler}=setup(fetcher as typeof fetch);
+    const result=await json(await handler(req('/copy',{product:'Tea',mode:'live',allowPaid:false},{code})));
+    expect(result.status).toBe(400);expect(result.error.code).toBe('PAID_CONFIRMATION_REQUIRED');expect(fetcher).not.toHaveBeenCalled();
+  });
   it('bounds shared writes even when callers rotate workspace tokens',async()=>{
     const store=new MemoryStore();const handler=createHandler({env:{MONO_DAILY_REQUEST_LIMIT:'2'},store});
     expect((await handler(req('/copy',{product:'Tea'},{token}))).status).toBe(200);
@@ -48,7 +59,7 @@ describe('portable backend contracts',()=>{
     const saved=await json(await handler(req('/products',{name:'Long facts',description:fact,facts:[fact]})));
     expect(saved.status).toBe(201);expect(saved.product.description).toBe(fact);expect(saved.product.facts[0]).toBe(fact);
     const copy=await json(await handler(req('/copy',{product:{name:'Long facts',description:fact,facts:[fact]},language:'zh-TW',mode:'demo'})));
-    expect(copy.status).toBe(200);expect(copy.sections[3].body).toContain('注意：含酒精與過敏原。');
+    expect(copy.status).toBe(200);expect(copy.sections[4].body).toContain('注意：含酒精與過敏原。');
     const owner=await ownerFromToken(token);const jobs=await store.list('jobs',owner);expect((jobs[0].payload.product as {facts:string[]}).facts[0]).toBe(fact);
   });
   it('reports readiness without exposing credentials or claiming provider verification',async()=>{
@@ -62,15 +73,15 @@ describe('portable backend contracts',()=>{
   it('supports deployed Supabase function route prefixes',async()=>{const {handler}=setup();expect((await handler(new Request('https://test.supabase.co/functions/v1/mono-api/health'))).status).toBe(200);});
   it.each(['zh-TW','en','ja','ko'])('persists honest localized demo copy: %s',async(language)=>{
     const fetcher=vi.fn();const {handler,store}=setup(fetcher as typeof fetch);const result=await json(await handler(req('/copy',{product:{name:'Tea',category:'food',description:'',facts:[]},language,platform:'Shopee',prompt:'',mode:'demo'})));
-    expect(result.status).toBe(200);expect(result.provider).toBe('demo');expect(result.model).toBe('localized-template-v1');expect(result.sections).toHaveLength(4);expect(result.sections.every((s:{selected:boolean})=>s.selected)).toBe(true);expect(fetcher).not.toHaveBeenCalled();expect(store.records.size).toBe(1);
+    expect(result.status).toBe(200);expect(result.provider).toBe('demo');expect(result.model).toBe('local-storyboard-v2');expect(result.sections).toHaveLength(5);expect(result.sections.every((s:{selected:boolean})=>s.selected)).toBe(true);expect(fetcher).not.toHaveBeenCalled();expect(store.records.size).toBe(1);
     if(language==='ja')expect(result.sections[0].title).toMatch(/[ぁ-んァ-ン]/);if(language==='en')expect(result.sections[0].title).toContain('everyday');
   });
   it('rejects unsupported language and client ownership injection',async()=>{
     const {handler}=setup();expect((await handler(req('/copy',{product:'Tea',language:'xx'}))).status).toBe(400);expect((await handler(req('/products',{name:'Tea',owner:'forged'}))).status).toBe(400);
   });
   it('keeps foreign-language demo bodies localized without pretending to translate arbitrary facts',async()=>{
-    const {handler}=setup();const unknown=await json(await handler(req('/copy',{product:{name:'Example',facts:['中文自訂商品事實']},language:'en'})));expect(unknown.sections[3].body).not.toContain('中文');expect(unknown.sections[3].body).toContain('label');
-    const known=await json(await handler(req('/copy',{product:{name:'Tea',facts:['示範包裝。茶葉商品。實際成分、重量與產地待商家補充。']},language:'ja'})));expect(known.sections[3].body).toContain('販売者');expect(known.sections[3].body).not.toContain('待商家');
+    const {handler}=setup();const unknown=await json(await handler(req('/copy',{product:{name:'Example',facts:['中文自訂商品事實']},language:'en'})));expect(unknown.sections[4].body).not.toContain('中文');expect(unknown.sections[4].body).toContain('label');
+    const known=await json(await handler(req('/copy',{product:{name:'Tea',facts:['示範包裝。茶葉商品。實際成分、重量與產地待商家補充。']},language:'ja'})));expect(known.sections[4].body).toContain('販売者');expect(known.sections[4].body).not.toContain('待商家');
     const history=await json(await handler(req('/jobs')));expect(history.jobs.some((j:any)=>j.product?.facts.includes('中文自訂商品事實'))).toBe(true);
   });
   it('rejects empty product names and malformed JSON',async()=>{

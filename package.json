@@ -10,6 +10,8 @@
     "preview": "vite preview --host 127.0.0.1",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "test:preview": "playwright test --config playwright.preview.config.ts",
+    "test:layout-report": "node scripts/build-layout-review.mjs",
     "test:report": "node scripts/build-report.mjs",
     "check": "tsc -b"
   },

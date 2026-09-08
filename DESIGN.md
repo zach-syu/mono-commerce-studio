@@ -38,6 +38,8 @@ Noto Sans TC for brand, headings, and body, matching PitayaLayout. The app self-
 ## Layout
 Desktop uses a narrow navigation rail, a central editing surface, and a sticky contact-sheet preview. Tablet collapses the rail. Phone stacks preview below controls and keeps actions reachable. Actual process steps use numbers; other items do not. Forms always retain edits when navigating backward.
 
+The artwork now uses a purpose-driven story: hero, benefit modules, original-photo detail collage, lifestyle composition, and specification table. These are different structures, not alternating image placement. Smart matching also derives a restrained accent from the product photo; app chrome remains Pitaya blue. A seven-frame preview is rendered locally before generation. Prepared scene assets are labeled; uploaded photos never borrow another product's scene.
+
 ## Elevation & Depth
 Hairline borders and restrained shadows only for overlays and the preview sheet. No stacking of decorative cards within cards.
 
