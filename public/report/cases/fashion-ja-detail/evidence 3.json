@@ -1,0 +1,333 @@
+{
+  "id": "fashion-ja-detail",
+  "title": "fashion-ja-detail PLAIN 日常休閒鞋 日文 商品詳情完整流程",
+  "kind": "detail",
+  "mode": "demo / local HTTP backend",
+  "checks": [
+    "瀏覽器實際 POST /api/copy，後端回傳 200 與至少 3 段文案。",
+    "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+    "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+    "實際下載並解壓 5 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+    "已編輯文案出現在下載檔；每個已勾選段落各有一張 768 × 1024 詳情圖；輸出語言符合設定。"
+  ],
+  "screenshots": [
+    "01-source.png",
+    "02-copy.png",
+    "03-settings.png",
+    "04-results.png"
+  ],
+  "warnings": [],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "demo",
+      "model": "localized-template-v1"
+    },
+    {
+      "path": "/api/jobs",
+      "method": "POST",
+      "status": 201
+    }
+  ],
+  "downloads": [
+    "bundle.zip",
+    "manifest.json",
+    "copy.txt",
+    "detail-page.html"
+  ],
+  "consoleErrors": [],
+  "startedAt": "2026-09-08T04:44:32.385Z",
+  "category": "fashion",
+  "language": "ja",
+  "manifest": {
+    "version": 1,
+    "createdAt": "2026-09-08T04:44:33.932Z",
+    "product": {
+      "id": "5600e95c-b1e4-42a5-9622-c93582c02ba3",
+      "name": "PLAIN 日常休閒鞋",
+      "category": "fashion",
+      "facts": "示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。",
+      "sourceName": "fashion.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceOrigin": "ai-sample"
+    },
+    "settings": {
+      "platform": "Shopee",
+      "language": "ja",
+      "prompt": "",
+      "tone": "natural",
+      "layout": "split",
+      "resolution": "1K",
+      "outputs": [
+        "main",
+        "detail"
+      ],
+      "bannerRatio": "16:9",
+      "mode": "demo"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "title": "シューズのある毎日",
+        "body": "自分らしい毎日に、お気に入りの一品を。",
+        "selected": true
+      },
+      {
+        "id": "details",
+        "title": "細部まで、じっくりと",
+        "body": "見た目や使う場面から、自分に合う一品を。",
+        "selected": true
+      },
+      {
+        "id": "lifestyle",
+        "title": "いつもの暮らしに",
+        "body": "お気に入りの一品から、毎日を整えてみませんか。",
+        "selected": true
+      },
+      {
+        "id": "specs",
+        "title": "商品について",
+        "body": "オフホワイトとセージグリーンのカジュアルシューズのサンプルです。素材、サイズ、原産地は販売者による確認が必要です。",
+        "selected": true
+      }
+    ],
+    "outputs": [
+      {
+        "id": "889488ae-50dc-441d-be28-1674aac52dcf",
+        "kind": "main",
+        "title": "商品主圖",
+        "width": 1024,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ja; output: main; tone: natural; layout: split; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nPure white background. Entire product fully visible, centered. No props, badges, border or extra text.\nPlanned copy: シューズのある毎日 | 自分らしい毎日に、お気に入りの一品を。\nMerchant instructions: Use a clear, restrained product presentation.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 52,
+        "sourceId": "5600e95c-b1e4-42a5-9622-c93582c02ba3",
+        "copy": null,
+        "bytes": 1488101,
+        "file": "outputs/01-main-1024x1024.png"
+      },
+      {
+        "id": "2f01a3d7-45ad-43d6-b3d0-0396d1669013",
+        "kind": "detail",
+        "title": "シューズのある毎日",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ja; output: detail; tone: natural; layout: split; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: シューズのある毎日 | 自分らしい毎日に、お気に入りの一品を。\nMerchant instructions: Use a clear, restrained product presentation.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 18,
+        "sourceId": "5600e95c-b1e4-42a5-9622-c93582c02ba3",
+        "copy": {
+          "id": "hero",
+          "title": "シューズのある毎日",
+          "body": "自分らしい毎日に、お気に入りの一品を。",
+          "selected": true
+        },
+        "bytes": 311445,
+        "file": "outputs/02-detail-768x1024.png"
+      },
+      {
+        "id": "6e599508-ab02-47e8-9025-81da518a68c0",
+        "kind": "detail",
+        "title": "細部まで、じっくりと",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ja; output: detail; tone: natural; layout: split; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: 細部まで、じっくりと | 見た目や使う場面から、自分に合う一品を。\nMerchant instructions: Use a clear, restrained product presentation.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 17,
+        "sourceId": "5600e95c-b1e4-42a5-9622-c93582c02ba3",
+        "copy": {
+          "id": "details",
+          "title": "細部まで、じっくりと",
+          "body": "見た目や使う場面から、自分に合う一品を。",
+          "selected": true
+        },
+        "bytes": 313206,
+        "file": "outputs/03-detail-768x1024.png"
+      },
+      {
+        "id": "a293528a-0208-44a1-aaec-fcade6ab8739",
+        "kind": "detail",
+        "title": "いつもの暮らしに",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ja; output: detail; tone: natural; layout: split; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: いつもの暮らしに | お気に入りの一品から、毎日を整えてみませんか。\nMerchant instructions: Use a clear, restrained product presentation.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 15,
+        "sourceId": "5600e95c-b1e4-42a5-9622-c93582c02ba3",
+        "copy": {
+          "id": "lifestyle",
+          "title": "いつもの暮らしに",
+          "body": "お気に入りの一品から、毎日を整えてみませんか。",
+          "selected": true
+        },
+        "bytes": 314850,
+        "file": "outputs/04-detail-768x1024.png"
+      },
+      {
+        "id": "4e79feed-2549-41dd-8608-3082f5b1a6cb",
+        "kind": "detail",
+        "title": "商品について",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ja; output: detail; tone: natural; layout: split; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: 商品について | オフホワイトとセージグリーンのカジュアルシューズのサンプルです。素材、サイズ、原産地は販売者による確認が必要です。\nMerchant instructions: Use a clear, restrained product presentation.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 17,
+        "sourceId": "5600e95c-b1e4-42a5-9622-c93582c02ba3",
+        "copy": {
+          "id": "specs",
+          "title": "商品について",
+          "body": "オフホワイトとセージグリーンのカジュアルシューズのサンプルです。素材、サイズ、原産地は販売者による確認が必要です。",
+          "selected": true
+        },
+        "bytes": 328633,
+        "file": "outputs/05-detail-768x1024.png"
+      }
+    ],
+    "notice": "Template composition and animated slideshow. This run made no live model request."
+  },
+  "outputs": [
+    {
+      "id": "889488ae-50dc-441d-be28-1674aac52dcf",
+      "kind": "main",
+      "title": "商品主圖",
+      "width": 1024,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ja; output: main; tone: natural; layout: split; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nPure white background. Entire product fully visible, centered. No props, badges, border or extra text.\nPlanned copy: シューズのある毎日 | 自分らしい毎日に、お気に入りの一品を。\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 52,
+      "sourceId": "5600e95c-b1e4-42a5-9622-c93582c02ba3",
+      "copy": null,
+      "bytes": 1488101,
+      "file": "outputs/01-main-1024x1024.png",
+      "actualWidth": 1024,
+      "actualHeight": 1024,
+      "actualBytes": 1488101
+    },
+    {
+      "id": "2f01a3d7-45ad-43d6-b3d0-0396d1669013",
+      "kind": "detail",
+      "title": "シューズのある毎日",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ja; output: detail; tone: natural; layout: split; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: シューズのある毎日 | 自分らしい毎日に、お気に入りの一品を。\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 18,
+      "sourceId": "5600e95c-b1e4-42a5-9622-c93582c02ba3",
+      "copy": {
+        "id": "hero",
+        "title": "シューズのある毎日",
+        "body": "自分らしい毎日に、お気に入りの一品を。",
+        "selected": true
+      },
+      "bytes": 311445,
+      "file": "outputs/02-detail-768x1024.png",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 311445
+    },
+    {
+      "id": "6e599508-ab02-47e8-9025-81da518a68c0",
+      "kind": "detail",
+      "title": "細部まで、じっくりと",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ja; output: detail; tone: natural; layout: split; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: 細部まで、じっくりと | 見た目や使う場面から、自分に合う一品を。\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 17,
+      "sourceId": "5600e95c-b1e4-42a5-9622-c93582c02ba3",
+      "copy": {
+        "id": "details",
+        "title": "細部まで、じっくりと",
+        "body": "見た目や使う場面から、自分に合う一品を。",
+        "selected": true
+      },
+      "bytes": 313206,
+      "file": "outputs/03-detail-768x1024.png",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 313206
+    },
+    {
+      "id": "a293528a-0208-44a1-aaec-fcade6ab8739",
+      "kind": "detail",
+      "title": "いつもの暮らしに",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ja; output: detail; tone: natural; layout: split; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: いつもの暮らしに | お気に入りの一品から、毎日を整えてみませんか。\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 15,
+      "sourceId": "5600e95c-b1e4-42a5-9622-c93582c02ba3",
+      "copy": {
+        "id": "lifestyle",
+        "title": "いつもの暮らしに",
+        "body": "お気に入りの一品から、毎日を整えてみませんか。",
+        "selected": true
+      },
+      "bytes": 314850,
+      "file": "outputs/04-detail-768x1024.png",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 314850
+    },
+    {
+      "id": "4e79feed-2549-41dd-8608-3082f5b1a6cb",
+      "kind": "detail",
+      "title": "商品について",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ja; output: detail; tone: natural; layout: split; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: 商品について | オフホワイトとセージグリーンのカジュアルシューズのサンプルです。素材、サイズ、原産地は販売者による確認が必要です。\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 17,
+      "sourceId": "5600e95c-b1e4-42a5-9622-c93582c02ba3",
+      "copy": {
+        "id": "specs",
+        "title": "商品について",
+        "body": "オフホワイトとセージグリーンのカジュアルシューズのサンプルです。素材、サイズ、原産地は販売者による確認が必要です。",
+        "selected": true
+      },
+      "bytes": 328633,
+      "file": "outputs/05-detail-768x1024.png",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 328633
+    }
+  ],
+  "source": {
+    "file": "source/original.png",
+    "bytes": 1965060,
+    "sha256": "8c6d954c8e112d6c4ce899c19a400c1f95798f12341e03f7f5decd19607bf151",
+    "width": 1254,
+    "height": 1254
+  },
+  "elapsedMs": 1607,
+  "status": "passed",
+  "error": ""
+}

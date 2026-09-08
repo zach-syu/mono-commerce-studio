@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-08T05:29:47.881Z",
+  "product": {
+    "id": "0f07fb7f-110d-494b-857f-402aa900dfec",
+    "name": "MORI 焙茶",
+    "category": "food",
+    "facts": "示範包裝。茶葉商品。實際成分、重量與產地待商家補充。",
+    "sourceName": "food.png",
+    "sourceWidth": 1254,
+    "sourceHeight": 1254,
+    "sourceOrigin": "ai-sample"
+  },
+  "settings": {
+    "platform": "Amazon",
+    "language": "en",
+    "prompt": "",
+    "tone": "natural",
+    "layout": "smart",
+    "resolution": "1K",
+    "outputs": [
+      "main"
+    ],
+    "bannerRatio": "16:9",
+    "mode": "demo"
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "title": "A little more for your everyday",
+      "body": "Make room for the things that fit your routine.",
+      "selected": true
+    },
+    {
+      "id": "details",
+      "title": "Discover the details",
+      "body": "Explore the look and find the right fit for your day.",
+      "selected": true
+    },
+    {
+      "id": "lifestyle",
+      "title": "Made part of your routine",
+      "body": "Start with one thing you enjoy and make it your own.",
+      "selected": true
+    },
+    {
+      "id": "specs",
+      "title": "Know your product",
+      "body": "Sample tea packaging. Ingredients, net weight, and origin must be supplied by the merchant.",
+      "selected": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "471a1c38-67ab-4020-8264-310aca63beb1",
+      "kind": "main",
+      "title": "商品主圖",
+      "width": 1024,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Product: MORI 焙茶.\nSupplied facts (do not invent additional claims): 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。\nDestination: Amazon; language: en; output: main; tone: natural; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nPure white background. Entire product fully visible, centered. No props, badges, border or extra text.\nPlanned copy: A little more for your everyday | Make room for the things that fit your routine.\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 53,
+      "sourceId": "0f07fb7f-110d-494b-857f-402aa900dfec",
+      "copy": null,
+      "bytes": 1325960,
+      "file": "outputs/01-main-1024x1024.png"
+    }
+  ],
+  "notice": "Template composition and animated slideshow. This run made no live model request."
+}

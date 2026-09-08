@@ -1,0 +1,158 @@
+{
+  "id": "product-library",
+  "title": "product-library 商品列表儲存、重載、搜尋與重新開啟",
+  "kind": "library",
+  "mode": "demo / local HTTP backend",
+  "checks": [
+    "瀏覽器實際 POST /api/copy，後端回傳 200 與至少 3 段文案。",
+    "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+    "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+    "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+    "商品專案可保存、頁面重載後可搜尋並重新開啟，素材 Blob 仍可下載。此項是本機 IndexedDB，非遠端 Supabase 持久化。"
+  ],
+  "screenshots": [
+    "01-source.png",
+    "02-copy.png",
+    "03-settings.png",
+    "04-results.png",
+    "05-library.png",
+    "06-restored.png"
+  ],
+  "warnings": [],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "demo",
+      "model": "localized-template-v1"
+    },
+    {
+      "path": "/api/jobs",
+      "method": "POST",
+      "status": 201
+    },
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "downloads": [
+    "bundle.zip",
+    "manifest.json",
+    "copy.txt"
+  ],
+  "consoleErrors": [],
+  "startedAt": "2026-09-08T05:33:20.341Z",
+  "category": "food",
+  "language": "en",
+  "manifest": {
+    "version": 1,
+    "createdAt": "2026-09-08T05:33:22.095Z",
+    "product": {
+      "id": "964a2e20-c8c8-445c-b198-7255b45043b0",
+      "name": "MORI 焙茶",
+      "category": "food",
+      "facts": "示範包裝。茶葉商品。實際成分、重量與產地待商家補充。",
+      "sourceName": "food.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceOrigin": "ai-sample"
+    },
+    "settings": {
+      "platform": "Shopee",
+      "language": "en",
+      "prompt": "",
+      "tone": "natural",
+      "layout": "smart",
+      "resolution": "1K",
+      "outputs": [
+        "main"
+      ],
+      "bannerRatio": "16:9",
+      "mode": "demo"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "title": "A little more for your everyday",
+        "body": "Make room for the things that fit your routine.",
+        "selected": true
+      },
+      {
+        "id": "details",
+        "title": "Discover the details",
+        "body": "Explore the look and find the right fit for your day.",
+        "selected": true
+      },
+      {
+        "id": "lifestyle",
+        "title": "Made part of your routine",
+        "body": "Start with one thing you enjoy and make it your own.",
+        "selected": true
+      },
+      {
+        "id": "specs",
+        "title": "Know your product",
+        "body": "Sample tea packaging. Ingredients, net weight, and origin must be supplied by the merchant.",
+        "selected": true
+      }
+    ],
+    "outputs": [
+      {
+        "id": "1082af8b-3092-449d-b65e-a6ecb27ebd15",
+        "kind": "main",
+        "title": "商品主圖",
+        "width": 1024,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nUse a pure white seamless background. No props.\nReference identity, for preservation only: MORI 焙茶. Supplied facts, never to be printed as new text: 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 49,
+        "sourceId": "964a2e20-c8c8-445c-b198-7255b45043b0",
+        "copy": null,
+        "bytes": 1325960,
+        "file": "outputs/01-main-1024x1024.png"
+      }
+    ],
+    "notice": "Template composition and animated slideshow. This run made no live model request."
+  },
+  "outputs": [
+    {
+      "id": "1082af8b-3092-449d-b65e-a6ecb27ebd15",
+      "kind": "main",
+      "title": "商品主圖",
+      "width": 1024,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nUse a pure white seamless background. No props.\nReference identity, for preservation only: MORI 焙茶. Supplied facts, never to be printed as new text: 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 49,
+      "sourceId": "964a2e20-c8c8-445c-b198-7255b45043b0",
+      "copy": null,
+      "bytes": 1325960,
+      "file": "outputs/01-main-1024x1024.png",
+      "actualWidth": 1024,
+      "actualHeight": 1024,
+      "actualBytes": 1325960
+    }
+  ],
+  "source": {
+    "file": "source/original.png",
+    "bytes": 1677406,
+    "sha256": "fa0d83377a244620c80432172a3c0e085baf269878cc14819d2a1d0f47a10f9c",
+    "width": 1254,
+    "height": 1254
+  },
+  "elapsedMs": 1859,
+  "status": "passed",
+  "error": ""
+}

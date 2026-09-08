@@ -1,0 +1,240 @@
+{
+  "id": "before-live-food-en-banner",
+  "title": "修正前 · live-food-en-banner 真實 Gemini UI：MORI 焙茶 en banner",
+  "startedAt": "2026-09-08T04:44:25.974Z",
+  "mode": "real Gemini API via local HTTP backend",
+  "runType": "live-before-fix",
+  "kind": "banner",
+  "checks": [
+    "從 App 實際操作 Gemini 3.7 Flash 文案規劃，HTTP 200，非 Mock 或預設文案。",
+    "App 原生 ZIP 的 raw-ai 原圖雜湊與截取的模型 HTTP 回應相同；模型原生尺寸與最終組版尺寸分開記錄。",
+    "下載與解壓 1 張最終 PNG，核對像素、檔案大小與原圖雜湊。每張另保存模型原始回傳圖與實際模型 ID。",
+    "真實模型成功後沒有自動降級為示範結果；文案與圖片供應商、模型均由 HTTP 回應核對。"
+  ],
+  "screenshots": [
+    "01-source.png",
+    "02-copy.png",
+    "03-settings.png",
+    "04-results.png"
+  ],
+  "warnings": [
+    "模型加入額外標題與未確認英文描述。照片區比例不合，造成多餘留白。"
+  ],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "gemini-api",
+      "model": "gemini-3.7-flash",
+      "durationMs": 7896
+    },
+    {
+      "path": "/api/image",
+      "method": "POST",
+      "status": 200,
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 11303
+    }
+  ],
+  "downloads": [
+    "bundle.zip",
+    "manifest.json",
+    "copy.txt"
+  ],
+  "outputs": [
+    {
+      "id": "b8be47f6-1ba7-4ccc-8a13-745a9f4e3e87",
+      "kind": "banner",
+      "title": "Banner",
+      "width": 1024,
+      "height": 576,
+      "mimeType": "image/png",
+      "prompt": "Product: MORI 焙茶.\nSupplied facts (do not invent additional claims): 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。\nDestination: Amazon; language: en; output: banner; tone: natural; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: Product Overview | MORI Roasted Tea (焙茶) is a tea product presented in sample packaging.\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 12134,
+      "sourceId": "847e282b-ccc8-4512-8616-223b3e485fab",
+      "copy": {
+        "id": "section-1",
+        "title": "Product Overview",
+        "body": "MORI Roasted Tea (焙茶) is a tea product presented in sample packaging.",
+        "selected": true
+      },
+      "nativeWidth": 1376,
+      "nativeHeight": 768,
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+      "bytes": 262253,
+      "rawGenerated": {
+        "bytes": 618399,
+        "mimeType": "image/jpeg",
+        "width": 1376,
+        "height": 768
+      },
+      "file": "outputs/01-banner-1024x576.png",
+      "rawFile": "raw-ai/01-banner.jpg",
+      "actualWidth": 1024,
+      "actualHeight": 576,
+      "actualBytes": 262253
+    }
+  ],
+  "rawGeneratedAssets": [
+    {
+      "file": "model-responses/01-model-image.jpg",
+      "width": 1376,
+      "height": 768,
+      "bytes": 618399,
+      "sha256": "75a620c8d9182be016d346195531b08a5971560b4bc60eeed014050ac2997bff",
+      "mimeType": "image/jpeg",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 11303,
+      "prompt": "Product: MORI 焙茶.\nSupplied facts (do not invent additional claims): 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。\nDestination: Amazon; language: en; output: banner; tone: natural; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: Product Overview | MORI Roasted Tea (焙茶) is a tea product presented in sample packaging.\nMerchant instructions: Use a clear, restrained product presentation.",
+      "requestedAspectRatio": "16:9",
+      "requestedImageSize": "1K",
+      "assetId": "55b214de-0637-44bf-972c-bf4d5d4989a5",
+      "jobId": "60b5b3ab-64d7-439c-b897-6a8c8aa49ab9"
+    }
+  ],
+  "consoleErrors": [],
+  "category": "food",
+  "language": "en",
+  "copyResult": {
+    "sections": [
+      {
+        "id": "section-1",
+        "title": "Product Overview",
+        "body": "MORI Roasted Tea (焙茶) is a tea product presented in sample packaging.",
+        "selected": true
+      },
+      {
+        "id": "section-2",
+        "title": "Ingredients and Origin",
+        "body": "Specific ingredients, origin, and net weight are to be provided by the seller. Please check the product label for exact details.",
+        "selected": true
+      },
+      {
+        "id": "section-3",
+        "title": "Category Details",
+        "body": "This item belongs to the food and tea leaves category.",
+        "selected": true
+      },
+      {
+        "id": "section-4",
+        "title": "Packaging Information",
+        "body": "The current visual is a demonstration package. Refer to official seller disclosures for full product specifications.",
+        "selected": true
+      }
+    ],
+    "provider": "gemini-api",
+    "model": "gemini-3.7-flash",
+    "durationMs": 7896,
+    "language": "en"
+  },
+  "manifest": {
+    "version": 1,
+    "createdAt": "2026-09-08T04:44:49.527Z",
+    "product": {
+      "id": "847e282b-ccc8-4512-8616-223b3e485fab",
+      "name": "MORI 焙茶",
+      "category": "food",
+      "facts": "示範包裝。茶葉商品。實際成分、重量與產地待商家補充。",
+      "sourceName": "food.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceOrigin": "ai-sample"
+    },
+    "settings": {
+      "platform": "Amazon",
+      "language": "en",
+      "prompt": "",
+      "tone": "natural",
+      "layout": "smart",
+      "resolution": "1K",
+      "outputs": [
+        "banner"
+      ],
+      "bannerRatio": "16:9",
+      "mode": "live"
+    },
+    "sections": [
+      {
+        "id": "section-1",
+        "title": "Product Overview",
+        "body": "MORI Roasted Tea (焙茶) is a tea product presented in sample packaging.",
+        "selected": true
+      },
+      {
+        "id": "section-2",
+        "title": "Ingredients and Origin",
+        "body": "Specific ingredients, origin, and net weight are to be provided by the seller. Please check the product label for exact details.",
+        "selected": false
+      },
+      {
+        "id": "section-3",
+        "title": "Category Details",
+        "body": "This item belongs to the food and tea leaves category.",
+        "selected": false
+      },
+      {
+        "id": "section-4",
+        "title": "Packaging Information",
+        "body": "The current visual is a demonstration package. Refer to official seller disclosures for full product specifications.",
+        "selected": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "b8be47f6-1ba7-4ccc-8a13-745a9f4e3e87",
+        "kind": "banner",
+        "title": "Banner",
+        "width": 1024,
+        "height": 576,
+        "mimeType": "image/png",
+        "prompt": "Product: MORI 焙茶.\nSupplied facts (do not invent additional claims): 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。\nDestination: Amazon; language: en; output: banner; tone: natural; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: Product Overview | MORI Roasted Tea (焙茶) is a tea product presented in sample packaging.\nMerchant instructions: Use a clear, restrained product presentation.",
+        "provider": "gemini-api",
+        "model": "gemini-3.1-flash-image",
+        "durationMs": 12134,
+        "sourceId": "847e282b-ccc8-4512-8616-223b3e485fab",
+        "copy": {
+          "id": "section-1",
+          "title": "Product Overview",
+          "body": "MORI Roasted Tea (焙茶) is a tea product presented in sample packaging.",
+          "selected": true
+        },
+        "nativeWidth": 1376,
+        "nativeHeight": 768,
+        "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+        "bytes": 262253,
+        "rawGenerated": {
+          "bytes": 618399,
+          "mimeType": "image/jpeg",
+          "width": 1376,
+          "height": 768
+        },
+        "file": "outputs/01-banner-1024x576.png",
+        "rawFile": "raw-ai/01-banner.jpg"
+      }
+    ],
+    "notice": "See per-output provider and model. Raw model photos are in raw-ai; outputs are final compositions. Native and final dimensions are recorded separately. Review product fidelity and claims before use."
+  },
+  "source": {
+    "file": "source/original.png",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 1677406,
+    "sha256": "fa0d83377a244620c80432172a3c0e085baf269878cc14819d2a1d0f47a10f9c"
+  },
+  "elapsedMs": 23614,
+  "status": "needs-review",
+  "error": "",
+  "historical": true,
+  "processStatus": "passed",
+  "visualStatus": "needs-review"
+}

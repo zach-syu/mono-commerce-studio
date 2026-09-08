@@ -1,0 +1,26 @@
+{
+  "id": "source-required",
+  "title": "source-required 未上傳圖片不能前往規劃",
+  "kind": "validation",
+  "mode": "demo / local HTTP backend",
+  "checks": [
+    "缺少商品圖片時流程停留在資料步驟並說明原因。"
+  ],
+  "screenshots": [
+    "01-required.png"
+  ],
+  "warnings": [],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "downloads": [],
+  "consoleErrors": [],
+  "startedAt": "2026-09-08T05:33:28.091Z",
+  "elapsedMs": 373,
+  "status": "passed",
+  "error": ""
+}

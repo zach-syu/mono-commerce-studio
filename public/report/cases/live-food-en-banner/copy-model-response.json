@@ -1,0 +1,32 @@
+{
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Product Overview",
+      "body": "MORI Roasted Tea (焙茶) is a packaged tea product. Please note that the current imagery represents demo packaging.",
+      "selected": true
+    },
+    {
+      "id": "section-2",
+      "title": "Ingredients & Origin",
+      "body": "Actual ingredients, net weight, and country of origin are pending merchant confirmation. Please check the product label for finalized details.",
+      "selected": true
+    },
+    {
+      "id": "section-3",
+      "title": "Packaging Notice",
+      "body": "This listing displays demonstration packaging for MORI tea leaves. Full product specifications will be provided directly by the seller.",
+      "selected": true
+    },
+    {
+      "id": "section-4",
+      "title": "Important Notes",
+      "body": "Please check the label and packaging upon arrival for exact product origin, weight, and ingredient specifications.",
+      "selected": true
+    }
+  ],
+  "provider": "gemini-api",
+  "model": "gemini-3.7-flash",
+  "durationMs": 3194,
+  "language": "en"
+}

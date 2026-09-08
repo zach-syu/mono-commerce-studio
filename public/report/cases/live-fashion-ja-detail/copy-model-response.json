@@ -1,0 +1,32 @@
+{
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "商品概要",
+      "body": "PLAIN 日常休閒鞋は、普段使いに適したデモ用カジュアルスニーカーです。",
+      "selected": true
+    },
+    {
+      "id": "section-2",
+      "title": "カラーと配色",
+      "body": "オフホワイトとセージグリーンの上品なツートーン配色が特徴です。",
+      "selected": true
+    },
+    {
+      "id": "section-3",
+      "title": "製品仕様について",
+      "body": "素材、サイズ展開、原産地等の詳細情報につきましては、販売元による追加更新または製品ラベルをご確認ください。",
+      "selected": true
+    },
+    {
+      "id": "section-4",
+      "title": "注意事項",
+      "body": "本製品はデモ用商品情報となります。詳細なスペックは製品表示をご確認ください。",
+      "selected": true
+    }
+  ],
+  "provider": "gemini-api",
+  "model": "gemini-3.7-flash",
+  "durationMs": 3591,
+  "language": "ja"
+}

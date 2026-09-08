@@ -1,0 +1,333 @@
+{
+  "id": "fashion-en-detail",
+  "title": "fashion-en-detail PLAIN 日常休閒鞋 英文 商品詳情完整流程",
+  "kind": "detail",
+  "mode": "demo / local HTTP backend",
+  "checks": [
+    "瀏覽器實際 POST /api/copy，後端回傳 200 與至少 3 段文案。",
+    "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+    "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+    "實際下載並解壓 5 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+    "已編輯文案出現在下載檔；每個已勾選段落各有一張 768 × 1024 詳情圖；輸出語言符合設定。"
+  ],
+  "screenshots": [
+    "01-source.png",
+    "02-copy.png",
+    "03-settings.png",
+    "04-results.png"
+  ],
+  "warnings": [],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "demo",
+      "model": "localized-template-v1"
+    },
+    {
+      "path": "/api/jobs",
+      "method": "POST",
+      "status": 201
+    }
+  ],
+  "downloads": [
+    "bundle.zip",
+    "manifest.json",
+    "copy.txt",
+    "detail-page.html"
+  ],
+  "consoleErrors": [],
+  "startedAt": "2026-09-08T05:33:03.656Z",
+  "category": "fashion",
+  "language": "en",
+  "manifest": {
+    "version": 1,
+    "createdAt": "2026-09-08T05:33:05.163Z",
+    "product": {
+      "id": "af03c97c-5b30-473a-abd5-339ac739800d",
+      "name": "PLAIN 日常休閒鞋",
+      "category": "fashion",
+      "facts": "示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。",
+      "sourceName": "fashion.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceOrigin": "ai-sample"
+    },
+    "settings": {
+      "platform": "Shopee",
+      "language": "en",
+      "prompt": "",
+      "tone": "natural",
+      "layout": "split",
+      "resolution": "1K",
+      "outputs": [
+        "main",
+        "detail"
+      ],
+      "bannerRatio": "16:9",
+      "mode": "demo"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "title": "FASHION — an everyday choice",
+        "body": "A considered choice, with room for your own routine.",
+        "selected": true
+      },
+      {
+        "id": "details",
+        "title": "Discover the details",
+        "body": "Explore the look and find the right fit for your day.",
+        "selected": true
+      },
+      {
+        "id": "lifestyle",
+        "title": "Made part of your routine",
+        "body": "Start with one thing you enjoy and make it your own.",
+        "selected": true
+      },
+      {
+        "id": "specs",
+        "title": "Know your product",
+        "body": "Sample casual sneakers in off-white and sage green. Materials, sizes, and origin must be supplied by the merchant.",
+        "selected": true
+      }
+    ],
+    "outputs": [
+      {
+        "id": "27cf4cfa-fae9-44f0-815e-4e9aae166081",
+        "kind": "main",
+        "title": "商品主圖",
+        "width": 1024,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nUse a pure white seamless background. No props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 52,
+        "sourceId": "af03c97c-5b30-473a-abd5-339ac739800d",
+        "copy": null,
+        "bytes": 1488101,
+        "file": "outputs/01-main-1024x1024.png"
+      },
+      {
+        "id": "83f36b4d-2532-4ec4-ba3f-e0f09dd58fd3",
+        "kind": "detail",
+        "title": "FASHION — an everyday choice",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 19,
+        "sourceId": "af03c97c-5b30-473a-abd5-339ac739800d",
+        "copy": {
+          "id": "hero",
+          "title": "FASHION — an everyday choice",
+          "body": "A considered choice, with room for your own routine.",
+          "selected": true
+        },
+        "bytes": 315008,
+        "file": "outputs/02-detail-768x1024.png"
+      },
+      {
+        "id": "ee161d15-0128-4bf4-b23b-4b8b4e8b6e81",
+        "kind": "detail",
+        "title": "Discover the details",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 19,
+        "sourceId": "af03c97c-5b30-473a-abd5-339ac739800d",
+        "copy": {
+          "id": "details",
+          "title": "Discover the details",
+          "body": "Explore the look and find the right fit for your day.",
+          "selected": true
+        },
+        "bytes": 310536,
+        "file": "outputs/03-detail-768x1024.png"
+      },
+      {
+        "id": "7a3b23fe-4b6c-4f5b-8164-c60eed3ae0a8",
+        "kind": "detail",
+        "title": "Made part of your routine",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 15,
+        "sourceId": "af03c97c-5b30-473a-abd5-339ac739800d",
+        "copy": {
+          "id": "lifestyle",
+          "title": "Made part of your routine",
+          "body": "Start with one thing you enjoy and make it your own.",
+          "selected": true
+        },
+        "bytes": 313680,
+        "file": "outputs/04-detail-768x1024.png"
+      },
+      {
+        "id": "6d8d2de4-995b-4826-9d89-b4b024832e81",
+        "kind": "detail",
+        "title": "Know your product",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 15,
+        "sourceId": "af03c97c-5b30-473a-abd5-339ac739800d",
+        "copy": {
+          "id": "specs",
+          "title": "Know your product",
+          "body": "Sample casual sneakers in off-white and sage green. Materials, sizes, and origin must be supplied by the merchant.",
+          "selected": true
+        },
+        "bytes": 326177,
+        "file": "outputs/05-detail-768x1024.png"
+      }
+    ],
+    "notice": "Template composition and animated slideshow. This run made no live model request."
+  },
+  "outputs": [
+    {
+      "id": "27cf4cfa-fae9-44f0-815e-4e9aae166081",
+      "kind": "main",
+      "title": "商品主圖",
+      "width": 1024,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nUse a pure white seamless background. No props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 52,
+      "sourceId": "af03c97c-5b30-473a-abd5-339ac739800d",
+      "copy": null,
+      "bytes": 1488101,
+      "file": "outputs/01-main-1024x1024.png",
+      "actualWidth": 1024,
+      "actualHeight": 1024,
+      "actualBytes": 1488101
+    },
+    {
+      "id": "83f36b4d-2532-4ec4-ba3f-e0f09dd58fd3",
+      "kind": "detail",
+      "title": "FASHION — an everyday choice",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 19,
+      "sourceId": "af03c97c-5b30-473a-abd5-339ac739800d",
+      "copy": {
+        "id": "hero",
+        "title": "FASHION — an everyday choice",
+        "body": "A considered choice, with room for your own routine.",
+        "selected": true
+      },
+      "bytes": 315008,
+      "file": "outputs/02-detail-768x1024.png",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 315008
+    },
+    {
+      "id": "ee161d15-0128-4bf4-b23b-4b8b4e8b6e81",
+      "kind": "detail",
+      "title": "Discover the details",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 19,
+      "sourceId": "af03c97c-5b30-473a-abd5-339ac739800d",
+      "copy": {
+        "id": "details",
+        "title": "Discover the details",
+        "body": "Explore the look and find the right fit for your day.",
+        "selected": true
+      },
+      "bytes": 310536,
+      "file": "outputs/03-detail-768x1024.png",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 310536
+    },
+    {
+      "id": "7a3b23fe-4b6c-4f5b-8164-c60eed3ae0a8",
+      "kind": "detail",
+      "title": "Made part of your routine",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 15,
+      "sourceId": "af03c97c-5b30-473a-abd5-339ac739800d",
+      "copy": {
+        "id": "lifestyle",
+        "title": "Made part of your routine",
+        "body": "Start with one thing you enjoy and make it your own.",
+        "selected": true
+      },
+      "bytes": 313680,
+      "file": "outputs/04-detail-768x1024.png",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 313680
+    },
+    {
+      "id": "6d8d2de4-995b-4826-9d89-b4b024832e81",
+      "kind": "detail",
+      "title": "Know your product",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 15,
+      "sourceId": "af03c97c-5b30-473a-abd5-339ac739800d",
+      "copy": {
+        "id": "specs",
+        "title": "Know your product",
+        "body": "Sample casual sneakers in off-white and sage green. Materials, sizes, and origin must be supplied by the merchant.",
+        "selected": true
+      },
+      "bytes": 326177,
+      "file": "outputs/05-detail-768x1024.png",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 326177
+    }
+  ],
+  "source": {
+    "file": "source/original.png",
+    "bytes": 1965060,
+    "sha256": "8c6d954c8e112d6c4ce899c19a400c1f95798f12341e03f7f5decd19607bf151",
+    "width": 1254,
+    "height": 1254
+  },
+  "elapsedMs": 1571,
+  "status": "passed",
+  "error": ""
+}

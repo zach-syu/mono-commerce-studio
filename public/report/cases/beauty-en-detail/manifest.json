@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-08T05:33:01.744Z",
+  "product": {
+    "id": "eff79412-2b96-4a6f-8329-38030f83b127",
+    "name": "SORA 日常精華",
+    "category": "beauty",
+    "facts": "示範精華液包裝。實際成分、容量與使用方式待商家補充。",
+    "sourceName": "beauty.png",
+    "sourceWidth": 1254,
+    "sourceHeight": 1254,
+    "sourceOrigin": "ai-sample"
+  },
+  "settings": {
+    "platform": "Shopee",
+    "language": "en",
+    "prompt": "",
+    "tone": "studio",
+    "layout": "center",
+    "resolution": "1K",
+    "outputs": [
+      "main",
+      "detail"
+    ],
+    "bannerRatio": "16:9",
+    "mode": "demo"
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "title": "BEAUTY — an everyday choice",
+      "body": "A considered choice, with room for your own routine.",
+      "selected": true
+    },
+    {
+      "id": "details",
+      "title": "Discover the details",
+      "body": "Explore the look and find the right fit for your day.",
+      "selected": true
+    },
+    {
+      "id": "lifestyle",
+      "title": "Made part of your routine",
+      "body": "Start with one thing you enjoy and make it your own.",
+      "selected": true
+    },
+    {
+      "id": "specs",
+      "title": "Know your product",
+      "body": "Sample serum packaging. Ingredients, volume, and directions must be supplied by the merchant.",
+      "selected": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "1f11da9c-6022-4e73-91fe-ec0d3862c1e1",
+      "kind": "main",
+      "title": "商品主圖",
+      "width": 1024,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nUse a pure white seamless background. No props.\nReference identity, for preservation only: SORA 日常精華. Supplied facts, never to be printed as new text: 示範精華液包裝。實際成分、容量與使用方式待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 52,
+      "sourceId": "eff79412-2b96-4a6f-8329-38030f83b127",
+      "copy": null,
+      "bytes": 1254812,
+      "file": "outputs/01-main-1024x1024.png"
+    },
+    {
+      "id": "11bb2379-a6b3-4947-8537-bc779970d1d0",
+      "kind": "detail",
+      "title": "BEAUTY — an everyday choice",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: controlled softbox lighting, clean cool off-white seamless studio backdrop. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: SORA 日常精華. Supplied facts, never to be printed as new text: 示範精華液包裝。實際成分、容量與使用方式待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 21,
+      "sourceId": "eff79412-2b96-4a6f-8329-38030f83b127",
+      "copy": {
+        "id": "hero",
+        "title": "BEAUTY — an everyday choice",
+        "body": "A considered choice, with room for your own routine.",
+        "selected": true
+      },
+      "bytes": 455024,
+      "file": "outputs/02-detail-768x1024.png"
+    },
+    {
+      "id": "edc57975-9e69-4734-a32c-c0e0bc561154",
+      "kind": "detail",
+      "title": "Discover the details",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: controlled softbox lighting, clean cool off-white seamless studio backdrop. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: SORA 日常精華. Supplied facts, never to be printed as new text: 示範精華液包裝。實際成分、容量與使用方式待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 18,
+      "sourceId": "eff79412-2b96-4a6f-8329-38030f83b127",
+      "copy": {
+        "id": "details",
+        "title": "Discover the details",
+        "body": "Explore the look and find the right fit for your day.",
+        "selected": true
+      },
+      "bytes": 452481,
+      "file": "outputs/03-detail-768x1024.png"
+    },
+    {
+      "id": "b0d7c528-92b6-41d1-a6c8-2701e3f21963",
+      "kind": "detail",
+      "title": "Made part of your routine",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: controlled softbox lighting, clean cool off-white seamless studio backdrop. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: SORA 日常精華. Supplied facts, never to be printed as new text: 示範精華液包裝。實際成分、容量與使用方式待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 15,
+      "sourceId": "eff79412-2b96-4a6f-8329-38030f83b127",
+      "copy": {
+        "id": "lifestyle",
+        "title": "Made part of your routine",
+        "body": "Start with one thing you enjoy and make it your own.",
+        "selected": true
+      },
+      "bytes": 454349,
+      "file": "outputs/04-detail-768x1024.png"
+    },
+    {
+      "id": "c0c316d5-2192-47f2-babf-06686205c632",
+      "kind": "detail",
+      "title": "Know your product",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: controlled softbox lighting, clean cool off-white seamless studio backdrop. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: SORA 日常精華. Supplied facts, never to be printed as new text: 示範精華液包裝。實際成分、容量與使用方式待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 17,
+      "sourceId": "eff79412-2b96-4a6f-8329-38030f83b127",
+      "copy": {
+        "id": "specs",
+        "title": "Know your product",
+        "body": "Sample serum packaging. Ingredients, volume, and directions must be supplied by the merchant.",
+        "selected": true
+      },
+      "bytes": 459591,
+      "file": "outputs/05-detail-768x1024.png"
+    }
+  ],
+  "notice": "Template composition and animated slideshow. This run made no live model request."
+}

@@ -1,0 +1,32 @@
+{
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Product Overview",
+      "body": "SORA Daily Serum comes in sample packaging. Please refer to the merchant for complete product details.",
+      "selected": true
+    },
+    {
+      "id": "section-2",
+      "title": "Ingredients",
+      "body": "Actual ingredients are to be supplemented by the merchant. Please check the product label for exact formulation.",
+      "selected": true
+    },
+    {
+      "id": "section-3",
+      "title": "Volume & Size",
+      "body": "Actual bottle volume and capacity details are pending confirmation from the merchant.",
+      "selected": true
+    },
+    {
+      "id": "section-4",
+      "title": "Usage Instructions",
+      "body": "Application instructions and directions for use are to be provided by the merchant.",
+      "selected": true
+    }
+  ],
+  "provider": "gemini-api",
+  "model": "gemini-3.7-flash",
+  "durationMs": 3829,
+  "language": "en"
+}

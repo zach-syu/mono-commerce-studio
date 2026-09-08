@@ -1,0 +1,37 @@
+name: App verification
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+        env:
+          CI: 'true'
+          VITE_ANALYTICS_DISABLED: '1'
+      - name: Build evidence report
+        if: always()
+        run: npm run test:report
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecommerce-e2e-evidence
+          path: |
+            artifacts/e2e/
+            artifacts/playwright-results.json
+            artifacts/playwright-html/
+            public/report/
+          retention-days: 7

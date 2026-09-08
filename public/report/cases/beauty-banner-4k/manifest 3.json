@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-08T04:44:37.581Z",
+  "product": {
+    "id": "651c4808-1705-420a-9a63-df407bc8778f",
+    "name": "SORA 日常精華",
+    "category": "beauty",
+    "facts": "示範精華液包裝。實際成分、容量與使用方式待商家補充。",
+    "sourceName": "beauty.png",
+    "sourceWidth": 1254,
+    "sourceHeight": 1254,
+    "sourceOrigin": "ai-sample"
+  },
+  "settings": {
+    "platform": "Shopee",
+    "language": "en",
+    "prompt": "",
+    "tone": "studio",
+    "layout": "split",
+    "resolution": "4K",
+    "outputs": [
+      "banner"
+    ],
+    "bannerRatio": "16:9",
+    "mode": "demo"
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "title": "A little more for your everyday",
+      "body": "Make room for the things that fit your routine.",
+      "selected": true
+    },
+    {
+      "id": "details",
+      "title": "Discover the details",
+      "body": "Explore the look and find the right fit for your day.",
+      "selected": true
+    },
+    {
+      "id": "lifestyle",
+      "title": "Made part of your routine",
+      "body": "Start with one thing you enjoy and make it your own.",
+      "selected": true
+    },
+    {
+      "id": "specs",
+      "title": "Know your product",
+      "body": "Sample serum packaging. Ingredients, volume, and directions must be supplied by the merchant.",
+      "selected": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "f3efddc3-f4e7-4fae-a953-aa6499087dfb",
+      "kind": "banner",
+      "title": "Banner",
+      "width": 4096,
+      "height": 2304,
+      "mimeType": "image/png",
+      "prompt": "Product: SORA 日常精華.\nSupplied facts (do not invent additional claims): 示範精華液包裝。實際成分、容量與使用方式待商家補充。\nDestination: Shopee; language: en; output: banner; tone: studio; layout: split; requested resolution: 4K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: A little more for your everyday | Make room for the things that fit your routine.\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 157,
+      "sourceId": "651c4808-1705-420a-9a63-df407bc8778f",
+      "copy": {
+        "id": "hero",
+        "title": "A little more for your everyday",
+        "body": "Make room for the things that fit your routine.",
+        "selected": true
+      },
+      "bytes": 4258163,
+      "file": "outputs/01-banner-4096x2304.png"
+    }
+  ],
+  "notice": "Template composition and animated slideshow. This run made no live model request."
+}

@@ -1,0 +1,162 @@
+{
+  "id": "selection-one",
+  "title": "selection-one 只輸出勾選的文案且保留修改",
+  "kind": "detail",
+  "mode": "demo / local HTTP backend",
+  "checks": [
+    "瀏覽器實際 POST /api/copy，後端回傳 200 與至少 3 段文案。",
+    "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+    "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+    "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+    "只勾選第 1 段時只輸出 1 張詳情圖；完整文案檔不混入未勾選段落。"
+  ],
+  "screenshots": [
+    "01-source.png",
+    "02-copy.png",
+    "03-settings.png",
+    "04-results.png"
+  ],
+  "warnings": [],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "demo",
+      "model": "localized-template-v1"
+    },
+    {
+      "path": "/api/jobs",
+      "method": "POST",
+      "status": 201
+    }
+  ],
+  "downloads": [
+    "bundle.zip",
+    "manifest.json",
+    "copy.txt",
+    "detail-page.html"
+  ],
+  "consoleErrors": [],
+  "startedAt": "2026-09-08T05:33:29.805Z",
+  "category": "beauty",
+  "language": "en",
+  "manifest": {
+    "version": 1,
+    "createdAt": "2026-09-08T05:33:31.173Z",
+    "product": {
+      "id": "ce226b05-1175-494e-8700-a6d4cc87b451",
+      "name": "SORA 日常精華",
+      "category": "beauty",
+      "facts": "示範精華液包裝。實際成分、容量與使用方式待商家補充。",
+      "sourceName": "beauty.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceOrigin": "ai-sample"
+    },
+    "settings": {
+      "platform": "Shopee",
+      "language": "en",
+      "prompt": "",
+      "tone": "natural",
+      "layout": "smart",
+      "resolution": "1K",
+      "outputs": [
+        "detail"
+      ],
+      "bannerRatio": "16:9",
+      "mode": "demo"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "title": "A carefully edited title",
+        "body": "Make room for the things that fit your routine.",
+        "selected": true
+      },
+      {
+        "id": "details",
+        "title": "Discover the details",
+        "body": "Explore the look and find the right fit for your day.",
+        "selected": false
+      },
+      {
+        "id": "lifestyle",
+        "title": "Made part of your routine",
+        "body": "Start with one thing you enjoy and make it your own.",
+        "selected": false
+      },
+      {
+        "id": "specs",
+        "title": "Know your product",
+        "body": "Sample serum packaging. Ingredients, volume, and directions must be supplied by the merchant.",
+        "selected": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "813971c3-3e2f-4716-b097-a568baabf244",
+        "kind": "detail",
+        "title": "A carefully edited title",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: SORA 日常精華. Supplied facts, never to be printed as new text: 示範精華液包裝。實際成分、容量與使用方式待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 37,
+        "sourceId": "ce226b05-1175-494e-8700-a6d4cc87b451",
+        "copy": {
+          "id": "hero",
+          "title": "A carefully edited title",
+          "body": "Make room for the things that fit your routine.",
+          "selected": true
+        },
+        "bytes": 402276,
+        "file": "outputs/01-detail-768x1024.png"
+      }
+    ],
+    "notice": "Template composition and animated slideshow. This run made no live model request."
+  },
+  "outputs": [
+    {
+      "id": "813971c3-3e2f-4716-b097-a568baabf244",
+      "kind": "detail",
+      "title": "A carefully edited title",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: SORA 日常精華. Supplied facts, never to be printed as new text: 示範精華液包裝。實際成分、容量與使用方式待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 37,
+      "sourceId": "ce226b05-1175-494e-8700-a6d4cc87b451",
+      "copy": {
+        "id": "hero",
+        "title": "A carefully edited title",
+        "body": "Make room for the things that fit your routine.",
+        "selected": true
+      },
+      "bytes": 402276,
+      "file": "outputs/01-detail-768x1024.png",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 402276
+    }
+  ],
+  "source": {
+    "file": "source/original.png",
+    "bytes": 1554929,
+    "sha256": "fd08671e780bb42c23ec6a0304dd2c2032ddb44b50a44f360009c94e83453a0f",
+    "width": 1254,
+    "height": 1254
+  },
+  "elapsedMs": 1400,
+  "status": "passed",
+  "error": ""
+}

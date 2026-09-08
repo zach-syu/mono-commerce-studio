@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "response": "{\"status\":\"Ok\"}",
+  "event": "mono_connection_verified",
+  "project": 598391,
+  "host": "https://us.i.posthog.com",
+  "at": "2026-09-08T04:25:03.080953+00:00",
+  "queryVerified": true,
+  "queriedEventCount": 1,
+  "projectUrl": "https://us.posthog.com/project/598391",
+  "queryEvent": "mono_connection_verified"
+}

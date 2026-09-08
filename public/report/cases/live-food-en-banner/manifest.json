@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-08T05:24:03.043Z",
+  "product": {
+    "id": "c9a7f43f-a4d9-4f9e-aac4-2335d011aeca",
+    "name": "MORI 焙茶",
+    "category": "food",
+    "facts": "示範包裝。茶葉商品。實際成分、重量與產地待商家補充。",
+    "sourceName": "food.png",
+    "sourceWidth": 1254,
+    "sourceHeight": 1254,
+    "sourceOrigin": "ai-sample"
+  },
+  "settings": {
+    "platform": "Amazon",
+    "language": "en",
+    "prompt": "",
+    "tone": "natural",
+    "layout": "smart",
+    "resolution": "1K",
+    "outputs": [
+      "banner"
+    ],
+    "bannerRatio": "16:9",
+    "mode": "live"
+  },
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Product Overview",
+      "body": "MORI Roasted Tea (焙茶) is a packaged tea product. Please note that the current imagery represents demo packaging.",
+      "selected": true
+    },
+    {
+      "id": "section-2",
+      "title": "Ingredients & Origin",
+      "body": "Actual ingredients, net weight, and country of origin are pending merchant confirmation. Please check the product label for finalized details.",
+      "selected": false
+    },
+    {
+      "id": "section-3",
+      "title": "Packaging Notice",
+      "body": "This listing displays demonstration packaging for MORI tea leaves. Full product specifications will be provided directly by the seller.",
+      "selected": false
+    },
+    {
+      "id": "section-4",
+      "title": "Important Notes",
+      "body": "Please check the label and packaging upon arrival for exact product origin, weight, and ingredient specifications.",
+      "selected": false
+    }
+  ],
+  "outputs": [
+    {
+      "id": "e79f73f5-eeea-4f70-9009-b6091cf1a077",
+      "kind": "banner",
+      "title": "Banner",
+      "width": 1024,
+      "height": 576,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: MORI 焙茶. Supplied facts, never to be printed as new text: 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 11004,
+      "sourceId": "c9a7f43f-a4d9-4f9e-aac4-2335d011aeca",
+      "copy": {
+        "id": "section-1",
+        "title": "Product Overview",
+        "body": "MORI Roasted Tea (焙茶) is a packaged tea product. Please note that the current imagery represents demo packaging.",
+        "selected": true
+      },
+      "nativeWidth": 1024,
+      "nativeHeight": 1024,
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+      "bytes": 376066,
+      "rawGenerated": {
+        "bytes": 475827,
+        "mimeType": "image/jpeg",
+        "width": 1024,
+        "height": 1024
+      },
+      "file": "outputs/01-banner-1024x576.png",
+      "rawFile": "raw-ai/01-banner.jpg"
+    }
+  ],
+  "notice": "See per-output provider and model. Raw model photos are in raw-ai; outputs are final compositions. Native and final dimensions are recorded separately. Review product fidelity and claims before use."
+}

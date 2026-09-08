@@ -1,0 +1,32 @@
+{
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Product Overview",
+      "body": "SORA Daily Serum features demonstration packaging for an everyday beauty serum.",
+      "selected": true
+    },
+    {
+      "id": "section-2",
+      "title": "Ingredients",
+      "body": "Actual ingredients are to be updated by the merchant; please check the product label for full details.",
+      "selected": true
+    },
+    {
+      "id": "section-3",
+      "title": "Capacity and Volume",
+      "body": "Specific volume and net weight specifications are pending confirmation from the merchant.",
+      "selected": true
+    },
+    {
+      "id": "section-4",
+      "title": "How to Use",
+      "body": "Detailed directions for use are to be provided by the merchant; please refer to the packaging instructions.",
+      "selected": true
+    }
+  ],
+  "provider": "gemini-api",
+  "model": "gemini-3.7-flash",
+  "durationMs": 3535,
+  "language": "en"
+}

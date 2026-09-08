@@ -1,0 +1,38 @@
+{
+  "id": "zero-copy",
+  "title": "zero-copy 不勾選文案時阻擋出圖",
+  "kind": "validation",
+  "mode": "demo / local HTTP backend",
+  "checks": [
+    "瀏覽器實際 POST /api/copy，後端回傳 200 與至少 3 段文案。",
+    "全部取消勾選後無法進入生成設定，不會產生空素材包。"
+  ],
+  "screenshots": [
+    "01-source.png",
+    "02-copy.png",
+    "03-no-selection.png"
+  ],
+  "warnings": [],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "demo",
+      "model": "localized-template-v1"
+    }
+  ],
+  "downloads": [],
+  "consoleErrors": [],
+  "startedAt": "2026-09-08T04:17:50.990Z",
+  "category": "food",
+  "language": "en",
+  "elapsedMs": 1824,
+  "status": "passed",
+  "error": ""
+}

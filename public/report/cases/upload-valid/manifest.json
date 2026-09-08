@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-08T05:33:23.528Z",
+  "product": {
+    "id": "6b27b54c-533f-4e74-b7a1-5cc2a7e02b55",
+    "name": "Uploaded tea sample",
+    "category": "food",
+    "facts": "",
+    "sourceName": "food.png",
+    "sourceWidth": 1254,
+    "sourceHeight": 1254,
+    "sourceOrigin": "uploaded"
+  },
+  "settings": {
+    "platform": "Shopee",
+    "language": "en",
+    "prompt": "",
+    "tone": "natural",
+    "layout": "smart",
+    "resolution": "1K",
+    "outputs": [
+      "main"
+    ],
+    "bannerRatio": "16:9",
+    "mode": "demo"
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "title": "A little more for your everyday",
+      "body": "Make room for the things that fit your routine.",
+      "selected": true
+    },
+    {
+      "id": "details",
+      "title": "Discover the details",
+      "body": "Explore the look and find the right fit for your day.",
+      "selected": true
+    },
+    {
+      "id": "lifestyle",
+      "title": "Made part of your routine",
+      "body": "Start with one thing you enjoy and make it your own.",
+      "selected": true
+    },
+    {
+      "id": "specs",
+      "title": "Know your product",
+      "body": "Check the actual product label for specifications and directions.",
+      "selected": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "aaea9e5d-d287-4488-b1d9-9120824da654",
+      "kind": "main",
+      "title": "商品主圖",
+      "width": 1024,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nUse a pure white seamless background. No props.\nReference identity, for preservation only: Uploaded tea sample. Supplied facts, never to be printed as new text: .\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 50,
+      "sourceId": "6b27b54c-533f-4e74-b7a1-5cc2a7e02b55",
+      "copy": null,
+      "bytes": 1325960,
+      "file": "outputs/01-main-1024x1024.png"
+    }
+  ],
+  "notice": "Template composition and animated slideshow. This run made no live model request."
+}

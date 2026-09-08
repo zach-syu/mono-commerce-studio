@@ -1,0 +1,209 @@
+{
+  "schema_version": "1.0",
+  "generated_date": "2026-09-08",
+  "description_zh_TW": "為電商素材 App 預先製作的 AI 示範商品照與參考圖延伸素材。使用者已授權自製示範商品與延伸圖。",
+  "provenance_boundary_zh_TW": "這些圖由 Codex 內建 imagegen 工具在開發期間產生，不是 App 執行期間呼叫 Google Vertex AI 或 OpenAI API 的結果。模型名稱未由工具回傳，因此記為未知。",
+  "sample_disclaimer_zh_TW": "MORI、SORA 與 PLAIN 是此示範使用的虛構產品名稱，不代表真實商品、商標權利、成分或功效。",
+  "total_tool_calls": 7,
+  "total_images": 7,
+  "selected_images": 6,
+  "records": [
+    {
+      "id": "food",
+      "category": "food",
+      "role": "source_product",
+      "path": "public/samples/food.png",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in",
+      "model": null,
+      "model_note": "The tool result did not expose a model identifier.",
+      "prompt": "Use case: product-mockup. Asset type: a source product photo for an ecommerce image-generation demo. Create one square 1:1 photorealistic studio product photograph, not a collage. Subject: one imaginary premium roasted tea canister, cylindrical metal tin with a matching lid, matte soft sage-green body, a neat cream vertical paper label on the front. On the label, render exactly two simple lines: \"MORI\" and \"ROASTED TEA\". Nothing else printed. Neutral warm off-white seamless background and surface, gentle realistic contact shadow. The closed tin stands upright at a subtle three-quarter angle, the label legible, centered and fully visible with ample margin, product occupies roughly 65% of image height. Soft diffused window-quality light, elegant natural materials, accurate metal edges and paper texture, crisp commercial photography, 85mm lens character. No loose tea, no cup, no hands, no decoration, no other objects, no advertising overlay, no watermark, no health claims. This is an imaginary demonstration product, no actual brand logos.",
+      "input_images": [],
+      "original_tool_output_path": "/Users/zach.syu/.codex/generated_images/01a07f2d-a8f4-74d2-99a4-bb536886c228/exec-ced99685-690b-4105-abfb-9d8ee947246e.png",
+      "is_live_app_runtime_generation": false,
+      "status": "selected",
+      "visual_review": {
+        "performed": true,
+        "method": "assistant visual inspection of tool image and local file",
+        "observations": "Single clearly visible imaginary product group; neutral background; requested short label visually legible.",
+        "limitations": "No human approval or automated OCR; no real product accuracy claim."
+      },
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "size_bytes": 1677406,
+      "sha256": "fa0d83377a244620c80432172a3c0e085baf269878cc14819d2a1d0f47a10f9c"
+    },
+    {
+      "id": "beauty",
+      "category": "beauty",
+      "role": "source_product",
+      "path": "public/samples/beauty.png",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in",
+      "model": null,
+      "model_note": "The tool result did not expose a model identifier.",
+      "prompt": "Use case: product-mockup. Asset type: a source product photo for an ecommerce image-generation demo. Create one square 1:1 photorealistic studio product photograph, not a collage. Subject: one imaginary amber glass skincare serum bottle, modest cylindrical shoulders, black screw collar and cream rubber dropper bulb, filled amber glass, rectangular ivory front label. On the label render exactly two simple lines: \"SORA\" and \"DAILY SERUM\". Nothing else printed. Include one simple closed ivory carton standing just behind and beside the bottle, with the same two text lines in restrained dark typography. Neutral light ivory seamless background and surface, gentle realistic contact shadow. Bottle and carton centered, fully visible, ample margins, product group roughly 65% of image height. Soft diffused studio lighting, sophisticated clean beauty product photography, real glass reflections and fine paper carton texture, 85mm lens character. No flowers, ingredients, hands or other objects, no advertising overlays, no watermark, no health or efficacy claims. Imaginary demonstration product only, no actual brand logos.",
+      "input_images": [],
+      "original_tool_output_path": "/Users/zach.syu/.codex/generated_images/01a07f2d-a8f4-74d2-99a4-bb536886c228/exec-28723959-2a40-4cd3-a4e4-133ab1ed1015.png",
+      "is_live_app_runtime_generation": false,
+      "status": "selected",
+      "visual_review": {
+        "performed": true,
+        "method": "assistant visual inspection of tool image and local file",
+        "observations": "Single clearly visible imaginary product group; neutral background; requested short label visually legible.",
+        "limitations": "No human approval or automated OCR; no real product accuracy claim."
+      },
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "size_bytes": 1554929,
+      "sha256": "fd08671e780bb42c23ec6a0304dd2c2032ddb44b50a44f360009c94e83453a0f"
+    },
+    {
+      "id": "fashion",
+      "category": "fashion",
+      "role": "source_product",
+      "path": "public/samples/fashion.png",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in",
+      "model": null,
+      "model_note": "The tool result did not expose a model identifier.",
+      "prompt": "Use case: product-mockup. Asset type: a source product photo for an ecommerce image-generation demo. Create one square 1:1 photorealistic studio product photograph, not a collage. Subject: a single pair of imaginary casual low-top sneakers in off-white canvas and light sage suede panels, off-white flat laces, warm ivory rubber sole, rounded toe, understated original panel construction. No swoosh, stripes or other familiar sports-brand signature shapes. A very small tongue tag may read exactly \"PLAIN\"; no other branding or text. Display the complete pair naturally at a three-quarter angle, one shoe slightly in front of the other, with both visible and separated enough to identify a pair. Neutral light warm grey seamless background and surface, gentle realistic contact shadows. Centered composition, ample margins, product occupies about 70% of image width. Soft diffused studio lighting, realistic stitching, fabric weave and suede nap, crisp attractive commercial footwear photography, 85mm lens character. No feet, people, pedestals, props, advertising overlay or watermark. Imaginary demonstration product only, no actual brand logos.",
+      "input_images": [],
+      "original_tool_output_path": "/Users/zach.syu/.codex/generated_images/01a07f2d-a8f4-74d2-99a4-bb536886c228/exec-f46372f7-293d-41c1-8349-3b9779d81443.png",
+      "is_live_app_runtime_generation": false,
+      "status": "selected",
+      "visual_review": {
+        "performed": true,
+        "method": "assistant visual inspection of tool image and local file",
+        "observations": "Single clearly visible imaginary product group; neutral background; requested short label visually legible.",
+        "limitations": "No human approval or automated OCR; no real product accuracy claim."
+      },
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "size_bytes": 1965060,
+      "sha256": "8c6d954c8e112d6c4ce899c19a400c1f95798f12341e03f7f5decd19607bf151"
+    },
+    {
+      "id": "food-scene-v1",
+      "category": "food",
+      "role": "reference_based_scene",
+      "path": "public/samples/food-scene-v1.png",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in",
+      "model": null,
+      "model_note": "The tool result did not expose a model identifier.",
+      "prompt": "Use case: compositing. Asset type: square 1:1 ecommerce lifestyle advertising photograph. Image 1 is the exact edit target and product-identity reference. Keep the MORI roasted tea tin exactly recognizable: same cylindrical shape and proportions, same sage-green matte metal finish and lid, same cream vertical front label with exactly \"MORI\" and \"ROASTED TEA\", same label position and text size. Replace the neutral studio setting with a serene Japanese-inspired morning tea table, light natural oak tabletop, warm ivory linen runner, small ceramic cup of amber tea off to the side, soft blurred paper-screen window behind. Tin upright, fully visible and prominent, at a similar angle; surrounding scene spacious and realistic, soft morning sidelight, restrained sage, cream and natural oak palette, editorial commercial photography. Product must remain the main subject, props secondary and physically plausible. Do not add overlay text, callouts, new label text, claims, watermarks, or extra tins. Do not alter the product design or logo.",
+      "input_images": [
+        "public/samples/food.png"
+      ],
+      "original_tool_output_path": "/Users/zach.syu/.codex/generated_images/01a07f2d-a8f4-74d2-99a4-bb536886c228/exec-eda4bf00-dd80-4c10-9abc-d436b4e97edd.png",
+      "is_live_app_runtime_generation": false,
+      "status": "retained_for_comparison",
+      "visual_review": {
+        "performed": true,
+        "method": "assistant visual inspection of returned image",
+        "observations": "Tin label, colors and basic form remain recognizable. The model added unrequested grain-like props; this version is retained to document the issue and is not the selected food scene.",
+        "limitations": "Subjective visual review, not pixel-identical preservation, OCR validation, or product-truth verification."
+      },
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "size_bytes": 1853691,
+      "sha256": "592441f759e271162a5ad01b79d07f9533ea4c51e4d093efb7b5f911614cff20"
+    },
+    {
+      "id": "beauty-scene-v1",
+      "category": "beauty",
+      "role": "reference_based_scene",
+      "path": "public/samples/beauty-scene.png",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in",
+      "model": null,
+      "model_note": "The tool result did not expose a model identifier.",
+      "prompt": "Use case: compositing. Asset type: square 1:1 ecommerce lifestyle advertising photograph. Image 1 is the exact edit target and product-identity reference. Preserve the exact SORA serum bottle and its carton: same amber cylindrical glass bottle and proportions, black collar, cream dropper bulb, ivory label with exactly \"SORA\" and \"DAILY SERUM\"; same ivory paper carton and its matching label text. Place the two products on a pale travertine bathroom vanity near a softly blurred wall and warm natural window light. Add a simple folded ivory hand towel well behind the products, no other packaging. Bottle and carton fully visible and prominent, with realistic matching contact shadows and natural reflections. Elegant quiet skincare ritual mood, restrained amber, cream and stone palette, photorealistic premium commercial photography. Keep all product geometry, material colors, printed typography and layout unchanged. No people, hands, flowers, ingredients, added claims, overlay text or watermark.",
+      "input_images": [
+        "public/samples/beauty.png"
+      ],
+      "original_tool_output_path": "/Users/zach.syu/.codex/generated_images/01a07f2d-a8f4-74d2-99a4-bb536886c228/exec-f1fe7f7d-9035-4df7-8cdd-d6b1612703bb.png",
+      "is_live_app_runtime_generation": false,
+      "status": "selected",
+      "visual_review": {
+        "performed": true,
+        "method": "assistant visual inspection of returned image",
+        "observations": "Label, colors and basic product form remain recognizable in a new realistic environment.",
+        "limitations": "Subjective visual review, not pixel-identical preservation, OCR validation, or product-truth verification."
+      },
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "size_bytes": 1885389,
+      "sha256": "c68f21ea2f542381bea59178a1786c5b120af57e69ca0b3685950cd7ef2c2aca"
+    },
+    {
+      "id": "fashion-scene-v1",
+      "category": "fashion",
+      "role": "reference_based_scene",
+      "path": "public/samples/fashion-scene.png",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in",
+      "model": null,
+      "model_note": "The tool result did not expose a model identifier.",
+      "prompt": "Use case: compositing. Asset type: square 1:1 ecommerce lifestyle advertising photograph. Image 1 is the exact edit target and product-identity reference. Preserve the complete pair of off-white canvas and light sage suede PLAIN low-top sneakers, same design, toe shape, sole profile and height, panels, stitching, flat laces and small \"PLAIN\" tongue label. Display this same pair, not worn by anyone, on a sunlit pale limestone terrace with a softly blurred warm plaster wall and a subtle olive-leaf shadow in the distance. Maintain a natural three-quarter product angle with one shoe slightly ahead, both shoes fully visible and clearly recognizable, generous margin around them. Soft morning sunlight, editorial lifestyle footwear advertising, realistic fabric texture, sage suede nap and ivory rubber, restrained neutral palette. Scene should look like a real location photo. Do not add or remove shoes, redesign panels, add brand marks or patterns, change laces, include feet, people, advertising overlays, extra text or watermarks.",
+      "input_images": [
+        "public/samples/fashion.png"
+      ],
+      "original_tool_output_path": "/Users/zach.syu/.codex/generated_images/01a07f2d-a8f4-74d2-99a4-bb536886c228/exec-c63ed404-6a37-41c9-974e-04327a210907.png",
+      "is_live_app_runtime_generation": false,
+      "status": "selected",
+      "visual_review": {
+        "performed": true,
+        "method": "assistant visual inspection of returned image",
+        "observations": "Label, colors and basic product form remain recognizable in a new realistic environment.",
+        "limitations": "Subjective visual review, not pixel-identical preservation, OCR validation, or product-truth verification."
+      },
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "size_bytes": 2195973,
+      "sha256": "2c0b598068af0acdfffbc8c682c83db1755ce217572179980a3b2141be5e3b86"
+    },
+    {
+      "id": "food-scene",
+      "category": "food",
+      "role": "targeted_cleanup",
+      "path": "public/samples/food-scene.png",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in",
+      "model": null,
+      "model_note": "The tool result did not expose a model identifier.",
+      "prompt": "Use case: precise-object-edit. Image 1 is the edit target. Make only one targeted correction: remove the wooden scoop/tray and every loose brown grain or seed in the lower-right foreground. Fill that area naturally with the existing ivory linen runner and light oak tabletop, preserving realistic fabric weave, folds and lighting. Keep everything else unchanged: the exact MORI tea tin, its sage-green body, lid proportions, cream label, \"MORI\" and \"ROASTED TEA\" text, tea cup, background, camera angle, color palette, lighting and square crop. Do not add any new props, food, ingredients, text or marks. The finished advertising scene must not imply specific unverified tea ingredients.",
+      "input_images": [
+        "public/samples/food-scene-v1.png"
+      ],
+      "original_tool_output_path": "/Users/zach.syu/.codex/generated_images/01a07f2d-a8f4-74d2-99a4-bb536886c228/exec-5c3f501e-3708-4bc6-8c7a-ef1b02722be1.png",
+      "is_live_app_runtime_generation": false,
+      "status": "selected",
+      "visual_review": {
+        "performed": true,
+        "method": "assistant visual inspection of returned image",
+        "observations": "Removed the wooden scoop and grain-like props. Tin, label and tea-table setting remain recognizable.",
+        "limitations": "Minor generative texture differences remain possible; no pixel-identical preservation guarantee."
+      },
+      "dimensions": {
+        "width": 1254,
+        "height": 1254
+      },
+      "size_bytes": 1946364,
+      "sha256": "2fa528bcd8fbe99f8f9d895045b6fcfbfc6fcfad600b763315c81f8e7b08fa01"
+    }
+  ]
+}

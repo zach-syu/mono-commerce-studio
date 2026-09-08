@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-08T05:33:56.532Z",
+  "product": {
+    "id": "2ddffa5c-6f85-409e-9fa3-a8f9784b71a5",
+    "name": "MORI 焙茶",
+    "category": "food",
+    "facts": "示範包裝。茶葉商品。實際成分、重量與產地待商家補充。",
+    "sourceName": "food.png",
+    "sourceWidth": 1254,
+    "sourceHeight": 1254,
+    "sourceOrigin": "ai-sample"
+  },
+  "settings": {
+    "platform": "Shopee",
+    "language": "en",
+    "prompt": "",
+    "tone": "natural",
+    "layout": "smart",
+    "resolution": "1K",
+    "outputs": [
+      "video"
+    ],
+    "bannerRatio": "16:9",
+    "mode": "demo"
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "title": "A little more for your everyday",
+      "body": "Make room for the things that fit your routine.",
+      "selected": true
+    },
+    {
+      "id": "details",
+      "title": "Discover the details",
+      "body": "Explore the look and find the right fit for your day.",
+      "selected": true
+    },
+    {
+      "id": "lifestyle",
+      "title": "Made part of your routine",
+      "body": "Start with one thing you enjoy and make it your own.",
+      "selected": true
+    },
+    {
+      "id": "specs",
+      "title": "Know your product",
+      "body": "Sample tea packaging. Ingredients, net weight, and origin must be supplied by the merchant.",
+      "selected": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "6b8ac76a-a9b6-4fd8-ba71-358479068098",
+      "kind": "video",
+      "title": "商品動態短片 · 8 秒",
+      "width": 1280,
+      "height": 720,
+      "mimeType": "video/webm",
+      "prompt": "Create an eight-second realistic product video with one slow, restrained push-in.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: MORI 焙茶. Supplied facts, never to be printed as new text: 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-slideshow",
+      "model": "browser-mediarecorder",
+      "durationMs": 8057,
+      "sourceId": "2ddffa5c-6f85-409e-9fa3-a8f9784b71a5",
+      "copy": {
+        "id": "hero",
+        "title": "A little more for your everyday",
+        "body": "Make room for the things that fit your routine.",
+        "selected": true
+      },
+      "warning": "示範短片：使用原商品圖製作 8 秒動態排版，無配音。不是 Veo 生成。",
+      "bytes": 1394122,
+      "file": "outputs/01-video-1280x720.webm"
+    }
+  ],
+  "notice": "Template composition and animated slideshow. This run made no live model request."
+}

@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-09-08",
+  "scope": "Focused source review; not compliance certification or complete dependency audit",
+  "modelKeys": "Backend environment only; absent from frontend source and deployment files",
+  "publicClientConfiguration": [
+    "Supabase function URL",
+    "PostHog public ingestion token"
+  ],
+  "findings": [
+    {
+      "title": "Client token rotation bypassed process-local rate counters",
+      "severity": "medium",
+      "fix": "Added atomic shared Supabase request and byte budgets",
+      "validation": "Regression tests pass; Supabase quota RPC deployed with service-role-only permission; remote UI smoke passed."
+    },
+    {
+      "title": "Invalid product metadata could leave an orphan upload",
+      "severity": "low",
+      "fix": "Validate all fields first and roll back new upload on product-save error",
+      "validation": "Regression tests pass"
+    }
+  ],
+  "dependencyAudit": {
+    "critical": 0,
+    "high": 0,
+    "moderatePackageEntries": 5,
+    "exploitReachability": "Not established for selected Pitaya components"
+  },
+  "remaining": [
+    "Account login and recovery for multi-user service",
+    "Per-user quotas and abuse monitoring beyond global demo caps",
+    "Review or upgrade affected Pitaya dependencies",
+    "Live Veo credentials and validation"
+  ],
+  "unitTests": 35,
+  "cloudBudget": {
+    "dailyWriteRequests": 500,
+    "dailyUploadedBytes": 104857600,
+    "reset": "UTC day",
+    "scope": "shared across all mono workspaces"
+  }
+}

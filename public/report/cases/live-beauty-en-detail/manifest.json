@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-08T05:24:32.267Z",
+  "product": {
+    "id": "8d73589f-2959-4edc-b31e-e6c5575ad593",
+    "name": "SORA 日常精華",
+    "category": "beauty",
+    "facts": "示範精華液包裝。實際成分、容量與使用方式待商家補充。",
+    "sourceName": "beauty.png",
+    "sourceWidth": 1254,
+    "sourceHeight": 1254,
+    "sourceOrigin": "ai-sample"
+  },
+  "settings": {
+    "platform": "Amazon",
+    "language": "en",
+    "prompt": "",
+    "tone": "studio",
+    "layout": "smart",
+    "resolution": "1K",
+    "outputs": [
+      "detail"
+    ],
+    "bannerRatio": "16:9",
+    "mode": "live"
+  },
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "Product Overview",
+      "body": "SORA Daily Serum features demonstration packaging for an everyday beauty serum.",
+      "selected": true
+    },
+    {
+      "id": "section-2",
+      "title": "Ingredients",
+      "body": "Actual ingredients are to be updated by the merchant; please check the product label for full details.",
+      "selected": true
+    },
+    {
+      "id": "section-3",
+      "title": "Capacity and Volume",
+      "body": "Specific volume and net weight specifications are pending confirmation from the merchant.",
+      "selected": false
+    },
+    {
+      "id": "section-4",
+      "title": "How to Use",
+      "body": "Detailed directions for use are to be provided by the merchant; please refer to the packaging instructions.",
+      "selected": false
+    }
+  ],
+  "outputs": [
+    {
+      "id": "11164fa4-6976-4cf7-8148-9481bbe32b38",
+      "kind": "detail",
+      "title": "Product Overview",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: controlled softbox lighting, clean cool off-white seamless studio backdrop. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: SORA 日常精華. Supplied facts, never to be printed as new text: 示範精華液包裝。實際成分、容量與使用方式待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 12094,
+      "sourceId": "8d73589f-2959-4edc-b31e-e6c5575ad593",
+      "copy": {
+        "id": "section-1",
+        "title": "Product Overview",
+        "body": "SORA Daily Serum features demonstration packaging for an everyday beauty serum.",
+        "selected": true
+      },
+      "nativeWidth": 1024,
+      "nativeHeight": 1024,
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+      "bytes": 417591,
+      "rawGenerated": {
+        "bytes": 458903,
+        "mimeType": "image/jpeg",
+        "width": 1024,
+        "height": 1024
+      },
+      "file": "outputs/01-detail-768x1024.png",
+      "rawFile": "raw-ai/01-detail.jpg"
+    },
+    {
+      "id": "82cb4062-5bae-4500-abb3-bbab5759c9d4",
+      "kind": "detail",
+      "title": "Ingredients",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: controlled softbox lighting, clean cool off-white seamless studio backdrop. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: SORA 日常精華. Supplied facts, never to be printed as new text: 示範精華液包裝。實際成分、容量與使用方式待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 11652,
+      "sourceId": "8d73589f-2959-4edc-b31e-e6c5575ad593",
+      "copy": {
+        "id": "section-2",
+        "title": "Ingredients",
+        "body": "Actual ingredients are to be updated by the merchant; please check the product label for full details.",
+        "selected": true
+      },
+      "nativeWidth": 1024,
+      "nativeHeight": 1024,
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+      "bytes": 526324,
+      "rawGenerated": {
+        "bytes": 457513,
+        "mimeType": "image/jpeg",
+        "width": 1024,
+        "height": 1024
+      },
+      "file": "outputs/02-detail-768x1024.png",
+      "rawFile": "raw-ai/02-detail.jpg"
+    }
+  ],
+  "notice": "See per-output provider and model. Raw model photos are in raw-ai; outputs are final compositions. Native and final dimensions are recorded separately. Review product fidelity and claims before use."
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "remote-api-integration",
+  "notBrowserE2E": true,
+  "status": "passed",
+  "backend": "Supabase Edge Function / Postgres / private Storage",
+  "checks": [
+    "POST product 201",
+    "Source asset roundtrip SHA256 equal",
+    "Other workspace cannot list product",
+    "Other workspace asset GET 404",
+    "Japanese copy real HTTP 200"
+  ],
+  "sourceSha256": "fa0d83377a244620c80432172a3c0e085baf269878cc14819d2a1d0f47a10f9c",
+  "productId": "9100757a-158e-4d2e-93cc-82d97be6b643",
+  "assetId": "bd3ad469-2d69-470f-aeee-0cb73132c566",
+  "durationMs": 7028,
+  "provider": "demo",
+  "model": "localized-template-v1",
+  "at": "2026-09-08T04:20:35Z"
+}

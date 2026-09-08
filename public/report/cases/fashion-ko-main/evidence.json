@@ -1,0 +1,201 @@
+{
+  "id": "fashion-ko-main",
+  "title": "fashion-ko-main 服裝配件韓文主圖與示範短片",
+  "kind": "video",
+  "mode": "demo / local HTTP backend",
+  "checks": [
+    "瀏覽器實際 POST /api/copy，後端回傳 200 與至少 3 段文案。",
+    "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+    "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+    "實際下載並解壓 2 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+    "示範短片可載入為 1280 × 720 影片；明確標示原圖動畫、無配音、不是 Veo。"
+  ],
+  "screenshots": [
+    "01-source.png",
+    "02-copy.png",
+    "03-settings.png",
+    "04-results.png"
+  ],
+  "warnings": [
+    "示範短片：使用原商品圖製作 8 秒動態排版，無配音。不是 Veo 生成。"
+  ],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "demo",
+      "model": "localized-template-v1"
+    },
+    {
+      "path": "/api/jobs",
+      "method": "POST",
+      "status": 201
+    }
+  ],
+  "downloads": [
+    "bundle.zip",
+    "manifest.json",
+    "copy.txt"
+  ],
+  "consoleErrors": [],
+  "startedAt": "2026-09-08T05:33:10.536Z",
+  "category": "fashion",
+  "language": "ko",
+  "manifest": {
+    "version": 1,
+    "createdAt": "2026-09-08T05:33:20.136Z",
+    "product": {
+      "id": "72bfd032-b8ad-4b98-9577-281ed6716e96",
+      "name": "PLAIN 日常休閒鞋",
+      "category": "fashion",
+      "facts": "示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。",
+      "sourceName": "fashion.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceOrigin": "ai-sample"
+    },
+    "settings": {
+      "platform": "Shopee",
+      "language": "ko",
+      "prompt": "",
+      "tone": "natural",
+      "layout": "smart",
+      "resolution": "1K",
+      "outputs": [
+        "main",
+        "video"
+      ],
+      "bannerRatio": "16:9",
+      "mode": "demo"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "title": "일상에 더하는 작은 선택",
+        "body": "나만의 방식으로 매일을 채워 보세요.",
+        "selected": true
+      },
+      {
+        "id": "details",
+        "title": "디테일을 살펴보세요",
+        "body": "디자인과 사용 장면을 보고 나에게 맞는 제품을 찾아보세요.",
+        "selected": true
+      },
+      {
+        "id": "lifestyle",
+        "title": "매일의 순간에",
+        "body": "좋아하는 제품 하나로 나만의 일상을 만들어 보세요.",
+        "selected": true
+      },
+      {
+        "id": "specs",
+        "title": "제품을 확인하세요",
+        "body": "오프화이트와 세이지 그린 색상의 캐주얼 운동화 예시입니다. 소재, 사이즈, 원산지는 판매자의 확인이 필요합니다.",
+        "selected": true
+      }
+    ],
+    "outputs": [
+      {
+        "id": "90380e90-1370-4395-9642-b6f98b832248",
+        "kind": "main",
+        "title": "商品主圖",
+        "width": 1024,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nUse a pure white seamless background. No props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 51,
+        "sourceId": "72bfd032-b8ad-4b98-9577-281ed6716e96",
+        "copy": null,
+        "bytes": 1488101,
+        "file": "outputs/01-main-1024x1024.png"
+      },
+      {
+        "id": "9eec84d4-a36b-4fff-8319-febf44e73cfe",
+        "kind": "video",
+        "title": "商品動態短片 · 8 秒",
+        "width": 1280,
+        "height": 720,
+        "mimeType": "video/webm",
+        "prompt": "Create an eight-second realistic product video with one slow, restrained push-in.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "demo-slideshow",
+        "model": "browser-mediarecorder",
+        "durationMs": 8018,
+        "sourceId": "72bfd032-b8ad-4b98-9577-281ed6716e96",
+        "copy": {
+          "id": "hero",
+          "title": "일상에 더하는 작은 선택",
+          "body": "나만의 방식으로 매일을 채워 보세요.",
+          "selected": true
+        },
+        "warning": "示範短片：使用原商品圖製作 8 秒動態排版，無配音。不是 Veo 生成。",
+        "bytes": 1833812,
+        "file": "outputs/02-video-1280x720.webm"
+      }
+    ],
+    "notice": "Template composition and animated slideshow. This run made no live model request."
+  },
+  "outputs": [
+    {
+      "id": "90380e90-1370-4395-9642-b6f98b832248",
+      "kind": "main",
+      "title": "商品主圖",
+      "width": 1024,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nUse a pure white seamless background. No props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 51,
+      "sourceId": "72bfd032-b8ad-4b98-9577-281ed6716e96",
+      "copy": null,
+      "bytes": 1488101,
+      "file": "outputs/01-main-1024x1024.png",
+      "actualWidth": 1024,
+      "actualHeight": 1024,
+      "actualBytes": 1488101
+    },
+    {
+      "id": "9eec84d4-a36b-4fff-8319-febf44e73cfe",
+      "kind": "video",
+      "title": "商品動態短片 · 8 秒",
+      "width": 1280,
+      "height": 720,
+      "mimeType": "video/webm",
+      "prompt": "Create an eight-second realistic product video with one slow, restrained push-in.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-slideshow",
+      "model": "browser-mediarecorder",
+      "durationMs": 8018,
+      "sourceId": "72bfd032-b8ad-4b98-9577-281ed6716e96",
+      "copy": {
+        "id": "hero",
+        "title": "일상에 더하는 작은 선택",
+        "body": "나만의 방식으로 매일을 채워 보세요.",
+        "selected": true
+      },
+      "warning": "示範短片：使用原商品圖製作 8 秒動態排版，無配音。不是 Veo 生成。",
+      "bytes": 1833812,
+      "file": "outputs/02-video-1280x720.webm",
+      "actualWidth": 1280,
+      "actualHeight": 720,
+      "actualBytes": 1833812
+    }
+  ],
+  "source": {
+    "file": "source/original.png",
+    "bytes": 1965060,
+    "sha256": "8c6d954c8e112d6c4ce899c19a400c1f95798f12341e03f7f5decd19607bf151",
+    "width": 1254,
+    "height": 1254
+  },
+  "elapsedMs": 9673,
+  "status": "passed",
+  "error": ""
+}

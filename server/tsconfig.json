@@ -1,0 +1,6 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": { "types": ["node"], "noEmit": true },
+  "include": ["./**/*.ts", "../supabase/functions/_shared/**/*.ts", "../tests/backend.test.ts"],
+  "exclude": ["../supabase/functions/mono-api/index.ts"]
+}

@@ -1,0 +1,10 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { setLanguage } from '@cyberbiz-corp/pitaya-ui/dist/locale/i18n.js';
+import '@cyberbiz-corp/pitaya-ui/dist/style.css';
+import '@fontsource/noto-sans-tc/400.css';
+import '@fontsource/noto-sans-tc/700.css';
+import './styles.css';
+setLanguage('zh');
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>);

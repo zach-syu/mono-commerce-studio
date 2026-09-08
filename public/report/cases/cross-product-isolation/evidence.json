@@ -1,0 +1,287 @@
+{
+  "id": "cross-product-isolation",
+  "title": "cross-product-isolation 生成中禁止切換商品，下載來源仍屬於原商品",
+  "kind": "recovery",
+  "mode": "demo / local HTTP backend",
+  "checks": [
+    "瀏覽器實際 POST /api/copy，後端回傳 200 與至少 3 段文案。",
+    "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+    "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+    "商品 B 事先在同一瀏覽器的商品列表可開啟；商品 A 的短片工作進行中，列表與新建入口均停用。",
+    "完成後下載 manifest、原圖雜湊及全部素材 sourceId 仍屬於商品 A，沒有混入商品 B。"
+  ],
+  "screenshots": [
+    "setup-product-b/01-source.png",
+    "setup-product-b/02-copy.png",
+    "setup-product-b/03-settings.png",
+    "setup-product-b/04-results.png",
+    "01-source-a.png",
+    "02-copy.png",
+    "03-switch-blocked.png",
+    "04-source-a-results.png"
+  ],
+  "warnings": [
+    "示範短片：使用原商品圖製作 8 秒動態排版，無配音。不是 Veo 生成。"
+  ],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "demo",
+      "model": "localized-template-v1"
+    },
+    {
+      "path": "/api/jobs",
+      "method": "POST",
+      "status": 201
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "demo",
+      "model": "localized-template-v1"
+    },
+    {
+      "path": "/api/jobs",
+      "method": "POST",
+      "status": 201
+    }
+  ],
+  "downloads": [
+    "bundle.zip",
+    "manifest.json",
+    "copy.txt"
+  ],
+  "consoleErrors": [],
+  "startedAt": "2026-09-08T05:33:45.883Z",
+  "supportingRuns": [
+    {
+      "label": "先建立並儲存商品 B，讓跨商品切換成為真實可發生的情境。",
+      "folder": "setup-product-b",
+      "manifest": {
+        "version": 1,
+        "createdAt": "2026-09-08T05:33:47.198Z",
+        "product": {
+          "id": "cef80024-e217-4888-8cba-5f26d6d010d9",
+          "name": "SORA 日常精華",
+          "category": "beauty",
+          "facts": "示範精華液包裝。實際成分、容量與使用方式待商家補充。",
+          "sourceName": "beauty.png",
+          "sourceWidth": 1254,
+          "sourceHeight": 1254,
+          "sourceOrigin": "ai-sample"
+        },
+        "settings": {
+          "platform": "Shopee",
+          "language": "en",
+          "prompt": "",
+          "tone": "natural",
+          "layout": "smart",
+          "resolution": "1K",
+          "outputs": [
+            "main"
+          ],
+          "bannerRatio": "16:9",
+          "mode": "demo"
+        },
+        "sections": [
+          {
+            "id": "hero",
+            "title": "A little more for your everyday",
+            "body": "Make room for the things that fit your routine.",
+            "selected": true
+          },
+          {
+            "id": "details",
+            "title": "Discover the details",
+            "body": "Explore the look and find the right fit for your day.",
+            "selected": true
+          },
+          {
+            "id": "lifestyle",
+            "title": "Made part of your routine",
+            "body": "Start with one thing you enjoy and make it your own.",
+            "selected": true
+          },
+          {
+            "id": "specs",
+            "title": "Know your product",
+            "body": "Sample serum packaging. Ingredients, volume, and directions must be supplied by the merchant.",
+            "selected": true
+          }
+        ],
+        "outputs": [
+          {
+            "id": "cf4cf2ce-c13c-436d-9c3e-01097da515f3",
+            "kind": "main",
+            "title": "商品主圖",
+            "width": 1024,
+            "height": 1024,
+            "mimeType": "image/png",
+            "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nUse a pure white seamless background. No props.\nReference identity, for preservation only: SORA 日常精華. Supplied facts, never to be printed as new text: 示範精華液包裝。實際成分、容量與使用方式待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+            "provider": "demo-compositor",
+            "model": "canvas-2d",
+            "durationMs": 48,
+            "sourceId": "cef80024-e217-4888-8cba-5f26d6d010d9",
+            "copy": null,
+            "bytes": 1254812,
+            "file": "outputs/01-main-1024x1024.png"
+          }
+        ],
+        "notice": "Template composition and animated slideshow. This run made no live model request."
+      },
+      "source": {
+        "file": "source/original.png",
+        "bytes": 1554929,
+        "sha256": "fd08671e780bb42c23ec6a0304dd2c2032ddb44b50a44f360009c94e83453a0f",
+        "width": 1254,
+        "height": 1254
+      },
+      "outputs": [
+        {
+          "id": "cf4cf2ce-c13c-436d-9c3e-01097da515f3",
+          "kind": "main",
+          "title": "商品主圖",
+          "width": 1024,
+          "height": 1024,
+          "mimeType": "image/png",
+          "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nUse a pure white seamless background. No props.\nReference identity, for preservation only: SORA 日常精華. Supplied facts, never to be printed as new text: 示範精華液包裝。實際成分、容量與使用方式待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+          "provider": "demo-compositor",
+          "model": "canvas-2d",
+          "durationMs": 48,
+          "sourceId": "cef80024-e217-4888-8cba-5f26d6d010d9",
+          "copy": null,
+          "bytes": 1254812,
+          "file": "outputs/01-main-1024x1024.png",
+          "actualWidth": 1024,
+          "actualHeight": 1024,
+          "actualBytes": 1254812
+        }
+      ]
+    }
+  ],
+  "category": "food",
+  "language": "en",
+  "manifest": {
+    "version": 1,
+    "createdAt": "2026-09-08T05:33:56.532Z",
+    "product": {
+      "id": "2ddffa5c-6f85-409e-9fa3-a8f9784b71a5",
+      "name": "MORI 焙茶",
+      "category": "food",
+      "facts": "示範包裝。茶葉商品。實際成分、重量與產地待商家補充。",
+      "sourceName": "food.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceOrigin": "ai-sample"
+    },
+    "settings": {
+      "platform": "Shopee",
+      "language": "en",
+      "prompt": "",
+      "tone": "natural",
+      "layout": "smart",
+      "resolution": "1K",
+      "outputs": [
+        "video"
+      ],
+      "bannerRatio": "16:9",
+      "mode": "demo"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "title": "A little more for your everyday",
+        "body": "Make room for the things that fit your routine.",
+        "selected": true
+      },
+      {
+        "id": "details",
+        "title": "Discover the details",
+        "body": "Explore the look and find the right fit for your day.",
+        "selected": true
+      },
+      {
+        "id": "lifestyle",
+        "title": "Made part of your routine",
+        "body": "Start with one thing you enjoy and make it your own.",
+        "selected": true
+      },
+      {
+        "id": "specs",
+        "title": "Know your product",
+        "body": "Sample tea packaging. Ingredients, net weight, and origin must be supplied by the merchant.",
+        "selected": true
+      }
+    ],
+    "outputs": [
+      {
+        "id": "6b8ac76a-a9b6-4fd8-ba71-358479068098",
+        "kind": "video",
+        "title": "商品動態短片 · 8 秒",
+        "width": 1280,
+        "height": 720,
+        "mimeType": "video/webm",
+        "prompt": "Create an eight-second realistic product video with one slow, restrained push-in.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: MORI 焙茶. Supplied facts, never to be printed as new text: 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "demo-slideshow",
+        "model": "browser-mediarecorder",
+        "durationMs": 8057,
+        "sourceId": "2ddffa5c-6f85-409e-9fa3-a8f9784b71a5",
+        "copy": {
+          "id": "hero",
+          "title": "A little more for your everyday",
+          "body": "Make room for the things that fit your routine.",
+          "selected": true
+        },
+        "warning": "示範短片：使用原商品圖製作 8 秒動態排版，無配音。不是 Veo 生成。",
+        "bytes": 1394122,
+        "file": "outputs/01-video-1280x720.webm"
+      }
+    ],
+    "notice": "Template composition and animated slideshow. This run made no live model request."
+  },
+  "outputs": [
+    {
+      "id": "6b8ac76a-a9b6-4fd8-ba71-358479068098",
+      "kind": "video",
+      "title": "商品動態短片 · 8 秒",
+      "width": 1280,
+      "height": 720,
+      "mimeType": "video/webm",
+      "prompt": "Create an eight-second realistic product video with one slow, restrained push-in.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: MORI 焙茶. Supplied facts, never to be printed as new text: 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "demo-slideshow",
+      "model": "browser-mediarecorder",
+      "durationMs": 8057,
+      "sourceId": "2ddffa5c-6f85-409e-9fa3-a8f9784b71a5",
+      "copy": {
+        "id": "hero",
+        "title": "A little more for your everyday",
+        "body": "Make room for the things that fit your routine.",
+        "selected": true
+      },
+      "warning": "示範短片：使用原商品圖製作 8 秒動態排版，無配音。不是 Veo 生成。",
+      "bytes": 1394122,
+      "file": "outputs/01-video-1280x720.webm",
+      "actualWidth": 1280,
+      "actualHeight": 720,
+      "actualBytes": 1394122
+    }
+  ],
+  "source": {
+    "file": "source/original.png",
+    "bytes": 1677406,
+    "sha256": "fa0d83377a244620c80432172a3c0e085baf269878cc14819d2a1d0f47a10f9c",
+    "width": 1254,
+    "height": 1254
+  },
+  "elapsedMs": 10770,
+  "status": "passed",
+  "error": ""
+}

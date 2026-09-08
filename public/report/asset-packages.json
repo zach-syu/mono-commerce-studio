@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-08T05:36:40.280Z",
+  "mode": "split",
+  "rootZip": "all-outputs.zip",
+  "maxArchiveMiB": 90,
+  "payloadFileCount": 268,
+  "imageCount": 161,
+  "videoCount": 6,
+  "sourceBytes": 179363365,
+  "archives": [
+    {
+      "file": "all-outputs-food.zip",
+      "role": "category",
+      "category": "food",
+      "part": 1,
+      "bytes": 76220684,
+      "sha256": "7b3e68d3d23b9c12cae85421ac356fb2f92c7f2b1f95bb189dd3a0be4a9e74f6",
+      "payloadFileCount": 106,
+      "imageCount": 63,
+      "verified": true
+    },
+    {
+      "file": "all-outputs-beauty.zip",
+      "role": "category",
+      "category": "beauty",
+      "part": 1,
+      "bytes": 46080346,
+      "sha256": "1ddf58b305bd0989c4a49b97fc7769bf505ad0e286346f3011448455b389cfa8",
+      "payloadFileCount": 73,
+      "imageCount": 48,
+      "verified": true
+    },
+    {
+      "file": "all-outputs-fashion.zip",
+      "role": "category",
+      "category": "fashion",
+      "part": 1,
+      "bytes": 56732945,
+      "sha256": "060d0f7e8ddfd417bf794751eb53624b965420a18d37a3a6e9ffadaa3e1628df",
+      "payloadFileCount": 82,
+      "imageCount": 50,
+      "verified": true
+    },
+    {
+      "file": "all-outputs-common.zip",
+      "role": "category",
+      "category": "common",
+      "part": 1,
+      "bytes": 13018,
+      "sha256": "fd708a74b3dea29fe396111bb9447849156d5db472e2c265b201f13b744ba64b",
+      "payloadFileCount": 7,
+      "imageCount": 0,
+      "verified": true
+    },
+    {
+      "file": "all-outputs.zip",
+      "role": "index",
+      "category": null,
+      "part": null,
+      "bytes": 15587,
+      "sha256": "e5293d31cfe7834651c4bb7041bcdf54db79f13f98e491cbb53922d217dd05a2",
+      "payloadFileCount": 0,
+      "imageCount": 0,
+      "verified": true
+    }
+  ],
+  "excludedFileCount": 273
+}

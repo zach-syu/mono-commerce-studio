@@ -1,0 +1,10 @@
+project_id = "mono-commerce-studio"
+
+[functions.mono-api]
+enabled = true
+verify_jwt = false
+entrypoint = "./functions/mono-api/index.ts"
+import_map = "./functions/mono-api/deno.json"
+
+# This isolated capability API validates x-workspace-token itself.
+# No existing Supabase Auth setting, user, policy, or application is changed.

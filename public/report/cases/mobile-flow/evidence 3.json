@@ -1,0 +1,151 @@
+{
+  "id": "mobile-flow",
+  "title": "mobile-flow 手機尺寸可完成商品圖生成與下載",
+  "kind": "responsive",
+  "mode": "demo / local HTTP backend",
+  "checks": [
+    "瀏覽器實際 POST /api/copy，後端回傳 200 與至少 3 段文案。",
+    "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+    "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+    "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+    "390 px 手機寬度完成整段操作與下載，頁面沒有水平溢出。"
+  ],
+  "screenshots": [
+    "01-source.png",
+    "02-copy.png",
+    "03-settings.png",
+    "04-results.png"
+  ],
+  "warnings": [],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "demo",
+      "model": "localized-template-v1"
+    },
+    {
+      "path": "/api/jobs",
+      "method": "POST",
+      "status": 201
+    }
+  ],
+  "downloads": [
+    "bundle.zip",
+    "manifest.json",
+    "copy.txt"
+  ],
+  "consoleErrors": [],
+  "startedAt": "2026-09-08T04:45:14.867Z",
+  "category": "food",
+  "language": "zh-TW",
+  "manifest": {
+    "version": 1,
+    "createdAt": "2026-09-08T04:45:16.138Z",
+    "product": {
+      "id": "558512be-bfee-44b4-af37-71a845102ac9",
+      "name": "MORI 焙茶",
+      "category": "food",
+      "facts": "示範包裝。茶葉商品。實際成分、重量與產地待商家補充。",
+      "sourceName": "food.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceOrigin": "ai-sample"
+    },
+    "settings": {
+      "platform": "Shopee",
+      "language": "zh-TW",
+      "prompt": "",
+      "tone": "natural",
+      "layout": "smart",
+      "resolution": "1K",
+      "outputs": [
+        "main"
+      ],
+      "bannerRatio": "16:9",
+      "mode": "demo"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "title": "今天，留一點好給自己",
+        "body": "用你喜歡的方式，讓日常多一點選擇。",
+        "selected": true
+      },
+      {
+        "id": "details",
+        "title": "看見商品的細節",
+        "body": "從外觀到使用情境，找到適合自己的選擇。",
+        "selected": true
+      },
+      {
+        "id": "lifestyle",
+        "title": "日常的剛剛好",
+        "body": "從一件喜歡的商品，開始安排自己的日常。",
+        "selected": true
+      },
+      {
+        "id": "specs",
+        "title": "認識這件商品",
+        "body": "示範包裝。茶葉商品。實際成分、重量與產地待商家補充。",
+        "selected": true
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ab0a5df2-d3c2-4a3b-bb04-69d65efacc3c",
+        "kind": "main",
+        "title": "商品主圖",
+        "width": 1024,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Product: MORI 焙茶.\nSupplied facts (do not invent additional claims): 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。\nDestination: Shopee; language: zh-TW; output: main; tone: natural; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nPure white background. Entire product fully visible, centered. No props, badges, border or extra text.\nPlanned copy: 今天，留一點好給自己 | 用你喜歡的方式，讓日常多一點選擇。\nMerchant instructions: Use a clear, restrained product presentation.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 51,
+        "sourceId": "558512be-bfee-44b4-af37-71a845102ac9",
+        "copy": null,
+        "bytes": 1325960,
+        "file": "outputs/01-main-1024x1024.png"
+      }
+    ],
+    "notice": "Template composition and animated slideshow. This run made no live model request."
+  },
+  "outputs": [
+    {
+      "id": "ab0a5df2-d3c2-4a3b-bb04-69d65efacc3c",
+      "kind": "main",
+      "title": "商品主圖",
+      "width": 1024,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Product: MORI 焙茶.\nSupplied facts (do not invent additional claims): 示範包裝。茶葉商品。實際成分、重量與產地待商家補充。\nDestination: Shopee; language: zh-TW; output: main; tone: natural; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nPure white background. Entire product fully visible, centered. No props, badges, border or extra text.\nPlanned copy: 今天，留一點好給自己 | 用你喜歡的方式，讓日常多一點選擇。\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 51,
+      "sourceId": "558512be-bfee-44b4-af37-71a845102ac9",
+      "copy": null,
+      "bytes": 1325960,
+      "file": "outputs/01-main-1024x1024.png",
+      "actualWidth": 1024,
+      "actualHeight": 1024,
+      "actualBytes": 1325960
+    }
+  ],
+  "source": {
+    "file": "source/original.png",
+    "bytes": 1677406,
+    "sha256": "fa0d83377a244620c80432172a3c0e085baf269878cc14819d2a1d0f47a10f9c",
+    "width": 1254,
+    "height": 1254
+  },
+  "elapsedMs": 1316,
+  "status": "passed",
+  "error": ""
+}

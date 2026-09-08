@@ -1,0 +1,162 @@
+{
+  "id": "selection-one",
+  "title": "selection-one 只輸出勾選的文案且保留修改",
+  "kind": "detail",
+  "mode": "demo / local HTTP backend",
+  "checks": [
+    "瀏覽器實際 POST /api/copy，後端回傳 200 與至少 3 段文案。",
+    "生成完成，瀏覽器無未處理 JavaScript 錯誤。",
+    "下載原圖與上傳範例的 SHA-256 相同；原始商品證據保留。",
+    "實際下載並解壓 1 份素材，逐檔核對大小、PNG 像素與來源關聯。",
+    "只勾選第 1 段時只輸出 1 張詳情圖；完整文案檔不混入未勾選段落。"
+  ],
+  "screenshots": [
+    "01-source.png",
+    "02-copy.png",
+    "03-settings.png",
+    "04-results.png"
+  ],
+  "warnings": [],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "demo",
+      "model": "localized-template-v1"
+    },
+    {
+      "path": "/api/jobs",
+      "method": "POST",
+      "status": 201
+    }
+  ],
+  "downloads": [
+    "bundle.zip",
+    "manifest.json",
+    "copy.txt",
+    "detail-page.html"
+  ],
+  "consoleErrors": [],
+  "startedAt": "2026-09-08T04:17:52.985Z",
+  "category": "beauty",
+  "language": "en",
+  "manifest": {
+    "version": 1,
+    "createdAt": "2026-09-08T04:17:55.023Z",
+    "product": {
+      "id": "6153192c-2f2c-4045-9990-595f7af5b942",
+      "name": "SORA 日常精華",
+      "category": "beauty",
+      "facts": "示範精華液包裝。實際成分、容量與使用方式待商家補充。",
+      "sourceName": "beauty.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceOrigin": "ai-sample"
+    },
+    "settings": {
+      "platform": "Shopee",
+      "language": "en",
+      "prompt": "",
+      "tone": "natural",
+      "layout": "smart",
+      "resolution": "1K",
+      "outputs": [
+        "detail"
+      ],
+      "bannerRatio": "16:9",
+      "mode": "demo"
+    },
+    "sections": [
+      {
+        "id": "hero",
+        "title": "A carefully edited title",
+        "body": "Make room for the things that fit your routine.",
+        "selected": true
+      },
+      {
+        "id": "details",
+        "title": "Discover the details",
+        "body": "Explore the look and find the right fit for your day.",
+        "selected": false
+      },
+      {
+        "id": "lifestyle",
+        "title": "Made part of your routine",
+        "body": "Start with one thing you enjoy and make it your own.",
+        "selected": false
+      },
+      {
+        "id": "specs",
+        "title": "Know your product",
+        "body": "Sample serum packaging. Ingredients, volume, and directions must be supplied by the merchant.",
+        "selected": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "afababd4-ba6c-4fcd-855d-134c9a7a62fd",
+        "kind": "detail",
+        "title": "A carefully edited title",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Product: SORA 日常精華.\nSupplied facts (do not invent additional claims): 示範精華液包裝。實際成分、容量與使用方式待商家補充。\nDestination: Shopee; language: en; output: detail; tone: natural; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nPlanned copy: A carefully edited title | Make room for the things that fit your routine.\nMerchant instructions: Use a clear, restrained product presentation.",
+        "provider": "demo-compositor",
+        "model": "canvas-2d",
+        "durationMs": 45,
+        "sourceId": "6153192c-2f2c-4045-9990-595f7af5b942",
+        "copy": {
+          "id": "hero",
+          "title": "A carefully edited title",
+          "body": "Make room for the things that fit your routine.",
+          "selected": true
+        },
+        "bytes": 402630,
+        "file": "outputs/01-detail-768x1024.png"
+      }
+    ],
+    "notice": "Template composition and animated slideshow. This run made no live model request."
+  },
+  "outputs": [
+    {
+      "id": "afababd4-ba6c-4fcd-855d-134c9a7a62fd",
+      "kind": "detail",
+      "title": "A carefully edited title",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Product: SORA 日常精華.\nSupplied facts (do not invent additional claims): 示範精華液包裝。實際成分、容量與使用方式待商家補充。\nDestination: Shopee; language: en; output: detail; tone: natural; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nPlanned copy: A carefully edited title | Make room for the things that fit your routine.\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 45,
+      "sourceId": "6153192c-2f2c-4045-9990-595f7af5b942",
+      "copy": {
+        "id": "hero",
+        "title": "A carefully edited title",
+        "body": "Make room for the things that fit your routine.",
+        "selected": true
+      },
+      "bytes": 402630,
+      "file": "outputs/01-detail-768x1024.png",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 402630
+    }
+  ],
+  "source": {
+    "file": "source/original.png",
+    "bytes": 1554929,
+    "sha256": "fd08671e780bb42c23ec6a0304dd2c2032ddb44b50a44f360009c94e83453a0f",
+    "width": 1254,
+    "height": 1254
+  },
+  "elapsedMs": 2084,
+  "status": "passed",
+  "error": ""
+}

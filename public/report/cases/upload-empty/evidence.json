@@ -1,0 +1,27 @@
+{
+  "id": "upload-empty",
+  "title": "upload-empty 上傳 空檔案 顯示原因且可恢復",
+  "kind": "validation",
+  "mode": "demo / local HTTP backend",
+  "checks": [
+    "已阻擋空檔案且顯示具體原因；換用有效商品圖可繼續。"
+  ],
+  "screenshots": [
+    "01-rejected.png",
+    "02-recovered.png"
+  ],
+  "warnings": [],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    }
+  ],
+  "downloads": [],
+  "consoleErrors": [],
+  "startedAt": "2026-09-08T05:33:23.714Z",
+  "elapsedMs": 725,
+  "status": "passed",
+  "error": ""
+}

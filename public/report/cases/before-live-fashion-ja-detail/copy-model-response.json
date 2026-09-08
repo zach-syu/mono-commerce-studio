@@ -1,0 +1,32 @@
+{
+  "sections": [
+    {
+      "id": "section-1",
+      "title": "商品概要",
+      "body": "PLAIN 日常カジュアルスニーカーです。オフホワイトとセージグリーンの上品なカラーリングを採用したモデルです。",
+      "selected": true
+    },
+    {
+      "id": "section-2",
+      "title": "カラー・デザイン",
+      "body": "落ち着きのあるオフホワイトをベースに、セージグリーンのアクセントを加えたシンプルなデザインです。",
+      "selected": true
+    },
+    {
+      "id": "section-3",
+      "title": "仕様・サイズについて",
+      "body": "素材、詳細なサイズ寸法、原産国などの仕様情報は、製品ラベルおよびパッケージをご確認ください。",
+      "selected": true
+    },
+    {
+      "id": "section-4",
+      "title": "ご購入時の注意点",
+      "body": "本商品は展示・紹介用モデルです。正確な素材情報や仕様詳細については販売元の公式案内および商品タグをご確認ください。",
+      "selected": true
+    }
+  ],
+  "provider": "gemini-api",
+  "model": "gemini-3.7-flash",
+  "durationMs": 3354,
+  "language": "ja"
+}

@@ -1,0 +1,329 @@
+{
+  "id": "live-fashion-ja-detail",
+  "title": "live-fashion-ja-detail 真實 Gemini UI：PLAIN 日常休閒鞋 ja detail",
+  "startedAt": "2026-09-08T05:24:32.414Z",
+  "mode": "real Gemini API via local HTTP backend",
+  "runType": "live-ui",
+  "kind": "detail",
+  "checks": [
+    "從 App 實際操作 Gemini 3.7 Flash 文案規劃，HTTP 200，非 Mock 或預設文案。",
+    "App 原生 ZIP 的 raw-ai 原圖雜湊與截取的模型 HTTP 回應相同；模型原生尺寸與最終組版尺寸分開記錄。",
+    "下載與解壓 2 張最終 PNG，核對像素、檔案大小與原圖雜湊。每張另保存模型原始回傳圖與實際模型 ID。",
+    "真實模型成功後沒有自動降級為示範結果；文案與圖片供應商、模型均由 HTTP 回應核對。"
+  ],
+  "screenshots": [
+    "01-source.png",
+    "02-copy.png",
+    "03-settings.png",
+    "04-results.png"
+  ],
+  "warnings": [],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "gemini-api",
+      "model": "gemini-3.7-flash",
+      "durationMs": 3591
+    },
+    {
+      "path": "/api/image",
+      "method": "POST",
+      "status": 200,
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 12473
+    },
+    {
+      "path": "/api/image",
+      "method": "POST",
+      "status": 200,
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 10952
+    }
+  ],
+  "downloads": [
+    "bundle.zip",
+    "manifest.json",
+    "copy.txt",
+    "detail-page.html"
+  ],
+  "outputs": [
+    {
+      "id": "b3e98f54-fe60-40af-8fb3-f002a32222e0",
+      "kind": "detail",
+      "title": "商品概要",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 13044,
+      "sourceId": "23d411ad-88b3-400f-a219-ed19b23f2b11",
+      "copy": {
+        "id": "section-1",
+        "title": "商品概要",
+        "body": "PLAIN 日常休閒鞋は、普段使いに適したデモ用カジュアルスニーカーです。",
+        "selected": true
+      },
+      "nativeWidth": 1024,
+      "nativeHeight": 1024,
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+      "bytes": 482094,
+      "rawGenerated": {
+        "bytes": 588002,
+        "mimeType": "image/jpeg",
+        "width": 1024,
+        "height": 1024
+      },
+      "file": "outputs/01-detail-768x1024.png",
+      "rawFile": "raw-ai/01-detail.jpg",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 482094
+    },
+    {
+      "id": "379f886f-6f05-4df0-8c49-171280055472",
+      "kind": "detail",
+      "title": "カラーと配色",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 11179,
+      "sourceId": "23d411ad-88b3-400f-a219-ed19b23f2b11",
+      "copy": {
+        "id": "section-2",
+        "title": "カラーと配色",
+        "body": "オフホワイトとセージグリーンの上品なツートーン配色が特徴です。",
+        "selected": true
+      },
+      "nativeWidth": 1024,
+      "nativeHeight": 1024,
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+      "bytes": 598243,
+      "rawGenerated": {
+        "bytes": 575232,
+        "mimeType": "image/jpeg",
+        "width": 1024,
+        "height": 1024
+      },
+      "file": "outputs/02-detail-768x1024.png",
+      "rawFile": "raw-ai/02-detail.jpg",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 598243
+    }
+  ],
+  "rawGeneratedAssets": [
+    {
+      "file": "model-responses/01-model-image.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 588002,
+      "sha256": "5bf4c6e601c633412a3a7ded6b1d9ca6b73575f62abc85d4b88631ea928c0853",
+      "mimeType": "image/jpeg",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 12473,
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "requestedAspectRatio": "1:1",
+      "requestedImageSize": "1K",
+      "assetId": "83f268ec-b9d5-4f6d-b9d5-a89d47819c40",
+      "jobId": "b352e94f-32f2-4179-8032-528218a8c484"
+    },
+    {
+      "file": "model-responses/02-model-image.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 575232,
+      "sha256": "c8514bcd8963258fb1eb5aeebb44a86dffb7d9a52883d3c159b1cb415ae57d07",
+      "mimeType": "image/jpeg",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 10952,
+      "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+      "requestedAspectRatio": "1:1",
+      "requestedImageSize": "1K",
+      "assetId": "6fc72c07-5752-4146-aa71-bcb8a33ad554",
+      "jobId": "a4338976-3d1f-4cac-a682-bddd440f19e6"
+    }
+  ],
+  "consoleErrors": [],
+  "category": "fashion",
+  "language": "ja",
+  "copyResult": {
+    "sections": [
+      {
+        "id": "section-1",
+        "title": "商品概要",
+        "body": "PLAIN 日常休閒鞋は、普段使いに適したデモ用カジュアルスニーカーです。",
+        "selected": true
+      },
+      {
+        "id": "section-2",
+        "title": "カラーと配色",
+        "body": "オフホワイトとセージグリーンの上品なツートーン配色が特徴です。",
+        "selected": true
+      },
+      {
+        "id": "section-3",
+        "title": "製品仕様について",
+        "body": "素材、サイズ展開、原産地等の詳細情報につきましては、販売元による追加更新または製品ラベルをご確認ください。",
+        "selected": true
+      },
+      {
+        "id": "section-4",
+        "title": "注意事項",
+        "body": "本製品はデモ用商品情報となります。詳細なスペックは製品表示をご確認ください。",
+        "selected": true
+      }
+    ],
+    "provider": "gemini-api",
+    "model": "gemini-3.7-flash",
+    "durationMs": 3591,
+    "language": "ja"
+  },
+  "manifest": {
+    "version": 1,
+    "createdAt": "2026-09-08T05:25:02.417Z",
+    "product": {
+      "id": "23d411ad-88b3-400f-a219-ed19b23f2b11",
+      "name": "PLAIN 日常休閒鞋",
+      "category": "fashion",
+      "facts": "示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。",
+      "sourceName": "fashion.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceOrigin": "ai-sample"
+    },
+    "settings": {
+      "platform": "Amazon",
+      "language": "ja",
+      "prompt": "",
+      "tone": "natural",
+      "layout": "smart",
+      "resolution": "1K",
+      "outputs": [
+        "detail"
+      ],
+      "bannerRatio": "16:9",
+      "mode": "live"
+    },
+    "sections": [
+      {
+        "id": "section-1",
+        "title": "商品概要",
+        "body": "PLAIN 日常休閒鞋は、普段使いに適したデモ用カジュアルスニーカーです。",
+        "selected": true
+      },
+      {
+        "id": "section-2",
+        "title": "カラーと配色",
+        "body": "オフホワイトとセージグリーンの上品なツートーン配色が特徴です。",
+        "selected": true
+      },
+      {
+        "id": "section-3",
+        "title": "製品仕様について",
+        "body": "素材、サイズ展開、原産地等の詳細情報につきましては、販売元による追加更新または製品ラベルをご確認ください。",
+        "selected": false
+      },
+      {
+        "id": "section-4",
+        "title": "注意事項",
+        "body": "本製品はデモ用商品情報となります。詳細なスペックは製品表示をご確認ください。",
+        "selected": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "b3e98f54-fe60-40af-8fb3-f002a32222e0",
+        "kind": "detail",
+        "title": "商品概要",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "gemini-api",
+        "model": "gemini-3.1-flash-image",
+        "durationMs": 13044,
+        "sourceId": "23d411ad-88b3-400f-a219-ed19b23f2b11",
+        "copy": {
+          "id": "section-1",
+          "title": "商品概要",
+          "body": "PLAIN 日常休閒鞋は、普段使いに適したデモ用カジュアルスニーカーです。",
+          "selected": true
+        },
+        "nativeWidth": 1024,
+        "nativeHeight": 1024,
+        "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+        "bytes": 482094,
+        "rawGenerated": {
+          "bytes": 588002,
+          "mimeType": "image/jpeg",
+          "width": 1024,
+          "height": 1024
+        },
+        "file": "outputs/01-detail-768x1024.png",
+        "rawFile": "raw-ai/01-detail.jpg"
+      },
+      {
+        "id": "379f886f-6f05-4df0-8c49-171280055472",
+        "kind": "detail",
+        "title": "カラーと配色",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Create ONE photorealistic PRODUCT PHOTOGRAPH from the supplied reference. This is only the photo used inside a later layout.\nDo not create an advertisement, poster, web page, graphic design, collage, split panel, diagram or screenshot. Do not add headings, captions, body copy, decorative type, badges, captions or watermarks. The only allowed visible letters are the EXISTING product packaging or label text, preserved exactly from the reference.\nKeep the exact product silhouette, proportions, material appearance, color, number of pieces, packaging and existing labels. Keep the SAME camera angle as the reference. Show the ENTIRE product and all pieces visible in the source, including both shoes or the bottle and its carton. No cropped close-up, top-down reinterpretation, duplicate object or invented reverse side. Center the product within roughly 70–80% of the frame, with comfortable space around all edges.\nLighting and background: soft daylight, pale sage neutral photographic backdrop and subtle natural shadows. No added ingredients, accessories, flowers, people, food, claims or unsupported props.\nReference identity, for preservation only: PLAIN 日常休閒鞋. Supplied facts, never to be printed as new text: 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。.\nFinal check: a single uncluttered product photograph, not a marketing layout. No newly generated text outside the original product label.",
+        "provider": "gemini-api",
+        "model": "gemini-3.1-flash-image",
+        "durationMs": 11179,
+        "sourceId": "23d411ad-88b3-400f-a219-ed19b23f2b11",
+        "copy": {
+          "id": "section-2",
+          "title": "カラーと配色",
+          "body": "オフホワイトとセージグリーンの上品なツートーン配色が特徴です。",
+          "selected": true
+        },
+        "nativeWidth": 1024,
+        "nativeHeight": 1024,
+        "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+        "bytes": 598243,
+        "rawGenerated": {
+          "bytes": 575232,
+          "mimeType": "image/jpeg",
+          "width": 1024,
+          "height": 1024
+        },
+        "file": "outputs/02-detail-768x1024.png",
+        "rawFile": "raw-ai/02-detail.jpg"
+      }
+    ],
+    "notice": "See per-output provider and model. Raw model photos are in raw-ai; outputs are final compositions. Native and final dimensions are recorded separately. Review product fidelity and claims before use."
+  },
+  "source": {
+    "file": "source/original.png",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 1965060,
+    "sha256": "8c6d954c8e112d6c4ce899c19a400c1f95798f12341e03f7f5decd19607bf151"
+  },
+  "elapsedMs": 30059,
+  "status": "passed",
+  "error": "",
+  "visualReview": {
+    "status": "reviewed-with-limitations",
+    "summary": "修正後原始圖未觀察到額外排版文字，保留完整商品；仍需商家逐張核對實際標籤與規格，不保證像素一致。"
+  }
+}

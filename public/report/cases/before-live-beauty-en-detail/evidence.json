@@ -1,0 +1,330 @@
+{
+  "id": "before-live-beauty-en-detail",
+  "title": "修正前 · live-beauty-en-detail 真實 Gemini UI：SORA 日常精華 en detail",
+  "startedAt": "2026-09-08T04:44:49.723Z",
+  "mode": "real Gemini API via local HTTP backend",
+  "runType": "live-before-fix",
+  "kind": "detail",
+  "checks": [
+    "從 App 實際操作 Gemini 3.7 Flash 文案規劃，HTTP 200，非 Mock 或預設文案。",
+    "App 原生 ZIP 的 raw-ai 原圖雜湊與截取的模型 HTTP 回應相同；模型原生尺寸與最終組版尺寸分開記錄。",
+    "下載與解壓 2 張最終 PNG，核對像素、檔案大小與原圖雜湊。每張另保存模型原始回傳圖與實際模型 ID。",
+    "真實模型成功後沒有自動降級為示範結果；文案與圖片供應商、模型均由 HTTP 回應核對。"
+  ],
+  "screenshots": [
+    "01-source.png",
+    "02-copy.png",
+    "03-settings.png",
+    "04-results.png"
+  ],
+  "warnings": [
+    "保留修正前的真實 API 與圖片證據；未觀察到食品案例的額外文案問題。"
+  ],
+  "api": [
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200
+    },
+    {
+      "path": "/api/copy",
+      "method": "POST",
+      "status": 200,
+      "provider": "gemini-api",
+      "model": "gemini-3.7-flash",
+      "durationMs": 3829
+    },
+    {
+      "path": "/api/image",
+      "method": "POST",
+      "status": 200,
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 10448
+    },
+    {
+      "path": "/api/image",
+      "method": "POST",
+      "status": 200,
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 12695
+    }
+  ],
+  "downloads": [
+    "bundle.zip",
+    "manifest.json",
+    "copy.txt",
+    "detail-page.html"
+  ],
+  "outputs": [
+    {
+      "id": "10d0c8e2-a466-4f6c-bd83-f61d626f241d",
+      "kind": "detail",
+      "title": "Product Overview",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Product: SORA 日常精華.\nSupplied facts (do not invent additional claims): 示範精華液包裝。實際成分、容量與使用方式待商家補充。\nDestination: Amazon; language: en; output: detail; tone: studio; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: Product Overview | SORA Daily Serum comes in sample packaging. Please refer to the merchant for complete product details.\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 10688,
+      "sourceId": "f7bf84b7-3e4b-4269-a71b-1296fdbafafa",
+      "copy": {
+        "id": "section-1",
+        "title": "Product Overview",
+        "body": "SORA Daily Serum comes in sample packaging. Please refer to the merchant for complete product details.",
+        "selected": true
+      },
+      "nativeWidth": 896,
+      "nativeHeight": 1200,
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+      "bytes": 337392,
+      "rawGenerated": {
+        "bytes": 452293,
+        "mimeType": "image/jpeg",
+        "width": 896,
+        "height": 1200
+      },
+      "file": "outputs/01-detail-768x1024.png",
+      "rawFile": "raw-ai/01-detail.jpg",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 337392
+    },
+    {
+      "id": "1ab00f52-68ac-40f2-88d8-cbd09908ed54",
+      "kind": "detail",
+      "title": "Ingredients",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Product: SORA 日常精華.\nSupplied facts (do not invent additional claims): 示範精華液包裝。實際成分、容量與使用方式待商家補充。\nDestination: Amazon; language: en; output: detail; tone: studio; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: Ingredients | Actual ingredients are to be supplemented by the merchant. Please check the product label for exact formulation.\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 12849,
+      "sourceId": "f7bf84b7-3e4b-4269-a71b-1296fdbafafa",
+      "copy": {
+        "id": "section-2",
+        "title": "Ingredients",
+        "body": "Actual ingredients are to be supplemented by the merchant. Please check the product label for exact formulation.",
+        "selected": true
+      },
+      "nativeWidth": 896,
+      "nativeHeight": 1200,
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+      "bytes": 389924,
+      "rawGenerated": {
+        "bytes": 493074,
+        "mimeType": "image/jpeg",
+        "width": 896,
+        "height": 1200
+      },
+      "file": "outputs/02-detail-768x1024.png",
+      "rawFile": "raw-ai/02-detail.jpg",
+      "actualWidth": 768,
+      "actualHeight": 1024,
+      "actualBytes": 389924
+    }
+  ],
+  "rawGeneratedAssets": [
+    {
+      "file": "model-responses/01-model-image.jpg",
+      "width": 896,
+      "height": 1200,
+      "bytes": 452293,
+      "sha256": "75fcf5452c29ae6fa8aeea0feab1453cb3022dbaeb7edfbda94ee59b8ce6d71c",
+      "mimeType": "image/jpeg",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 10448,
+      "prompt": "Product: SORA 日常精華.\nSupplied facts (do not invent additional claims): 示範精華液包裝。實際成分、容量與使用方式待商家補充。\nDestination: Amazon; language: en; output: detail; tone: studio; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: Product Overview | SORA Daily Serum comes in sample packaging. Please refer to the merchant for complete product details.\nMerchant instructions: Use a clear, restrained product presentation.",
+      "requestedAspectRatio": "3:4",
+      "requestedImageSize": "1K",
+      "assetId": "068a5469-e96c-469c-ad89-99a92746e8ee",
+      "jobId": "42efb3e0-808d-418b-8641-bcf4122048bf"
+    },
+    {
+      "file": "model-responses/02-model-image.jpg",
+      "width": 896,
+      "height": 1200,
+      "bytes": 493074,
+      "sha256": "ac554caadb090aa37e7cb3998ebbbea121f9f155754f15e5dd551ae715295dae",
+      "mimeType": "image/jpeg",
+      "provider": "gemini-api",
+      "model": "gemini-3.1-flash-image",
+      "durationMs": 12695,
+      "prompt": "Product: SORA 日常精華.\nSupplied facts (do not invent additional claims): 示範精華液包裝。實際成分、容量與使用方式待商家補充。\nDestination: Amazon; language: en; output: detail; tone: studio; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: Ingredients | Actual ingredients are to be supplemented by the merchant. Please check the product label for exact formulation.\nMerchant instructions: Use a clear, restrained product presentation.",
+      "requestedAspectRatio": "3:4",
+      "requestedImageSize": "1K",
+      "assetId": "73be26e0-8a1d-4cce-a124-2bccfd10461d",
+      "jobId": "08fec394-7d63-4d72-94fe-3a37d4351529"
+    }
+  ],
+  "consoleErrors": [],
+  "category": "beauty",
+  "language": "en",
+  "copyResult": {
+    "sections": [
+      {
+        "id": "section-1",
+        "title": "Product Overview",
+        "body": "SORA Daily Serum comes in sample packaging. Please refer to the merchant for complete product details.",
+        "selected": true
+      },
+      {
+        "id": "section-2",
+        "title": "Ingredients",
+        "body": "Actual ingredients are to be supplemented by the merchant. Please check the product label for exact formulation.",
+        "selected": true
+      },
+      {
+        "id": "section-3",
+        "title": "Volume & Size",
+        "body": "Actual bottle volume and capacity details are pending confirmation from the merchant.",
+        "selected": true
+      },
+      {
+        "id": "section-4",
+        "title": "Usage Instructions",
+        "body": "Application instructions and directions for use are to be provided by the merchant.",
+        "selected": true
+      }
+    ],
+    "provider": "gemini-api",
+    "model": "gemini-3.7-flash",
+    "durationMs": 3829,
+    "language": "en"
+  },
+  "manifest": {
+    "version": 1,
+    "createdAt": "2026-09-08T04:45:18.827Z",
+    "product": {
+      "id": "f7bf84b7-3e4b-4269-a71b-1296fdbafafa",
+      "name": "SORA 日常精華",
+      "category": "beauty",
+      "facts": "示範精華液包裝。實際成分、容量與使用方式待商家補充。",
+      "sourceName": "beauty.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceOrigin": "ai-sample"
+    },
+    "settings": {
+      "platform": "Amazon",
+      "language": "en",
+      "prompt": "",
+      "tone": "studio",
+      "layout": "smart",
+      "resolution": "1K",
+      "outputs": [
+        "detail"
+      ],
+      "bannerRatio": "16:9",
+      "mode": "live"
+    },
+    "sections": [
+      {
+        "id": "section-1",
+        "title": "Product Overview",
+        "body": "SORA Daily Serum comes in sample packaging. Please refer to the merchant for complete product details.",
+        "selected": true
+      },
+      {
+        "id": "section-2",
+        "title": "Ingredients",
+        "body": "Actual ingredients are to be supplemented by the merchant. Please check the product label for exact formulation.",
+        "selected": true
+      },
+      {
+        "id": "section-3",
+        "title": "Volume & Size",
+        "body": "Actual bottle volume and capacity details are pending confirmation from the merchant.",
+        "selected": false
+      },
+      {
+        "id": "section-4",
+        "title": "Usage Instructions",
+        "body": "Application instructions and directions for use are to be provided by the merchant.",
+        "selected": false
+      }
+    ],
+    "outputs": [
+      {
+        "id": "10d0c8e2-a466-4f6c-bd83-f61d626f241d",
+        "kind": "detail",
+        "title": "Product Overview",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Product: SORA 日常精華.\nSupplied facts (do not invent additional claims): 示範精華液包裝。實際成分、容量與使用方式待商家補充。\nDestination: Amazon; language: en; output: detail; tone: studio; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: Product Overview | SORA Daily Serum comes in sample packaging. Please refer to the merchant for complete product details.\nMerchant instructions: Use a clear, restrained product presentation.",
+        "provider": "gemini-api",
+        "model": "gemini-3.1-flash-image",
+        "durationMs": 10688,
+        "sourceId": "f7bf84b7-3e4b-4269-a71b-1296fdbafafa",
+        "copy": {
+          "id": "section-1",
+          "title": "Product Overview",
+          "body": "SORA Daily Serum comes in sample packaging. Please refer to the merchant for complete product details.",
+          "selected": true
+        },
+        "nativeWidth": 896,
+        "nativeHeight": 1200,
+        "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+        "bytes": 337392,
+        "rawGenerated": {
+          "bytes": 452293,
+          "mimeType": "image/jpeg",
+          "width": 896,
+          "height": 1200
+        },
+        "file": "outputs/01-detail-768x1024.png",
+        "rawFile": "raw-ai/01-detail.jpg"
+      },
+      {
+        "id": "1ab00f52-68ac-40f2-88d8-cbd09908ed54",
+        "kind": "detail",
+        "title": "Ingredients",
+        "width": 768,
+        "height": 1024,
+        "mimeType": "image/png",
+        "prompt": "Product: SORA 日常精華.\nSupplied facts (do not invent additional claims): 示範精華液包裝。實際成分、容量與使用方式待商家補充。\nDestination: Amazon; language: en; output: detail; tone: studio; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: Ingredients | Actual ingredients are to be supplemented by the merchant. Please check the product label for exact formulation.\nMerchant instructions: Use a clear, restrained product presentation.",
+        "provider": "gemini-api",
+        "model": "gemini-3.1-flash-image",
+        "durationMs": 12849,
+        "sourceId": "f7bf84b7-3e4b-4269-a71b-1296fdbafafa",
+        "copy": {
+          "id": "section-2",
+          "title": "Ingredients",
+          "body": "Actual ingredients are to be supplemented by the merchant. Please check the product label for exact formulation.",
+          "selected": true
+        },
+        "nativeWidth": 896,
+        "nativeHeight": 1200,
+        "endpoint": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent",
+        "bytes": 389924,
+        "rawGenerated": {
+          "bytes": 493074,
+          "mimeType": "image/jpeg",
+          "width": 896,
+          "height": 1200
+        },
+        "file": "outputs/02-detail-768x1024.png",
+        "rawFile": "raw-ai/02-detail.jpg"
+      }
+    ],
+    "notice": "See per-output provider and model. Raw model photos are in raw-ai; outputs are final compositions. Native and final dimensions are recorded separately. Review product fidelity and claims before use."
+  },
+  "source": {
+    "file": "source/original.png",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 1554929,
+    "sha256": "fd08671e780bb42c23ec6a0304dd2c2032ddb44b50a44f360009c94e83453a0f"
+  },
+  "elapsedMs": 29162,
+  "status": "needs-review",
+  "error": "",
+  "historical": true,
+  "processStatus": "passed",
+  "visualStatus": "reference"
+}

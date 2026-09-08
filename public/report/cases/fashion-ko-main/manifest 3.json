@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-08T04:44:47.420Z",
+  "product": {
+    "id": "d973f5f6-d8a1-4cc4-883e-7daf98edaa59",
+    "name": "PLAIN 日常休閒鞋",
+    "category": "fashion",
+    "facts": "示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。",
+    "sourceName": "fashion.png",
+    "sourceWidth": 1254,
+    "sourceHeight": 1254,
+    "sourceOrigin": "ai-sample"
+  },
+  "settings": {
+    "platform": "Shopee",
+    "language": "ko",
+    "prompt": "",
+    "tone": "natural",
+    "layout": "smart",
+    "resolution": "1K",
+    "outputs": [
+      "main",
+      "video"
+    ],
+    "bannerRatio": "16:9",
+    "mode": "demo"
+  },
+  "sections": [
+    {
+      "id": "hero",
+      "title": "일상에 더하는 작은 선택",
+      "body": "나만의 방식으로 매일을 채워 보세요.",
+      "selected": true
+    },
+    {
+      "id": "details",
+      "title": "디테일을 살펴보세요",
+      "body": "디자인과 사용 장면을 보고 나에게 맞는 제품을 찾아보세요.",
+      "selected": true
+    },
+    {
+      "id": "lifestyle",
+      "title": "매일의 순간에",
+      "body": "좋아하는 제품 하나로 나만의 일상을 만들어 보세요.",
+      "selected": true
+    },
+    {
+      "id": "specs",
+      "title": "제품을 확인하세요",
+      "body": "오프화이트와 세이지 그린 색상의 캐주얼 운동화 예시입니다. 소재, 사이즈, 원산지는 판매자의 확인이 필요합니다.",
+      "selected": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "07cef8bc-eaf2-4d41-9a74-996be5a4b30f",
+      "kind": "main",
+      "title": "商品主圖",
+      "width": 1024,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ko; output: main; tone: natural; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nPure white background. Entire product fully visible, centered. No props, badges, border or extra text.\nPlanned copy: 일상에 더하는 작은 선택 | 나만의 방식으로 매일을 채워 보세요.\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d",
+      "durationMs": 51,
+      "sourceId": "d973f5f6-d8a1-4cc4-883e-7daf98edaa59",
+      "copy": null,
+      "bytes": 1488101,
+      "file": "outputs/01-main-1024x1024.png"
+    },
+    {
+      "id": "40ab77da-caf8-40cb-936a-3a00f2e43127",
+      "kind": "video",
+      "title": "商品動態短片 · 8 秒",
+      "width": 1280,
+      "height": 720,
+      "mimeType": "video/webm",
+      "prompt": "Product: PLAIN 日常休閒鞋.\nSupplied facts (do not invent additional claims): 示範休閒鞋。米白與鼠尾草綠配色。材質、尺寸與產地待商家補充。\nDestination: Shopee; language: ko; output: video; tone: natural; layout: smart; requested resolution: 1K.\nPreserve the exact source product shape, color, logo, packaging, and visible details. Do not invent angles or claims not supported by the reference. Generate the photographic scene only, no new text. Text will be composed deterministically.\nUse contextual lighting and subtle environmental texture. No extra ingredients, measurements or props that imply unverified features.\nPlanned copy: 일상에 더하는 작은 선택 | 나만의 방식으로 매일을 채워 보세요.\nMerchant instructions: Use a clear, restrained product presentation.",
+      "provider": "demo-slideshow",
+      "model": "browser-mediarecorder",
+      "durationMs": 8050,
+      "sourceId": "d973f5f6-d8a1-4cc4-883e-7daf98edaa59",
+      "copy": {
+        "id": "hero",
+        "title": "일상에 더하는 작은 선택",
+        "body": "나만의 방식으로 매일을 채워 보세요.",
+        "selected": true
+      },
+      "warning": "示範短片：使用原商品圖製作 8 秒動態排版，無配音。不是 Veo 生成。",
+      "bytes": 1902430,
+      "file": "outputs/02-video-1280x720.webm"
+    }
+  ],
+  "notice": "Template composition and animated slideshow. This run made no live model request."
+}
