@@ -1,6 +1,6 @@
 {
   "summary": {
-    "createdAt": "2026-09-08T17:44:06.415Z",
+    "createdAt": "2026-09-08T18:21:19.597Z",
     "scope": "Reference-driven visual planning and free App composition using saved conversation-generated scenes",
     "googleApiCalls": 0,
     "conversationImageCount": 14,
@@ -3163,5 +3163,30 @@
       "Food model reference is a region of the same three-package input, not an extra product or scene reference."
     ],
     "fidelityReview": "Generated contexts preserve the main product concept; packaging text, dimensions and construction details require final human verification."
+  },
+  "deployment": {
+    "origin": "https://mono-commerce-studio-ashy.vercel.app",
+    "reportHttpStatus": 200,
+    "reportImagesLoaded": 92,
+    "filterAndViewer": true,
+    "mobileOverflow": false,
+    "appOutputCount": 10,
+    "distinctScenes": 2,
+    "downloadVerified": true,
+    "blockedModelRequests": [],
+    "pageErrors": [],
+    "googleApiCalls": 0,
+    "checkedAt": "2026-09-08T18:20:21.203Z"
+  },
+  "cloud": {
+    "health": true,
+    "persistence": "supabase",
+    "requestedDetailCount": 8,
+    "returnedDetailCount": 8,
+    "provider": "demo",
+    "model": "category-storyboard-v3",
+    "jobId": "3e50da09-34ac-4781-a3a2-e23aeb62c58d",
+    "generationRecordReadBack": true,
+    "googleApiCalls": 0
   }
 }

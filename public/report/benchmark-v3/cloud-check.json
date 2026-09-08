@@ -1,0 +1,11 @@
+{
+  "health": true,
+  "persistence": "supabase",
+  "requestedDetailCount": 8,
+  "returnedDetailCount": 8,
+  "provider": "demo",
+  "model": "category-storyboard-v3",
+  "jobId": "3e50da09-34ac-4781-a3a2-e23aeb62c58d",
+  "generationRecordReadBack": true,
+  "googleApiCalls": 0
+}
