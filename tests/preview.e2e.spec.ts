@@ -24,7 +24,7 @@ test('sample-loading-gate 範例照片載入完成前不能前往下一步',asyn
  }finally{release();}
  await expect(page.getByLabel('商品名稱',{exact:true})).toHaveValue('SORA 日常精華');
  await page.getByRole('button',{name:'下一步：規劃文案',exact:true}).click();
- await expect(page.getByRole('button',{name:'免費規劃套圖',exact:true})).toBeVisible();
+ await expect(page.getByRole('button',{name:'依商品資料整理（免費）',exact:true})).toBeVisible();
 });
 test('photo-reuse-contract 以模擬回應核對場景共用，不呼叫模型',async({page})=>{
  const requests:string[]=[];const image=await fs.readFile(path.resolve('public/samples/beauty-scene.png'));
@@ -37,7 +37,7 @@ test('photo-reuse-contract 以模擬回應核對場景共用，不呼叫模型',
  const raw=manifest.outputs.filter((o:any)=>o.photoOrigin==='generated');expect(raw).toHaveLength(3);
  await fs.mkdir(root,{recursive:true});await fs.writeFile(path.join(root,'mocked-reuse-contract.json'),JSON.stringify({status:'passed',mockedImageRequests:requests.length,realModelRequests:0,finalCompositions:7,bannerReusesHero:true}));
 });
-async function setup(page:Page,category:keyof typeof names,language:string){await page.goto('/');await page.getByRole('button',{name:`使用 ${names[category]} 範例`,exact:true}).click();await expect(page.getByLabel('商品名稱',{exact:true})).toHaveValue(names[category]);await select(page,'輸出語言',language);await page.getByRole('button',{name:'下一步：規劃文案',exact:true}).click();await page.getByRole('button',{name:'免費規劃套圖',exact:true}).click();await expect(page.getByLabel('標題 5',{exact:true})).toBeVisible();}
+async function setup(page:Page,category:keyof typeof names,language:string){await page.goto('/');await page.getByRole('button',{name:`使用 ${names[category]} 範例`,exact:true}).click();await expect(page.getByLabel('商品名稱',{exact:true})).toHaveValue(names[category]);await select(page,'輸出語言',language);await page.getByRole('button',{name:'下一步：規劃文案',exact:true}).click();await page.getByLabel('詳情圖張數',{exact:true}).fill('5');await page.getByRole('button',{name:'依商品資料整理（免費）',exact:true}).click();await expect(page.getByLabel('標題 5',{exact:true})).toBeVisible();}
 for(const [category,language] of [['food','繁體中文'],['beauty','English'],['fashion','日本語']] as const){
  test(`${category}-five-roles 免費套圖分工與輸出`,async({page})=>{
   const dir=path.join(root,category);await fs.mkdir(dir,{recursive:true});const apiCalls:string[]=[];const errors:string[]=[];page.on('request',r=>{if(/\/(copy|image|video)(\?|$)/.test(r.url()))apiCalls.push(r.url());});page.on('pageerror',e=>errors.push(e.message));
@@ -67,8 +67,8 @@ test('paid-calls-blocked 未同意費用時不能送出',async({page,request})=>
  await fs.writeFile(path.join(root,'no-paid-calls.json'),JSON.stringify({status:'passed',browserModelRequests:0,testServerLiveDisabled:true,serverResponse:'PAID_CALLS_DISABLED'}));
 });
 test('uploaded-photo-context 上傳照片不替換成其他商品',async({page})=>{
- await page.goto('/');await page.getByLabel('上傳商品照片',{exact:true}).setInputFiles(path.resolve('public/samples/beauty.png'));await page.getByRole('button',{name:'下一步：規劃文案',exact:true}).click();await page.getByRole('button',{name:'免費規劃套圖',exact:true}).click();await page.getByRole('button',{name:'下一步：視覺設定',exact:true}).click();
- await expect(page.locator('.storyboard-frames').getByText('原圖情境示意',{exact:true})).toBeVisible();await expect(page.locator('.storyboard-frames').getByText('既有範例場景',{exact:true})).toHaveCount(0);
+ await page.goto('/');await page.getByLabel('上傳商品照片',{exact:true}).setInputFiles(path.resolve('public/samples/beauty.png'));await page.getByRole('button',{name:'下一步：規劃文案',exact:true}).click();await page.getByRole('button',{name:'依商品資料整理（免費）',exact:true}).click();await page.getByRole('button',{name:'下一步：視覺設定',exact:true}).click();
+ await expect(page.locator('.storyboard-frames').getByText('原圖情境示意',{exact:true})).toHaveCount(2);await expect(page.locator('.storyboard-frames').getByText('既有範例場景',{exact:true})).toHaveCount(0);
 });
 test('mobile-storyboard 手機可檢查套圖預覽',async({page})=>{
  await page.setViewportSize({width:390,height:844});await setup(page,'food','繁體中文');await page.getByRole('button',{name:'下一步：視覺設定',exact:true}).click();await expect(page.locator('.storyboard-frames figure')).toHaveCount(6);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await fs.mkdir(root,{recursive:true});await page.screenshot({path:path.join(root,'mobile.png'),fullPage:true});

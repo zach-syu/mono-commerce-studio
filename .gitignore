@@ -16,3 +16,6 @@ supabase/.branches/
 artifacts/
 .env*
 !.env.example
+
+__pycache__/
+*.pyc

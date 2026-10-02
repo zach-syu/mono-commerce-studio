@@ -6,6 +6,7 @@ import { outputLabels } from './types';
 import {composeArtwork} from './artwork';
 import {buildStoryboard,buildPhotoPrompt,plannedPhotoCalls,sceneAssetFor} from './storyboard';
 import type {ShotPlan} from './storyboard';
+import {preparedBenchmarkScene} from './benchmark-assets';
 
 const palettes={natural:{bg:'#eef2e7',ink:'#2c493d',accent:'#a9b99b'},studio:{bg:'#edf1f4',ink:'#243644',accent:'#a7becd'},bold:{bg:'#ffead1',ink:'#683c2d',accent:'#eab279'}};
 export function dimensions(kind:OutputKind,s:Settings):[number,number]{const edge=s.resolution==='4K'?4096:s.resolution==='2K'?2048:1024;if(kind==='banner')return [edge,Math.round(edge/(s.bannerRatio==='21:9'?21/9:16/9))];if(kind==='detail')return [Math.round(edge*.75),edge];return [edge,edge];}
@@ -28,12 +29,13 @@ export function buildPrompt(product:Product,s:Settings,kind:OutputKind,section:C
 }
 export async function renderPlanPreview(product:Product,s:Settings,shot:ShotPlan){
  let source=product.sourceDataUrl;let origin:Artifact['photoOrigin']=shot.role==='detail'?'original-crop':shot.role==='lifestyle'?'context-preview':'original';
- const prepared=shot.role==='lifestyle'?sceneAssetFor(product):undefined;
- if(prepared){source=prepared;origin='prepared-scene';}
- const result=await composeArtwork(product,s,shot,source,origin,420);return {...result,photoOrigin:origin};
+ const benchmarkScene=preparedBenchmarkScene(product,shot);const prepared=benchmarkScene?.source||(shot.role==='lifestyle'&&!shot.sceneVariant?sceneAssetFor(product):undefined);
+ if(prepared){source=prepared;origin='prepared-scene';shot.focalX=benchmarkScene?.focalX;}
+ const result=await composeArtwork(product,s,shot,source,origin,420);return {...result,photoOrigin:origin,photoProvider:benchmarkScene?.provider};
 }
 export async function generateArtifacts(product:Product,s:Settings,sections:CopySection[],onProgress:(text:string,artifact?:Artifact)=>void,signal:AbortSignal,options:{allowPaid?:boolean}={}){
  const selected=sections.filter(x=>x.selected);if(!selected.length)throw new Error('請至少勾選一段文案。');if(!s.outputs.length)throw new Error('請至少選擇一種輸出。');
+ if(selected.length>16)throw new Error('最多選取 16 張詳情圖，請先調整勾選內容。');
  const tasks=buildStoryboard(product,s,sections);
  if(s.mode==='live'&&(plannedPhotoCalls(tasks,s)>0||s.outputs.includes('video'))&&!options.allowPaid)throw new Error('請先確認本次付費生成，或改用免費預覽。');
  const photos=new Map<string,{source:string;provider:string;model:string;raw:Blob;width:number;height:number}>();const done:Artifact[]=[];
@@ -42,15 +44,15 @@ export async function generateArtifacts(product:Product,s:Settings,sections:Copy
   let artifact:Artifact;
   if(kind==='video')artifact=s.mode==='live'?await generateLiveVideo(product,s,section,onProgress,signal):await generateDemoVideo(product,s,section,signal);
   else{
-   let source=product.sourceDataUrl;let origin:Artifact['photoOrigin']=shot.role==='detail'?'original-crop':shot.role==='lifestyle'?'context-preview':'original';let provider=s.mode==='demo'?'demo-compositor':'source-compositor',model='canvas-2d-v2';let raw:Blob|undefined,nativeWidth:number|undefined,nativeHeight:number|undefined,reused=false;
+   let source=product.sourceDataUrl;let origin:Artifact['photoOrigin']=shot.role==='detail'?'original-crop':shot.role==='lifestyle'?'context-preview':'original';let provider=s.mode==='demo'?'demo-compositor':'source-compositor',model='canvas-2d-v3';let raw:Blob|undefined,nativeWidth:number|undefined,nativeHeight:number|undefined,reused=false;let photoAsset:string|undefined;let photoProvider:string|undefined;
    if(s.mode==='live'&&shot.needsNewPhoto&&shot.photoKey){
     let photo=photos.get(shot.photoKey);reused=!!photo;
     if(!photo){const data=await request<{dataUrl:string;provider:string;model:string}>('/image',{sourceDataUrl:product.sourceDataUrl,prompt:buildPhotoPrompt(product,s,shot),aspectRatio:shot.photoAspectRatio,imageSize:s.resolution,allowPaid:true},signal);const blob=await fetch(data.dataUrl).then(r=>r.blob());const image=await loadImage(data.dataUrl);photo={source:data.dataUrl,provider:data.provider,model:data.model,raw:blob,width:image.width,height:image.height};photos.set(shot.photoKey,photo);}
     ({source,provider,model}=photo);raw=photo.raw;nativeWidth=photo.width;nativeHeight=photo.height;origin='generated';
-   }else if(shot.role==='lifestyle'){const prepared=sceneAssetFor(product);if(prepared){source=prepared;origin='prepared-scene';}}
+   }else if(shot.role==='lifestyle'){const benchmark=preparedBenchmarkScene(product,shot);const prepared=benchmark?.source||(!shot.sceneVariant?sceneAssetFor(product):undefined);if(prepared){source=prepared;origin='prepared-scene';photoAsset=prepared;photoProvider=benchmark?.provider||'existing-sample';shot.focalX=benchmark?.focalX;const native=await loadImage(prepared);nativeWidth=native.width;nativeHeight=native.height;}}
    const result=await composeArtwork(product,s,shot,source,origin);
-   const sourceNote=origin==='context-preview'?'免費情境排版示意：保留你的原圖，未生成新場景。':origin==='prepared-scene'?'使用既有的範例場景素材，本次沒有呼叫模型。':undefined;
-   artifact={id:crypto.randomUUID(),kind,title:kind==='detail'?section.title:outputLabels[kind],blob:result.blob,width:result.width,height:result.height,mimeType:'image/png',prompt:shot.needsNewPhoto?buildPhotoPrompt(product,s,shot):shot.visualGoal,provider,model,durationMs:0,sourceId:product.id,copy:kind==='main'?null:section,visualRole:kind==='banner'?'banner':shot.role,template:shot.template,photoOrigin:origin,reusedPhoto:reused,compositionVersion:'storyboard-v2',sourceNote,...(result.warning?{warning:result.warning}:{})};
+   const sourceNote=origin==='context-preview'?'尚未提供新情境照片；此張是原圖構圖示意，不能算作情境照片品質驗收通過。':origin==='prepared-scene'?photoProvider==='conversation-imagegen'?'使用本輪對話生圖的已保存樣張；這次 App 組版沒有呼叫 Google。':'使用既有的範例場景素材，本次沒有呼叫模型。':undefined;
+   artifact={id:crypto.randomUUID(),kind,title:kind==='detail'?section.title:outputLabels[kind],blob:result.blob,width:result.width,height:result.height,mimeType:'image/png',prompt:shot.needsNewPhoto?buildPhotoPrompt(product,s,shot):shot.visualGoal,provider,model,durationMs:0,sourceId:product.id,copy:kind==='main'?null:section,visualRole:kind==='banner'?'banner':shot.role,template:shot.template,photoOrigin:origin,photoAsset,photoProvider,nativeWidth,nativeHeight,moduleType:shot.moduleType,sceneVariant:shot.sceneVariant,reusedPhoto:reused,compositionVersion:'storyboard-v3',sourceNote,...(result.warning?{warning:result.warning}:{})};
    if(raw){artifact.rawGenerated=raw;artifact.nativeWidth=nativeWidth;artifact.nativeHeight=nativeHeight;artifact.endpoint=provider==='gemini-api'?'https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent':'Vertex AI generateContent';}
   }
   abortIfNeeded(signal);artifact.durationMs=Math.round(performance.now()-start);done.push(artifact);onProgress(`已完成 ${done.length} / ${tasks.length}`,artifact);
@@ -92,6 +94,8 @@ export async function downloadBundle(product:Product,s:Settings,sections:CopySec
  if(!artifacts.length)throw new Error('還沒有可下載的素材。');const zip=new JSZip();
  const original=await fetch(product.sourceDataUrl).then(r=>r.blob());zip.file('source/original.'+(original.type.includes('jpeg')?'jpg':original.type.includes('webp')?'webp':'png'),original);
  artifacts.forEach((a,i)=>zip.file('outputs/'+artifactFilename(a,i),a.blob));
+ const sceneSources=[...new Set(artifacts.map(a=>a.photoAsset).filter((x):x is string=>!!x))];
+ for(const [i,url] of sceneSources.entries()){const response=await fetch(url);if(!response.ok)throw new Error('場景原檔下載失敗，請重試。');zip.file(`scene-sources/${String(i+1).padStart(2,'0')}-${url.split('/').slice(-2).join('-')}`,await response.blob());}
  const rawName=(a:Artifact,i:number)=>`raw-ai/${String(i+1).padStart(2,'0')}-${a.kind}.${a.rawGenerated?.type.includes('jpeg')?'jpg':a.rawGenerated?.type.includes('webp')?'webp':'png'}`;
  artifacts.forEach((a,i)=>{if(a.rawGenerated)zip.file(rawName(a,i),a.rawGenerated);});
  const manifest={version:1,createdAt:new Date().toISOString(),product:{...product,sourceDataUrl:undefined},settings:s,sections,outputs:artifacts.map((a,i)=>({...artifactManifest(a),file:'outputs/'+artifactFilename(a,i),...(a.rawGenerated?{rawFile:rawName(a,i)}:{})})),notice:s.mode==='demo'?'Free purpose-driven composition. Original photos, original-photo crops, and explicitly labelled prepared scene fixtures. This run made no live model request.':'See per-output provider and model. Raw model photos are in raw-ai; outputs are final compositions. Native and final dimensions are recorded separately. Review product fidelity and claims before use.'};

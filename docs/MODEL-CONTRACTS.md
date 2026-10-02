@@ -92,7 +92,7 @@ UI 開放 1K／2K／4K；K 是模型輸出級別，前端須解碼並記錄實�
 | 路徑 | 請求／回應 |
 | --- | --- |
 | GET `/health` | `{mode,providers,models,persistence,liveAccessRequired}` |
-| POST `/copy` | `{product:{name,category?,description?,facts?:string[]},language,platform?,prompt?,mode?,sourceDataUrl?}` → `{sections,provider,model,jobId,durationMs,warnings}` |
+| POST `/copy` | `{product:{name,category?,description?,facts?:string[]},language,platform?,prompt?,mode?,sourceDataUrl?,detailCount?,allowPaid?}` → `{sections,provider,model,jobId,durationMs,warnings}` |
 | POST `/image` | `{sourceDataUrl,prompt,aspectRatio?,imageSize?}` → `{dataUrl,assetId,jobId,provider,model,durationMs}` |
 | POST `/video` | `{sourceDataUrl,prompt,aspectRatio?,resolution?,durationSeconds?}` → HTTP 202 `{jobId,status:'pending',pollAfterMs}` |
 | GET `/video?jobId=UUID` | `{jobId,status,assetId?,error?,pollAfterMs?}` |
@@ -119,3 +119,9 @@ live copy／image／video 啟動與進行中輪詢還要求 `x-mono-access-code`
 ## 驗證
 
 `npm test -- tests/backend.test.ts` 執行 provider mock contract 與安全邊界測試。`npx tsc --project server/tsconfig.json` 檢查本機與 shared backend。Deno／Supabase 雲端部署與 Google 真實呼叫另列為整合驗證；前端 E2E 報告須獨立標出實際模式。
+
+## v3 視覺企劃合約
+
+`detailCount` 為 1–16 的整數；有傳入時，request schema 的 minItems 與 maxItems 都等於該值，回應也必須有相同張數。每段另含 moduleType、sceneVariant、evidencePoints 與 visualGoal。後端檢查角色與圖種一致，8 張以上需有多種圖種、兩個不同情境與圖解。未達條件回 COPY_PLAN_INCOMPLETE，不會再花費請求自動補圖。
+
+這些 schema 欄位已對照 [Gemini 結構化輸出](https://ai.google.dev/gemini-api/docs/structured-output) 與 [Vertex 結構化輸出](https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/control-generated-output) 的支援子集。單元測試使用注入回應；本輪沒有用 Google API 做實際生成。

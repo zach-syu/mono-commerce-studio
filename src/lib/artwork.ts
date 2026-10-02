@@ -1,6 +1,7 @@
 import {canvasBlob,loadImage} from './images';
 import type {CopySection,Product,Settings,Artifact} from './types';
 import type {ShotPlan} from './storyboard';
+import {drawInfographic} from './infographics';
 
 export interface Palette {paper:string;bg:string;soft:string;ink:string;muted:string;accent:string;dark:string}
 const toneColors={natural:'#567454',studio:'#577787',bold:'#b65a36'};
@@ -13,6 +14,8 @@ async function palette(product:Product,s:Settings):Promise<Palette>{
   const pixels=ctx.getImageData(0,0,48,48).data;const bins=new Map<string,{count:number,r:number,g:number,b:number}>();
   for(let i=0;i<pixels.length;i+=4){const [r,g,b]=[pixels[i],pixels[i+1],pixels[i+2]];const hi=Math.max(r,g,b),lo=Math.min(r,g,b);if(hi-lo<32||hi<55||lo>218||pixels[i+3]<200)continue;const key=[r,g,b].map(v=>Math.floor(v/32)).join(',');const entry=bins.get(key)||{count:0,r:0,g:0,b:0};entry.count++;entry.r+=r;entry.g+=g;entry.b+=b;bins.set(key,entry);}
   const dominant=[...bins.values()].sort((a,b)=>b.count-a.count)[0];if(dominant&&dominant.count>=4)accent='#'+[dominant.r,dominant.g,dominant.b].map(v=>Math.round(v/dominant.count).toString(16).padStart(2,'0')).join('');
+  const referenceAccents:Record<string,string>={philips:'#0878bb',ts6:'#b86799',jsmix:'#247db5',magforce:'#71613e',supplement:'#344c9d',zhuji:'#a4272d',shoes:'#658069'};
+  if(product.sourceOrigin==='benchmark'&&product.benchmarkId&&referenceAccents[product.benchmarkId])accent=referenceAccents[product.benchmarkId];
   small.width=1;small.height=1;
  }
  return {paper:'#ffffff',bg:mix(accent,'#ffffff',.94),soft:mix(accent,'#ffffff',.83),ink:mix(accent,'#131a20',.78),muted:'#56616b',accent:mix(accent,'#25303a',.18),dark:mix(accent,'#142029',.38)};
@@ -39,7 +42,7 @@ const labels={
 function displayName(product:Product,language:Settings['language']){if(language==='zh-TW')return product.name;const names:Record<string,string>={'MORI 焙茶':'MORI Roasted Tea','SORA 日常精華':'SORA Daily Serum','PLAIN 日常休閒鞋':'PLAIN Everyday Sneakers'};return names[product.name]||product.name;}
 function points(body:string){const sentences=body.split(/\n+|(?<=[。！？.!?])\s*/u).filter(s=>s.trim()).map(s=>s.trim());if(sentences.length<=3)return sentences.length?sentences:[body];return [sentences[0],sentences[1],sentences.slice(2).join(' ')];}
 function specs(product:Product,s:Settings,section:CopySection){
- const l=labels[s.language];const result:[string,string][]=[[l.name,displayName(product,s.language)],[l.category,l[product.category]]];
+ const l=labels[s.language];const extra:Record<string,Record<string,string>>={'zh-TW':{bag:'背包',electronics:'3C 與家電',supplement:'保健食品'},en:{bag:'Bags',electronics:'Electronics & appliances',supplement:'Supplements'},ja:{bag:'バッグ',electronics:'電子機器・家電',supplement:'サプリメント'},ko:{bag:'가방',electronics:'전자기기・가전',supplement:'건강보조식품'}};const category=product.category in l?l[product.category as 'food'|'beauty'|'fashion']:extra[s.language][product.category];const result:[string,string][]=[[l.name,displayName(product,s.language)],[l.category,category]];
  // Preserve supplied facts only. Unknown fields stay unknown; never extract a measurement from the picture.
  const provided=s.language==='zh-TW'?product.facts:section.body;
  for(const piece of provided.split(/[\n；;。]+/).filter(Boolean).slice(0,6)){const pair=piece.split(/[:：]/);result.push(pair.length>1?[pair.shift()!.trim(),pair.join(':').trim()]:[l.provided,piece.trim()]);}
@@ -59,7 +62,9 @@ export async function composeArtwork(product:Product,s:Settings,shot:ShotPlan,so
  const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;const ctx=canvas.getContext('2d');if(!ctx)throw new Error('無法建立圖片畫布。');
  const u=width/1024;ctx.scale(u,u);const w=1024,h=height/u,m=68;const l=labels[s.language];let clipped=false;const put=(value:string,x:number,y:number,bw:number,bh:number,size:number,color=p.ink,bold=false)=>{clipped=text(ctx,value,x,y,bw,bh,size,color,bold?700:400)||clipped;};
  panel(ctx,0,0,w,h,p.bg);const title=shot.section.title;const body=shot.section.body;
- if(shot.role==='packshot'){
+ if(shot.kind==='detail'&&shot.moduleType&&drawInfographic({ctx,p,w,h,put,contain,original,product,settings:s,section:shot.section,moduleType:shot.moduleType})){
+  // Native diagrams keep all copy editable and preserve the source photograph.
+ }else if(shot.role==='packshot'){
   panel(ctx,0,0,w,h,p.paper);contain(ctx,original,w*.045,h*.045,w*.91,h*.91);
  }else if(shot.kind==='banner'){
   const reverse=s.layout==='editorial';const photoX=reverse?0:w*.47;const copyX=reverse?w*.56:m;const photoW=w*.53;
@@ -78,16 +83,27 @@ export async function composeArtwork(product:Product,s:Settings,shot:ShotPlan,so
   panel(ctx,px,py,photoSize,photoSize,p.paper,12);contain(ctx,original,px,py,photoSize,photoSize);put(displayName(product,s.language),m,top*.84,w*.44,top*.11,23,'#ffffff');
   const gap=16;const start=top+38;const available=h-start-m;const rowH=(available-gap*(items.length-1))/items.length;
   items.forEach((item,i)=>{const y=start+i*(rowH+gap);panel(ctx,m,y,w-2*m,rowH,p.paper,10);panel(ctx,m,y,7,rowH,p.accent,3);put(item,m+30,y+Math.max(17,rowH*.19),w-2*m-60,rowH*.70,items.length===1?36:30,p.ink,items.length===1);});
+ }else if(shot.moduleType==='material'){
+  panel(ctx,0,0,w,h,p.dark);put(l.detail,m,h*.046,w*.86,h*.05,22,'#ffffff',true);put(title,m,h*.115,w*.86,h*.15,64,'#ffffff',true);
+  crop(ctx,original,m,h*.32,w-2*m,h*.39,'center',1.3);put(l.crop,m,h*.73,w*.85,h*.045,19,'#ffffff');
+  panel(ctx,m,h*.80,w-2*m,h*.15,p.paper,12);put(body,m+26,h*.823,w-2*m-52,h*.105,27,p.ink);
  }else if(shot.role==='detail'){
   panel(ctx,0,0,w,h,p.paper);put(l.detail,m,h*.045,w*.85,h*.05,22,p.accent,true);put(title,m,h*.11,w*.84,h*.15,60,p.ink,true);
   const y=h*.31,photoH=h*.46;const focus=shot.section.detailFocus||'center';
   crop(ctx,original,m,y,w*.52,photoH,focus,1.65);crop(ctx,original,w*.62,y,w*.315,photoH*.48,focus==='upper'?'center':'upper',2.4);crop(ctx,original,w*.62,y+photoH*.52,w*.315,photoH*.48,focus==='lower'?'center':'lower',2.2);
   put(l.crop,m,h*.79,w*.86,h*.045,19,p.accent);put(body,m,h*.855,w*.86,h*.105,30,p.muted);
  }else if(shot.role==='lifestyle'){
+  if((photoOrigin==='prepared-scene'||photoOrigin==='generated')&&image.width/image.height>1.05){
+   panel(ctx,0,0,w,h,p.paper);panel(ctx,0,0,w,h*.16,p.dark);put(l.lifestyle,m,h*.032,w*.86,h*.033,20,'#ffffff',true);put(title,m,h*.078,w*.86,h*.072,43,'#ffffff',true);
+   const photoH=w*image.height/image.width;ctx.drawImage(image,0,h*.16,w,photoH);const bottom=h*.16+photoH;
+   contain(ctx,original,m,bottom+25,240,h-bottom-60);put(body,350,bottom+45,w-418,h-bottom-70,29,p.ink);put(l.name,m,h*.955,w*.3,35,17,p.muted);
+  }else{
   if(photoOrigin==='prepared-scene'||photoOrigin==='generated'){
-   panel(ctx,0,0,w,h,p.paper);contain(ctx,image,0,0,w,h*.79);
+   const scale=Math.max(w/image.width,h/image.height);const iw=image.width*scale,ih=image.height*scale;ctx.drawImage(image,-(iw-w)*(shot.focalX??.5),-(ih-h)*.5,iw,ih);
+   const shade=ctx.createLinearGradient(0,h*.50,0,h);shade.addColorStop(0,'rgba(0,0,0,0)');shade.addColorStop(1,'rgba(8,17,24,.87)');ctx.fillStyle=shade;ctx.fillRect(0,h*.5,w,h*.5);
   }else{contextBackdrop(ctx,w,h,p,product.category);contain(ctx,original,w*.085,h*.07,w*.83,h*.67);put(l.context,m,h*.045,w*.8,h*.05,18,p.muted);}
-  panel(ctx,0,h*.735,w,h*.265,p.dark);put(l.lifestyle,m,h*.767,w*.85,h*.04,20,'#ffffff',true);put(title,m,h*.813,w*.86,h*.09,49,'#ffffff',true);put(body,m,h*.92,w*.86,h*.065,25,'#ffffff');
+  if(photoOrigin!=='prepared-scene'&&photoOrigin!=='generated')panel(ctx,0,h*.735,w,h*.265,p.dark);put(l.lifestyle,m,h*.755,w*.85,h*.04,20,'#ffffff',true);put(title,m,h*.80,w*.86,h*.105,49,'#ffffff',true);put(body,m,h*.92,w*.86,h*.065,25,'#ffffff');
+  }
  }else{
   panel(ctx,0,0,w,h,p.paper);put(l.specs,m,h*.052,w*.5,h*.06,22,p.accent,true);put(title,m,h*.126,w*.52,h*.19,58,p.ink,true);contain(ctx,original,w*.64,h*.05,w*.29,h*.26);
   const rows=specs(product,s,shot.section);const start=h*.37;const tableH=h*.47;const rowH=tableH/rows.length;

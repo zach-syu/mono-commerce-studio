@@ -8,6 +8,7 @@ import { MODELS, ownerFromToken } from '../supabase/functions/_shared/types.ts';
 import { parseImage } from '../supabase/functions/_shared/validation.ts';
 import { createFileStore } from '../server/file-store.ts';
 import { createSupabaseStore } from '../supabase/functions/_shared/supabase-store.ts';
+import {planVisualStory} from '../shared/visual-planning.ts';
 
 const token='a'.repeat(64),other='b'.repeat(64),code='test-access-code-at-least-16';
 const png='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+j9GQAAAAASUVORK5CYII=';
@@ -20,6 +21,26 @@ function req(path:string,body?:unknown, options:{token?:string;code?:string;meth
 function setup(fetcher?:typeof fetch,config=env){const store=new MemoryStore();return{store,handler:createHandler({env:config,store,fetcher})};}
 async function json(response:Response){return {status:response.status,...await response.json()};}
 describe('portable backend contracts',()=>{
+  it.each([1,8,16])('plans exactly %i requested images without a provider request in demo mode',async detailCount=>{
+    const fetcher=vi.fn();const {handler}=setup(fetcher as typeof fetch);
+    const result=await json(await handler(req('/copy',{product:{name:'Device',category:'electronics'},mode:'demo',detailCount})));
+    expect(result.status).toBe(200);expect(result.sections).toHaveLength(detailCount);expect(fetcher).not.toHaveBeenCalled();
+  });
+  it.each([0,17,2.5,'8'])('rejects invalid image count %s before the provider',async detailCount=>{
+    const fetcher=vi.fn();const {handler}=setup(fetcher as typeof fetch);
+    const result=await json(await handler(req('/copy',{product:'Device',mode:'live',detailCount},{code})));
+    expect(result.status).toBe(400);expect(fetcher).not.toHaveBeenCalled();
+  });
+  it('aligns the live planning schema with count and rejects repeated packshots',async()=>{
+    const sections=planVisualStory({name:'Device',category:'electronics',description:'',facts:[]},'en',8).map(s=>({...s,role:'hero',moduleType:'hero',visualGoal:'Same packshot'}));
+    const fetcher=vi.fn(async(_url:unknown,init?:RequestInit)=>{
+      const body=JSON.parse(String(init?.body));expect(body.generationConfig.responseSchema.properties.sections.minItems).toBe(8);expect(body.generationConfig.responseSchema.properties.sections.maxItems).toBe(8);
+      return new Response(JSON.stringify({candidates:[{content:{parts:[{text:JSON.stringify({sections})}]}}]}));
+    });
+    const {handler}=setup(fetcher as typeof fetch);
+    const result=await json(await handler(req('/copy',{product:{name:'Device',category:'electronics'},mode:'live',detailCount:8},{code})));
+    expect(result.status).toBe(502);expect(result.error.code).toBe('COPY_PLAN_INCOMPLETE');expect(fetcher).toHaveBeenCalledTimes(1);
+  });
   it('blocks paid requests in a no-cost environment even when keys and consent exist',async()=>{
     const fetcher=vi.fn();const {handler}=setup(fetcher as typeof fetch,{...env,MONO_DISABLE_LIVE:'1'} as typeof env);
     const result=await json(await handler(req('/copy',{product:'Tea',mode:'live',allowPaid:true},{code})));
@@ -59,7 +80,7 @@ describe('portable backend contracts',()=>{
     const saved=await json(await handler(req('/products',{name:'Long facts',description:fact,facts:[fact]})));
     expect(saved.status).toBe(201);expect(saved.product.description).toBe(fact);expect(saved.product.facts[0]).toBe(fact);
     const copy=await json(await handler(req('/copy',{product:{name:'Long facts',description:fact,facts:[fact]},language:'zh-TW',mode:'demo'})));
-    expect(copy.status).toBe(200);expect(copy.sections[4].body).toContain('注意：含酒精與過敏原。');
+    expect(copy.status).toBe(200);expect(copy.sections[4].body).toContain('注意：含酒精與過敏原');
     const owner=await ownerFromToken(token);const jobs=await store.list('jobs',owner);expect((jobs[0].payload.product as {facts:string[]}).facts[0]).toBe(fact);
   });
   it('reports readiness without exposing credentials or claiming provider verification',async()=>{
@@ -73,14 +94,14 @@ describe('portable backend contracts',()=>{
   it('supports deployed Supabase function route prefixes',async()=>{const {handler}=setup();expect((await handler(new Request('https://test.supabase.co/functions/v1/mono-api/health'))).status).toBe(200);});
   it.each(['zh-TW','en','ja','ko'])('persists honest localized demo copy: %s',async(language)=>{
     const fetcher=vi.fn();const {handler,store}=setup(fetcher as typeof fetch);const result=await json(await handler(req('/copy',{product:{name:'Tea',category:'food',description:'',facts:[]},language,platform:'Shopee',prompt:'',mode:'demo'})));
-    expect(result.status).toBe(200);expect(result.provider).toBe('demo');expect(result.model).toBe('local-storyboard-v2');expect(result.sections).toHaveLength(5);expect(result.sections.every((s:{selected:boolean})=>s.selected)).toBe(true);expect(fetcher).not.toHaveBeenCalled();expect(store.records.size).toBe(1);
-    if(language==='ja')expect(result.sections[0].title).toMatch(/[ぁ-んァ-ン]/);if(language==='en')expect(result.sections[0].title).toContain('everyday');
+    expect(result.status).toBe(200);expect(result.provider).toBe('demo');expect(result.model).toBe('merchant-facts-v4');expect(result.sections).toHaveLength(5);expect(result.sections.every((s:{selected:boolean})=>s.selected)).toBe(true);expect(fetcher).not.toHaveBeenCalled();expect(store.records.size).toBe(1);
+    if(language==='ja')expect(result.sections[4].body).toMatch(/[ぁ-んァ-ン]/);expect(result.sections[0].title).toBe('Tea');
   });
   it('rejects unsupported language and client ownership injection',async()=>{
     const {handler}=setup();expect((await handler(req('/copy',{product:'Tea',language:'xx'}))).status).toBe(400);expect((await handler(req('/products',{name:'Tea',owner:'forged'}))).status).toBe(400);
   });
-  it('keeps foreign-language demo bodies localized without pretending to translate arbitrary facts',async()=>{
-    const {handler}=setup();const unknown=await json(await handler(req('/copy',{product:{name:'Example',facts:['中文自訂商品事實']},language:'en'})));expect(unknown.sections[4].body).not.toContain('中文');expect(unknown.sections[4].body).toContain('label');
+  it('retains untranslated merchant facts instead of replacing them with filler',async()=>{
+    const {handler}=setup();const unknown=await json(await handler(req('/copy',{product:{name:'Example',facts:['中文自訂商品事實']},language:'en'})));expect(unknown.sections[4].body).toContain('中文自訂商品事實');expect(unknown.sections[4].translationStatus).toBe('source-retained');
     const known=await json(await handler(req('/copy',{product:{name:'Tea',facts:['示範包裝。茶葉商品。實際成分、重量與產地待商家補充。']},language:'ja'})));expect(known.sections[4].body).toContain('販売者');expect(known.sections[4].body).not.toContain('待商家');
     const history=await json(await handler(req('/jobs')));expect(history.jobs.some((j:any)=>j.product?.facts.includes('中文自訂商品事實'))).toBe(true);
   });

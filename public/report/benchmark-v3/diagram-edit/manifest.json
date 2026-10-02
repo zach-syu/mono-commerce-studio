@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "createdAt": "2026-09-08T17:13:23.703Z",
+  "product": {
+    "id": "eb933188-6f5c-4b1f-843e-db500d794467",
+    "name": "PHILIPS AC4221 空氣清淨機",
+    "category": "electronics",
+    "facts": "型號：AC4221/81。\n原廠標示 CADR：600 m³/h。\n原廠標示適用面積：25–28 坪。\n睡眠模式標示：15 dB。\n支援 Air+ App；具有燈環與頂部操作面板。\n功能圖解為示意，並非內部結構實拍。",
+    "sourceName": "source.jpg",
+    "sourceWidth": 2048,
+    "sourceHeight": 2048,
+    "sourceOrigin": "benchmark",
+    "benchmarkId": "philips"
+  },
+  "settings": {
+    "platform": "Shopee",
+    "language": "zh-TW",
+    "prompt": "",
+    "tone": "natural",
+    "layout": "smart",
+    "resolution": "1K",
+    "outputs": [
+      "detail"
+    ],
+    "bannerRatio": "16:9",
+    "mode": "demo",
+    "detailCount": 1
+  },
+  "sections": [
+    {
+      "id": "hero-1",
+      "role": "benefits",
+      "moduleType": "mechanism",
+      "title": "今天，留一點好給自己",
+      "body": "測試用編輯：第一階段\n測試用編輯：第二階段\n測試用編輯：第三階段",
+      "visualGoal": "功能示意 / frame 3. A schematic flow from sensing to filtration to circulation, using supplied facts only. Use directional arrows and a real product photograph, not a fabricated engineering cutaway. The explanatory graphic should be a principal visual, with concise labels and a small product anchor.",
+      "sceneVariant": 0,
+      "detailFocus": "upper",
+      "evidencePoints": [
+        "測試用編輯：第一階段",
+        "測試用編輯：第二階段",
+        "測試用編輯：第三階段"
+      ],
+      "selected": true,
+      "customDiagramText": true
+    }
+  ],
+  "outputs": [
+    {
+      "id": "bd70f8a1-3fae-43a9-b23b-783576da4d70",
+      "kind": "detail",
+      "title": "今天，留一點好給自己",
+      "width": 768,
+      "height": 1024,
+      "mimeType": "image/png",
+      "prompt": "功能示意 / frame 3. A schematic flow from sensing to filtration to circulation, using supplied facts only. Use directional arrows and a real product photograph, not a fabricated engineering cutaway. The explanatory graphic should be a principal visual, with concise labels and a small product anchor.",
+      "provider": "demo-compositor",
+      "model": "canvas-2d-v3",
+      "durationMs": 44,
+      "sourceId": "eb933188-6f5c-4b1f-843e-db500d794467",
+      "copy": {
+        "id": "hero-1",
+        "role": "benefits",
+        "moduleType": "mechanism",
+        "title": "今天，留一點好給自己",
+        "body": "測試用編輯：第一階段\n測試用編輯：第二階段\n測試用編輯：第三階段",
+        "visualGoal": "功能示意 / frame 3. A schematic flow from sensing to filtration to circulation, using supplied facts only. Use directional arrows and a real product photograph, not a fabricated engineering cutaway. The explanatory graphic should be a principal visual, with concise labels and a small product anchor.",
+        "sceneVariant": 0,
+        "detailFocus": "upper",
+        "evidencePoints": [
+          "測試用編輯：第一階段",
+          "測試用編輯：第二階段",
+          "測試用編輯：第三階段"
+        ],
+        "selected": true,
+        "customDiagramText": true
+      },
+      "visualRole": "benefits",
+      "template": "v3-mechanism",
+      "photoOrigin": "original",
+      "moduleType": "mechanism",
+      "sceneVariant": 0,
+      "reusedPhoto": false,
+      "compositionVersion": "storyboard-v3",
+      "bytes": 132086,
+      "file": "outputs/01-detail-768x1024.png"
+    }
+  ],
+  "notice": "Free purpose-driven composition. Original photos, original-photo crops, and explicitly labelled prepared scene fixtures. This run made no live model request."
+}

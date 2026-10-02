@@ -130,7 +130,7 @@ async function startProduct(page: Page, e: LiveEvidence, category: Category, lan
     const promised=page.waitForResponse(response=>endpoint(response,'copy'),{timeout:180_000});
     await page.getByRole('button',{name:'AI 規劃文案（付費）',exact:true}).click();
     const response=await promised;expect(response.status()).toBe(200);result=await response.json();expect(result.provider).toBe('gemini-api');expect(result.model).toBe('gemini-3.7-flash');
-  }else{await page.getByRole('button',{name:'免費規劃套圖',exact:true}).click();result={provider:'demo'};}
+  }else{await page.getByRole('button',{name:'依商品資料整理（免費）',exact:true}).click();result={provider:'demo'};}
   await expect(page.getByLabel('標題 1',{exact:true})).not.toHaveValue('');
   await e.capture('02-copy');e.checks.push(live?'明確確認付費後，從 App 操作 Gemini 文案規劃並核對 HTTP 回應。':'從 App 本機建立免費套圖規劃，不呼叫模型 API。');
 
